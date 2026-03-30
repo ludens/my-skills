@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "humanizer": {
+      "source": "daleseo/korean-skills",
+      "sourceType": "github",
+      "computedHash": "f0eb2aa9e2515e99471fbd085d514141bfc4873f3683f76815a237d64c2cd834"
+    }
+  }
+}

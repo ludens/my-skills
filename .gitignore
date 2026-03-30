@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+
+# Local editor files
+.idea/
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Generated artifacts
+dist/
+build/
+
+# Local Codex agent data
+.agents/
