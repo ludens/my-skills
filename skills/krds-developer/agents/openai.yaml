@@ -1,0 +1,7 @@
+interface:
+  display_name: "KRDS Developer"
+  short_description: "KRDS 기준으로 공공 UI를 구현·검토한다."
+  default_prompt: "Use $krds-developer to build or review this UI against KRDS guidance."
+
+policy:
+  allow_implicit_invocation: true
