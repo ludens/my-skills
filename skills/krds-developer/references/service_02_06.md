@@ -45,8 +45,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**주제 탐색 탭** 별도 필터나 고급 검색 동작 없이 검색 결과 목록을 검색 주제별로 탐색할 수 있는 수단
 2. 2.**배지(선택)** 검색 결과의 주제와 같은 범주 관련 메타 데이터를 표시하기 위한 문자
 3. 3.**날짜** 결과 정보의 등록 일자 또는 최종 업데이트 일자
@@ -85,11 +83,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 권장제목과 설명은 명확하고 간결하게 제공한다.
 
@@ -100,8 +94,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 항목이 검색 주제와 같은 범주 정보로 구분되어 있는 경우 직관적으로 인지할 수 있는 방식으로 표현하여 원하는 결과 탐색에 걸리는 시간을 최소화해야 한다.
 
 모범 사례
-
-
 
 필수검색어와 일치하는 항목을 강조 표시한다.
 
@@ -129,19 +121,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 * [구조화 목록](./../component/component%5F04%5F01.html)
 * [배지](./../component/component%5F04%5F06.html)
 * [태그](./../component/component%5F06%5F04.html)
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

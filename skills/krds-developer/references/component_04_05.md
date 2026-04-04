@@ -51,8 +51,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**오버레이(Overlay)** 모달과 하단의 기본 창을 시각적으로 구분하기 위한 그림자 또는 가림막
 2. 2.**헤더** 모달의 상단 영역으로 모달에서 제공하는 콘텐츠나 요청하는 행동에 대한 간단한 요약 정보를 담은 제목, 설명을 제공함
 3. 3.**닫기 버튼(선택)** 사용자가 모달을 닫을 수 있게 하는 버튼 요소로 대개 'X' 아이콘으로 표현됨. 모달에서 데이터를 입력하여 제출하거나 행동을 확정해야 하는 경우, 닫기 버튼은 모달을 닫는 동시에 취소와 동일한 기능을 제공함
@@ -106,8 +104,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 헤더, 콘텐츠, 버튼 레이블은 명확한 내용으로 제공한다.
 
 헤더에서 제공되는 제목 및 설명은 모달의 제공 목적(실행되는 기능, 확인하고자 하는 정보 등)이 명확하게 드러나야 한다. 본문에는 현재 플로(Flow)나 과업과 상관없는 내용을 포함하지 않아야 한다. 버튼 레이블은 버튼을 통해 실행하고자 하는 기능, 확정하고자 하는 행동을 반영해야 한다.
@@ -118,27 +114,9 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 피해야 할 사례
 
-
-
 모달은 사용자의 행동을 통해 실행한다.
 
 일부 예외를 제외하고 사용자가 의도하지 않은 모달을 자동으로 실행해서는 안 된다. 팝업의 갑작스러운 출현은 사용자를 당황하게 하며, 특히 스크린 리더 사용자가 화면 탐색 맥락을 잃어버리는 원인이 되므로 사용자 행동의 결과로 모달 팝업이 실행되어야 한다. 다만, 사용자에게 인증 세션 만료를 안내하거나 서비스의 메인 화면에서 사용자에게 긴급한 정보를 안내해야 하는 경우에는 자동으로 실행되는 모달을 사용할 수 있다.
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.
 
 ### 접근성 가이드라인
 
@@ -195,6 +173,48 @@ class 및 data-target 호출
 
 ##### 기본 코드 확인하기
 
+<!-- KRDS-CODE:START 기본 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/modal_sample.html -->
+```html
+<button type="button" class="krds-btn large open-modal" data-target="modal_sample_01">class 및 data-target 호출</button>
+<!-- modal -->
+<section id="modal_sample_01" class="krds-modal fade in shown" role="dialog" aria-labelledby="tit_modal_sample_01">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- modal title -->
+      <div class="modal-header">
+        <h2 id="tit_modal_sample_01" class="modal-title">
+          모달 제목
+        </h2>
+      </div>
+      <!-- //modal title -->
+      <!-- modal contents -->
+      <div class="modal-conts">
+        <div class="conts-area">
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+        </div>
+      </div>
+      <!-- //modal contents -->
+      <!-- modal btn -->
+      <div class="modal-btn btn-wrap">
+        <button type="button" class="krds-btn medium tertiary close-modal">아니요</button>
+        <button type="button" class="krds-btn medium primary close-modal">예</button>
+      </div>
+      <!-- //modal btn -->
+      <!-- close button -->
+      <button type="button" class="krds-btn medium icon btn-close close-modal">
+        <span class="sr-only">닫기</span>
+        <i class="svg-icon ico-popup-close"></i>
+      </button>
+      <!-- //close button -->
+    </div>
+  </div>
+  <div class="modal-back in"></div>
+</section>
+<!-- //modal -->
+```
+<!-- KRDS-CODE:END 기본 코드 확인하기 -->
+
 #### class 및 data-target 호출
 
 class 및 data-target 호출 
@@ -230,6 +250,91 @@ class 및 data-target 호출
 닫기 
 
 ##### class 및 data-target 호출 코드 확인하기
+
+<!-- KRDS-CODE:START class 및 data-target 호출 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/modal.html -->
+```html
+<button type="button" class="krds-btn large open-modal" data-target="modal_sample_03">class 및 data-target 호출</button>
+<!-- modal -->
+<section id="modal_sample_03" class="krds-modal fade" role="dialog" aria-labelledby="tit_modal_sample_03">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- modal title -->
+      <div class="modal-header">
+        <h2 id="tit_modal_sample_03" class="modal-title">
+          모달 제목
+        </h2>
+      </div>
+      <!-- //modal title -->
+      <!-- modal contents -->
+      <div class="modal-conts">
+        <div class="conts-area">
+          시작 <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          대화 상자는 사용자에게 작업에 대해 알리고 중요한 정보를 포함하거나 결정이 필요하거나 여러 작업을 포함할 수 있습니다.
+          <br>
+          끝
+        </div>
+      </div>
+      <!-- //modal contents -->
+      <!-- modal btn -->
+      <div class="modal-btn btn-wrap">
+        <button type="button" class="krds-btn medium tertiary close-modal">아니요</button>
+        <button type="button" class="krds-btn medium primary close-modal">예</button>
+      </div>
+      <!-- //modal btn -->
+      <!-- close button -->
+      <button type="button" class="krds-btn medium icon btn-close close-modal">
+        <span class="sr-only">닫기</span>
+        <i class="svg-icon ico-popup-close"></i>
+      </button>
+      <!-- //close button -->
+    </div>
+  </div>
+  <div class="modal-back"></div>
+</section>
+<!-- //modal -->
+```
+<!-- KRDS-CODE:END class 및 data-target 호출 코드 확인하기 -->
 
 ### 마크업 가이드
 

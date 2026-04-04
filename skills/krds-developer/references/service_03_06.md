@@ -45,8 +45,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**사용자 이름** 사용자의 이름, 별명, 프로필 사진이 제공됨. 사용자의 개인화 서비스로 이동하는 링크나 계정 관련 옵션 목록을 확인하기 위한 메뉴 실행 버튼으로 사용될 수 있음
 2. 2.**로그아웃 버튼** 로그인 상태를 해제하기 위한 버튼
 3. 3.**개인화 메뉴** 사용자 개인화 서비스, 설정 화면, 로그아웃 버튼 등의 기능을 제공하는 메뉴로 드롭다운 메뉴나 드로어 메뉴로 제공될 수 있음
@@ -65,11 +63,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 권장로그인 상태로 전환되었음을 명확하게 표현한다.
 
@@ -83,19 +77,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 * KWCAG 2.2 초점 이동과 표시
 * WCAG 2.1 Focus Order (A)
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

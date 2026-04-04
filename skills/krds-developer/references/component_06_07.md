@@ -51,8 +51,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**스위치**  
    1. a.**경로(Track)**핸들의 이동 경로를 보여주는 내부 영역 또는 테두리  
    2. b.**핸들(Handle)**두 상태의 전환 상태를 표시하는 인디케이터로 경로를 따라 좌/우로 이동함
@@ -94,11 +92,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 스위치 상태에 상관없이 레이블을 일관되게 유지한다.
 
@@ -106,11 +100,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 레이블과 스위치 사이의 거리에 유의한다.
 
@@ -118,11 +108,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 한 화면 내에서의 토글 스위치 표현에 동일한 레이아웃을 사용한다.
 
@@ -131,27 +117,9 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
 
  
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.
 
 ### 접근성 가이드라인
 
@@ -221,6 +189,26 @@ switch : disabled
 
 ##### 기본 코드 확인하기
 
+<!-- KRDS-CODE:START 기본 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/toggle_switch.html -->
+```html
+<!-- toggle switch -->
+<div class="krds-form-toggle-switch">
+  <input type="checkbox" id="switch">
+  <label for="switch"><span class="switch-toggle"><i></i></span>switch : default</label>
+</div>
+<div class="krds-form-toggle-switch">
+  <input type="checkbox" id="switch_checked" checked>
+  <label for="switch_checked"><span class="switch-toggle"><i></i></span>switch : checked</label>
+</div>
+<div class="krds-form-toggle-switch">
+  <input type="checkbox" id="switch_disabled_1" disabled>
+  <label for="switch_disabled_1"><span class="switch-toggle"><i></i></span>switch : disabled</label>
+</div>
+<!-- //toggle switch -->
+```
+<!-- KRDS-CODE:END 기본 코드 확인하기 -->
+
 #### 사이즈
 
 switch size : large 
@@ -228,6 +216,22 @@ switch size : large
 switch size : medium 
 
 ##### 사이즈 코드 확인하기
+
+<!-- KRDS-CODE:START 사이즈 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/toggle_switch_size.html -->
+```html
+<!-- toggle switch -->
+<div class="krds-form-toggle-switch large">
+  <input type="checkbox" id="switch_lg_1">
+  <label for="switch_lg_1"><span class="switch-toggle"><i></i></span>switch size : large</label>
+</div>
+<div class="krds-form-toggle-switch medium">
+  <input type="checkbox" id="switch_lg_md">
+  <label for="switch_lg_md"><span class="switch-toggle"><i></i></span>switch size : medium</label>
+</div>
+<!-- //toggle switch -->
+```
+<!-- KRDS-CODE:END 사이즈 코드 확인하기 -->
 
 ### 마크업 가이드
 

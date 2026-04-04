@@ -47,8 +47,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**레이블** 사용자가 어떤 값을 선택해야 하는지를 안내하는 문구
 2. 2.**슬라이더(Slider)**핸들의 이동 경로를 보여주는 영역
 3. 3.**핸들(Handle)**정해진 범위 내 값을 선택하는 선택자로, 슬라이더를 따라 좌/우로 이동함
@@ -85,11 +83,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 핸들을 드래그할 수 있어야 한다.
 
@@ -105,24 +99,4 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

@@ -187,12 +187,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 2. **2**  
 주기적이고 빈번하게 정보의 정확성 및 최신성을 점검하여 수정한다.  
  정확하지 않거나 최신화되지 않은 정보로 인해 사용자는 예상치 못한 어려움을 겪게 되며, 더 이상 서비스를 믿을 수 없게 된다. 불가피하게 정보의 수정/보완에 지연이 발생한다면, 사용자에게 이러한 사실과 최종 반영 일정을 안내하는 것이 바람직하다.
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

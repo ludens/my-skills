@@ -47,8 +47,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**뒤로가기 버튼** 이전 화면으로 돌아가는 버튼
 2. 2.**제목**현재 화면의 제목을 표시
 
@@ -60,11 +58,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 이전 화면으로의 이동을 기본으로 한다.
 
@@ -72,11 +66,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 사용자가 이동을 예측 가능하도록 한다.
 
@@ -89,19 +79,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 시스템 뒤로가기와 앱 내 뒤로가기는 최대한 동일하게 동작하여야 한다.
 
 같은 화면에서 상단 뒤로가기 버튼과 시스템 back/제스처를 사용했을 때, 서로 다른 화면으로 이동하거나, 하나는 팝업을 닫고 하나는 페이지를 이탈하는 등 상이한 결과를 초래해서는 안 된다.
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

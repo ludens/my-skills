@@ -45,10 +45,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
-
-
 1. 1.**주제 탐색 탭** 별도 필터나 고급 검색 동작 없이 검색 결과 목록을 검색 주제별로 탐색할 수 있는 수단
 2. 2.**결과 수** 전체 검색 결과의 양을 나타내는 지표
 3. 3.**결과 목록** 검색 결과로 반환된 데이터 목록
@@ -69,11 +65,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 권장사용자가 재검색을 시도하지 않는 한 검색어 입력 필드에 검색어를 유지한다.
 
@@ -84,8 +76,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 검색 결과 수를 명시하여 사용자가 다음 행동을 빠르게 결정할 수 있도록 도와야 한다. 검색 결과를 검색 주제별 탭으로 구분하고 있는 경우, 검색 주제별 결과 수도 반드시 제공해야 한다.
 
 모범 사례
-
-
 
 필수검색어와 관련된 결과가 반환되는지 확인한다.
 
@@ -120,11 +110,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 ### 예시
 
@@ -140,19 +126,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 * [구조화 목록](./../component/component%5F04%5F01.html)
 * [스피너](./../component/component%5F07%5F02.html)
 * [탭](./../component/component%5F04%5F10.html)
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

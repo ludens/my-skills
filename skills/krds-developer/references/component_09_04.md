@@ -51,8 +51,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**레이블/제목**파일 업로드 섹션을 설명하는 텍스트로 파일 용도 등 업로드 맥락을 제공함
 2. 2.**설명(선택)** 헤딩의 정보를 보완하는 텍스트 설명
 3. 3.**도움말 텍스트**업로드 프로세스 또는 요구 사항을 설명하고 파일 형식 및 크기에 대한 가이드라인을 제공
@@ -110,8 +108,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 가능한 한 파일 형식을 제한하지 않는다.
 
 제출을 요구하는 파일의 일반적인 형식을 확인하여 사용자가 다양한 파일 형식을 업로드할 수 있도록 한다. 모든 사람이 동일한 소프트웨어에 접근할 수 있는 것이 아니므로 불필요한 소프트웨어 설치 요구 등을 피하기 위해 업로드 파일 형식을 유연하게 구성해야 한다. 이때, 파일의 확장자에도 부적절한 제한이 발생하지 않도록 한다(예 - JPEG 형식의 파일에 대해 .jpg, .jpeg, .jpe 등의 확장자를 허용함).
@@ -134,11 +130,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 파일을 자동으로 제출하지 않는다.
 
@@ -162,27 +154,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.
 
 ### 접근성 가이드라인
 
@@ -289,6 +261,95 @@ _업로드 완료_
 전체 파일 삭제 
 
 ##### 기본 코드 확인하기
+
+<!-- KRDS-CODE:START 기본 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/file_upload.html -->
+```html
+<!-- file upload -->
+<div class="krds-file-upload line">
+  <!-- 파일 업로드 상단 -->
+  <div class="file-head">
+    <h3 class="tit">타이틀영역</h3>
+    <div>
+      <p>컨텐츠 영역</p>
+    </div>
+  </div>
+  <!-- //파일 업로드 상단 -->
+
+  <!-- 파일 업로드 영역 -->
+  <div class="file-upload">
+    <p class="txt">첨부할 파일을 여기에 끌어다 놓거나, 파일 선택 버튼을 눌러 파일을 직접 선택해주세요.</p>
+    <div class="file-upload-btn-wrap">
+      <input type="file" name="myFile" id="fileu-upload" hidden>
+      <label for="fileu-upload">
+        <button type="button" class="krds-btn medium"><i class="svg-icon ico-upload"></i>파일선택</button>
+      </label>
+    </div>
+  </div>
+  <!-- //파일 업로드 영역 -->
+  <!-- 파일 리스트 영역 -->
+  <div class="file-list">
+    <div class="total"><span class="current">3개</span> / 10개</div>
+    <ul class="upload-list">
+      <li>
+        <div class="file-info">
+          <div class="file-name">위임장(주민등록법 시행령 별지 제15호의2호서식) [hwp, 17KB] </div>
+          <div class="btn-wrap">
+            <span class="krds-spinner" role="status">
+              <span class="sr-only">업로드 중</span>
+            </span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="file-info">
+          <div class="file-name">위임장(주민등록법 시행령 별지 제15호의2호서식) [hwp, 17KB] </div>
+          <div class="btn-wrap">
+            <span class="ico-invalid complete">
+              <em class="sr-only">업로드 완료</em>
+            </span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="file-info">
+          <div class="file-name">위임장(주민등록법 시행령 별지 제15호의2호서식) [hwp, 17KB] </div>
+          <div class="btn-wrap">
+            <button type="button" class="krds-btn medium text">삭제 <i class="svg-icon ico-delete-fill"></i></button>
+          </div>
+        </div>
+      </li>
+      <li class="is-error">
+        <div class="file-info">
+          <div class="file-name">전입재등록신고서 [주민등록법 시행령 : 별지서식 15, 15호의2호] [hwp, 17KB]</div>
+          <div class="btn-wrap">
+            <button type="button" class="krds-btn medium text">삭제 <i class="svg-icon ico-delete-fill"></i></button>
+          </div>
+        </div>
+        <p class="file-hint-invalid">
+          등록 가능한 파일 용량을 초과하였습니다.<br>
+          20MB 미만의 파일만 등록할 수 있습니다.
+        </p>
+      </li>
+      <li>
+        <div class="file-info m-column">
+          <div class="file-name">위임장(주민등록법 시행령 별지 제15호의2호서식) [hwp, 17KB] </div>
+          <div class="btn-wrap">
+            <button type="button" class="krds-btn medium text">다운로드 <i class="svg-icon ico-down"></i></button>
+            <button type="button" class="krds-btn medium text">바로보기 <i class="svg-icon ico-angle right"></i></button>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="upload-delete-btn">
+      <button type="button" class="krds-btn xsmall tertiary">전체 파일 삭제<i class="svg-icon ico-angle right"></i></button>
+    </div>
+  </div>
+  <!-- //파일 리스트 영역 -->
+</div>
+<!-- //file upload -->
+```
+<!-- KRDS-CODE:END 기본 코드 확인하기 -->
 
 ### 마크업 가이드
 

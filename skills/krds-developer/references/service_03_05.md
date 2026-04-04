@@ -45,8 +45,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**레이블** 계정 정보 입력 필드의 이름
 2. 2.**계정 정보 입력 필드** 계정 정보를 입력하기 위한 텍스트 입력 필드
 3. 3.**로그인 정보 저장 옵션** 사용자가 다음 번에 로그인을 시도하였을 때 활용할 수 있는 계정 정보를 저장하기 위한 체크박스 옵션. 아이디, 비밀번호, 전체 계정 정보를 저장할 수 있음
@@ -60,8 +58,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 이메일 주소를 아이디로 사용하는 경우, 아이디를 이메일 형식으로 입력해야 한다는 것을 안내하지 않으면 기억에 의존해야 하므로 많은 시간이 걸린다. 사용자가 입력해야 하는 정보를 추측하지 않도록 레이블 및 도움말을 플레이스홀더가 아닌 레이블로 제공한다.
 
 피해야 할 사례
-
-
 
 필수비밀번호를 표시할 수 있는 옵션을 제공한다.
 
@@ -86,15 +82,9 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례 1
 
-
-
 피해야 할 사례 2
-
-
 
 ### 예시
 
@@ -141,19 +131,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 * [입력폼](./../global/global%5F08.html)
 * [오류](./../global/global%5F07.html)
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

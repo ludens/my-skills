@@ -51,8 +51,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**레이블**배지를 통해 전달하고자 하는 메타 데이터
 2. 2.**컨테이너**배지를 배경과 구분하는 배경색 또는 윤곽선
 
@@ -93,24 +91,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 배지의 배경색으로 주조색(Primary color)을 이용하게 되면 사용자는 배지를 버튼으로 오인할 수 있다.
 
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용                                   | 리소스                                                                                                                                                            |
-| ------------ | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 4월 22일 | 배지 컴포넌트 명도대비 수정(.krds-badge.bg-warning) | [ HTML Component Kit v1.0.5 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.5 "새 창 열기")                                                              |
-| 2025년 2월 04일 | 배지 컴포넌트 숫자형 표시방법 수정(+999 ⟶ 999+)        | [ HTML Component Kit v1.0.3 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.3 "새 창 열기")                                                              |
-| 2025년 1월 15일 | 최초 등록                                   | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.
-
 ### 접근성 가이드라인
 
 텍스트 레이블을 제공한다.
@@ -140,6 +120,49 @@ Label Label Label Label Label Label Label Label Label
 
 ##### 기본 코드 확인하기
 
+<!-- KRDS-CODE:START 기본 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/badge.html -->
+```html
+<!-- badge -->
+<div class="krds-badge-wrap">
+  <span class="krds-badge outline-primary">Label</span>
+  <span class="krds-badge outline-secondary">Label</span>
+  <span class="krds-badge outline-gray">Label</span>
+  <span class="krds-badge outline-point">Label</span>
+  <span class="krds-badge outline-danger">Label</span>
+  <span class="krds-badge outline-warning">Label</span>
+  <span class="krds-badge outline-success">Label</span>
+  <span class="krds-badge outline-information">Label</span>
+  <span class="krds-badge outline-disabled">Label</span>
+</div>
+
+<div class="krds-badge-wrap">
+  <span class="krds-badge bg-primary">Label</span>
+  <span class="krds-badge bg-secondary">Label</span>
+  <span class="krds-badge bg-gray">Label</span>
+  <span class="krds-badge bg-point">Label</span>
+  <span class="krds-badge bg-danger">Label</span>
+  <span class="krds-badge bg-warning">Label</span>
+  <span class="krds-badge bg-success">Label</span>
+  <span class="krds-badge bg-information">Label</span>
+  <span class="krds-badge bg-disabled">Label</span>
+</div>
+
+<div class="krds-badge-wrap">
+  <span class="krds-badge bg-light-primary">Label</span>
+  <span class="krds-badge bg-light-secondary">Label</span>
+  <span class="krds-badge bg-light-gray">Label</span>
+  <span class="krds-badge bg-light-point">Label</span>
+  <span class="krds-badge bg-light-danger">Label</span>
+  <span class="krds-badge bg-light-warning">Label</span>
+  <span class="krds-badge bg-light-success">Label</span>
+  <span class="krds-badge bg-light-information">Label</span>
+  <span class="krds-badge bg-light-disabled">Label</span>
+</div>
+<!-- //badge -->
+```
+<!-- KRDS-CODE:END 기본 코드 확인하기 -->
+
 #### 사이즈
 
 Label Label Label Label Label Label Label Label Label 
@@ -150,6 +173,49 @@ Label Label Label Label Label Label Label Label Label
 
 ##### 사이즈 코드 확인하기
 
+<!-- KRDS-CODE:START 사이즈 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/badge_size.html -->
+```html
+<!-- badge -->
+<div class="krds-badge-wrap">
+  <span class="krds-badge large outline-primary">Label</span>
+  <span class="krds-badge large outline-secondary">Label</span>
+  <span class="krds-badge large outline-gray">Label</span>
+  <span class="krds-badge large outline-point">Label</span>
+  <span class="krds-badge large outline-danger">Label</span>
+  <span class="krds-badge large outline-warning">Label</span>
+  <span class="krds-badge large outline-success">Label</span>
+  <span class="krds-badge large outline-information">Label</span>
+  <span class="krds-badge large outline-disabled">Label</span>
+</div>
+
+<div class="krds-badge-wrap">
+  <span class="krds-badge medium bg-primary">Label</span>
+  <span class="krds-badge medium bg-secondary">Label</span>
+  <span class="krds-badge medium bg-gray">Label</span>
+  <span class="krds-badge medium bg-point">Label</span>
+  <span class="krds-badge medium bg-danger">Label</span>
+  <span class="krds-badge medium bg-warning">Label</span>
+  <span class="krds-badge medium bg-success">Label</span>
+  <span class="krds-badge medium bg-information">Label</span>
+  <span class="krds-badge medium bg-disabled">Label</span>
+</div>
+
+<div class="krds-badge-wrap">
+  <span class="krds-badge small bg-light-primary">Label</span>
+  <span class="krds-badge small bg-light-secondary">Label</span>
+  <span class="krds-badge small bg-light-gray">Label</span>
+  <span class="krds-badge small bg-light-point">Label</span>
+  <span class="krds-badge small bg-light-danger">Label</span>
+  <span class="krds-badge small bg-light-warning">Label</span>
+  <span class="krds-badge small bg-light-success">Label</span>
+  <span class="krds-badge small bg-light-information">Label</span>
+  <span class="krds-badge small bg-light-disabled">Label</span>
+</div>
+<!-- //badge -->
+```
+<!-- KRDS-CODE:END 사이즈 코드 확인하기 -->
+
 #### 숫자형
 
 5 999+ 
@@ -157,6 +223,23 @@ Label Label Label Label Label Label Label Label Label
 5 999+ 
 
 ##### 숫자형 코드 확인하기
+
+<!-- KRDS-CODE:START 숫자형 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/badge_number.html -->
+```html
+<!-- badge -->
+<div class="krds-badge-wrap">
+  <span class="krds-badge bg-primary number">5</span>
+  <span class="krds-badge bg-primary number">999+</span>
+</div>
+
+<div class="krds-badge-wrap">
+  <span class="krds-badge bg-point number">5</span>
+  <span class="krds-badge bg-point number">999+</span>
+</div>
+<!-- //badge -->
+```
+<!-- KRDS-CODE:END 숫자형 코드 확인하기 -->
 
 ### 마크업 가이드
 

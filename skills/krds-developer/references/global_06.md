@@ -47,8 +47,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**제목** 본문 전체에 대한 제목
 2. 2.**요약 정보** 본문의 주요 내용을 요약하여 설명하는 2\~3줄의 텍스트
 3. 3.**상세 정보** 상세 정보를 전달하기 위한 콘텐츠 섹션으로 구성된 본문
@@ -75,15 +73,11 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 정보 등록, 변경 일자와 변경 내역을 제공한다.
 
 정보가 업로드된 최초 날짜부터 시작하여 모든 변경 내역의 반영 일자와 변경 내역을 헤딩 근처와 본문 마지막에 제공해야 한다. 이를 통해 디지털 정부서비스가 지속적으로 관리되고 있음을 사용자가 인지할 수 있다.
 
 모범 사례
-
-
 
 제목은 다른 요소들과 구분되도록 표현한다.
 
@@ -95,11 +89,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 문단과 문장은 최대한 간단명료하게 구성한다.
 
@@ -132,8 +122,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 화면 너비가 충분하지 않을 때, 콘텐츠 내 탐색은 특정 위치에 고정하지 않고 제목과 본문 사이에 배치한다. 본문의 구조가 복잡하여 콘텐츠 내 탐색의 길이가 길어질 경우, 디스클로저와 같은 확장 가능한 섹션으로 콘텐츠 내 탐색을 제공할 수 있다.
 
 모범 사례
-
-
 
 ### 예시
 
@@ -193,19 +181,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 * KWCAG 2.2 제목 제공
 * WCAG 2.1 Info and Relationships (A)
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

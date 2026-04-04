@@ -45,8 +45,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**아이콘**로그인에 사용되는 링크 요소임을 보다 직관적으로 인지할 수 있도록 제공되는 아이콘
 2. 2.**레이블**아이콘에 대한 텍스트 레이블
 
@@ -62,11 +60,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 필수로그인 링크는 항상 ‘로그인’ 화면으로 연결되어야 한다.
 
@@ -85,8 +79,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 서비스 중심의 모바일 앱에서는 탭바 하단에 상시 노출하여 표시한다. 웹과 모바일을 일원화하여 사용할 경우 상단에 배치할 수 있다.
 
 모범 사례
-
-
 
 #### 신청 대상 탐색에 플랫폼에 대한 고려사항 추가
 
@@ -120,19 +112,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 #### 컴포넌트
 
 * [헤더](./../component/component%5F02%5F03.html)
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

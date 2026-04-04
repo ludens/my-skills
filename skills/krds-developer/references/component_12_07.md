@@ -50,8 +50,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**컨테이너**메뉴 링크/버튼 목록을 담고 있는 영역으로 본문과의 구분을 위해 배경색, 구분선, 그림자 등을 사용할 수 있음
 2. 2.**아이콘**메뉴 이름이 나타내는 의미/개념을 시각적으로 표상화한 요소
 3. 3.**레이블**메뉴 이름을 보여주는 텍스트
@@ -84,11 +82,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 선택된 메뉴 상태를 명확하게 표현한다.
 
@@ -96,11 +90,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 모든 탭 버튼을 일관성있게 표현한다.
 
@@ -108,11 +98,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 탭 메뉴의 개수를 5개 이내로 제한한다.
 
@@ -120,11 +106,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 아이콘과 레이블을 함께 사용한다.
 
@@ -132,11 +114,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 레이블 텍스트를 간결하게 작성하여 잘리지 않도록 한다.
 
@@ -144,11 +122,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 피해야 할 사례 1
 
-
-
 피해야 할 사례 2
-
-
 
 탭바에 홈 버튼, 전체 버튼이 사용되는 경우 각각 가장 왼쪽, 가장 오른쪽 항목으로 배치한다.
 
@@ -160,8 +134,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 피해야 할 사례
 
-
-
 탭바는 화면 하단에 위치를 고정하여 제공하며, 스크롤 동작 시 숨겨지지 않도록 한다.
 
 탭바의 이용 목적과 탭바에 익숙하지 않은 사용자를 고려하여 탭바의 배치를 변경하거나 사용자의 행동에 반응하여 숨겨졌다 표시되지 않도록 한다. 정보 구조상 하위 수준에 속하는 뷰에 진입하였을 때 탭바가 제공되지 않는 것은 적절하며 이 항목을 준수하지 않는 것이 아니다.
@@ -169,22 +141,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 모범 사례
 
  
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.
 
 ### 접근성 가이드라인
 

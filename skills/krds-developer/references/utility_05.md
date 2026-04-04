@@ -40,8 +40,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 닫기 
 
 # page title
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

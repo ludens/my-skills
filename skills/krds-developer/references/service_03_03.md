@@ -45,8 +45,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**오버레이(Overlay)** 로그인 안내 모달과 하단의 기본 창을 시각적으로 구분하기 위한 그림자 또는 가림막
 2. 2.**헤더** 모달의 제목을 포함한 영역으로 제목 텍스트를 통해 로그인 화면으로의 전환이 필요함을 안내함
 3. 3.**닫기 버튼(선택)** 사용자가 모달을 닫을 수 있게 하는 버튼 요소
@@ -75,8 +73,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
 
  
@@ -93,15 +89,11 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 우수사용자가 이용 절차를 단축할 수 있는 로그인 방식을 추천한다.
 
 로그인 방식에 따라 서비스 이용 방식이 달라지는 경우 로그인 안내 과정에서 이용 절차를 단축할 수 있는 로그인 방식을 추천한다. 예를 들어, A 방식으로 로그인 했을 때에는 최종 단계에서 별도의 본인 인증 과정을 거쳐야 하지만 B 방식으로 로그인했을 때 본인 인증 과정을 건너뛸 수 있다면 로그인 안내에서 B 방식을 사용할 것을 추천하면 된다.
 
 모범 사례
-
-
 
 권장로그인 안내 모달에는 ‘로그인 안 함’ 옵션을 제공하여 원하지 않는 이동 동작이 발생하지 않도록 한다.
 
@@ -109,11 +101,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 ### 관련된 항목 더보기
 
@@ -124,19 +112,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 #### 컴포넌트
 
 * [모달](./../component/component%5F04%5F05.html)
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

@@ -45,8 +45,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**필터링·정렬 컨트롤** 신청 서비스 목록을 필터링·정렬하는 데 사용되는 컨트롤
 2. 2.**페이지네이션** 신청 서비스 목록을 탐색하는 데 사용되는 컨트롤
 3. 3.**항목** 정보를 식별하기 위한 콘텐츠 집합으로 개별 항목에 대해 실행할 기능 관련 버튼, 상세 정보를 확인할 수 있는 탐색 링크가 포함될 수 있음  
@@ -79,15 +77,11 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 권장미리보기/요약에 신청 가능 기한 정보를 제공한다.
 
 한시적으로 운영되는 서비스인 경우 미리보기/요약에 기한 정보를 추가하여 상세 정보 화면으로 이동하지 않고도 서비스에 대해 빠르게 파악할 수 있게 만든다.
 
 모범 사례
-
-
 
 필수제목에 공식적인 서비스 명칭을 사용한다.
 
@@ -95,11 +89,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 필수제목에 말줄임표를 사용하지 않는다.
 
@@ -169,19 +159,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 * [구조화 목록](./../component/component%5F04%5F01.html)
 * [링크](./../component/component%5F05%5F01.html)
 * [페이지네이션](./../component/component%5F03%5F06.html)
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

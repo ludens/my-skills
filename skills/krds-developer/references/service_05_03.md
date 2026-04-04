@@ -51,8 +51,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 권장본문 정보 콘텐츠는 간결하며 이해하기 쉽게 작성한다.
 
 가능한 한 모든 사용자가 이해하기 쉬운 단어를 사용하고 문장의 구조를 단순화하여 정보를 제공해야 한다. 정책의 특성으로 인해 불가피하게 전문 용어, 외국어 등이 사용되어야 한다면 도움 관련 컴포넌트를 활용하여 설명을 제공해야 한다.
@@ -88,8 +86,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
 
  
@@ -107,19 +103,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 * [상세 정보 확인](./../global/global%5F06.html)
 * [첨부파일](./../global/global%5F09.html)
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

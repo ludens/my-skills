@@ -51,8 +51,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**레이블**옵션 목록의 카테고리에 대한 설명 또는 옵션 선택에 대한 도움말을 제공함
 2. 2.**컨테이너**콤보박스와 배경을 구분하는 시각적인 수단으로 면 또는 선으로 표현됨
 3. 3.**아이콘**옵션 목록의 확장/축소 상태를 나타냄
@@ -90,22 +88,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 셀렉트에 값을 변경하였을 때 폼이 제출되어서는 안 된다.
 
 입력폼에 별도의 제출 버튼을 제공하여 사용자가 입력폼의 제출을 확정하는 경우에만 데이터가 전송되어야 한다. 사용자는 입력폼에서 입력한 데이터를 수정하거나 다음 항목의 데이터를 입력하게 되는데, 이때 셀렉트의 옵션 변경만으로도 폼이 제출되어 버리면 기존에 입력한 정보가 삭제되거나 의도하지 않게 제출되어 당황하게 된다. 특히 키보드, 스크린 리더 사용자는 데이터를 다시 입력하는 과정에서 이 같은 변화의 맥락을 인지하는 데 어려움이 따르므로 유의해야 한다.
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.
 
 ### 접근성 가이드라인
 
@@ -182,6 +164,80 @@ disabled 항목2 항목3 항목4
 
 ##### 기본 코드 확인하기
 
+<!-- KRDS-CODE:START 기본 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/select.html -->
+```html
+<!-- select -->
+<div class="fieldset">
+  <!-- 폼그룹 -->
+  <div class="form-group">
+    <div class="form-tit">
+      <label for="select_name">레이블</label>
+    </div>
+    <div class="form-conts">
+      <select id="select_name" class="krds-form-select" title="선택">
+        <option value="">항목1</option>
+        <option value="">항목2</option>
+        <option value="">항목3</option>
+        <option value="">항목4</option>
+      </select>
+    </div>
+    <p class="form-hint">도움말</p>
+  </div>
+  <!-- //폼그룹 -->
+  <!-- 폼그룹 -->
+  <div class="form-group">
+    <div class="form-tit">
+      <label for="select_name4">레이블</label>
+    </div>
+    <div class="form-conts">
+      <select id="select_name4" class="krds-form-select completed" title="선택">
+        <option value="" selected>선택완료 상태</option>
+        <option value="">항목2</option>
+        <option value="">항목3</option>
+        <option value="">항목4</option>
+      </select>
+    </div>
+    <p class="form-hint">도움말</p>
+  </div>
+  <!-- //폼그룹 -->
+  <!-- 폼그룹 -->
+  <div class="form-group">
+    <div class="form-tit">
+      <label for="select_error">레이블</label>
+    </div>
+    <div class="form-conts">
+      <select id="select_error" class="krds-form-select is-error" title="선택">
+        <option value="">항목1</option>
+        <option value="">항목2</option>
+        <option value="">항목3</option>
+        <option value="">항목4</option>
+      </select>
+    </div>
+    <p class="form-hint-invalid">도움말</p>
+  </div>
+  <!-- //폼그룹 -->
+  <!-- 폼그룹 -->
+  <div class="form-group">
+    <div class="form-tit">
+      <label for="select_name3">레이블</label>
+    </div>
+    <div class="form-conts">
+      <select id="select_name3" class="krds-form-select" title="선택" disabled>
+        <option value="">disabled</option>
+        <option value="">항목2</option>
+        <option value="">항목3</option>
+        <option value="">항목4</option>
+      </select>
+    </div>
+    <p class="form-hint">도움말</p>
+  </div>
+  <!-- //폼그룹 -->
+</div>
+<!-- //select -->
+```
+<!-- KRDS-CODE:END 기본 코드 확인하기 -->
+
 #### 사이즈
 
 레이블 
@@ -204,6 +260,61 @@ large medium small
 
 ##### 사이즈 코드 확인하기
 
+<!-- KRDS-CODE:START 사이즈 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/select_size.html -->
+```html
+<!-- select -->
+<div class="fieldset">
+  <!-- 폼그룹 -->
+  <div class="form-group">
+    <div class="form-tit">
+      <label for="select_size_small">레이블</label>
+    </div>
+    <div class="form-conts">
+      <select id="select_size_small" class="krds-form-select large" title="선택">
+        <option value="" selected>large</option>
+        <option value="">medium</option>
+        <option value="">small</option>
+      </select>
+    </div>
+    <p class="form-hint">도움말</p>
+  </div>
+  <!-- //폼그룹 -->
+  <!-- 폼그룹 -->
+  <div class="form-group">
+    <div class="form-tit">
+      <label for="select_size_medium">레이블</label>
+    </div>
+    <div class="form-conts">
+      <select id="select_size_medium" class="krds-form-select medium" title="선택">
+        <option value="">large</option>
+        <option value="" selected>medium</option>
+        <option value="">small</option>
+      </select>
+    </div>
+    <p class="form-hint">도움말</p>
+  </div>
+  <!-- //폼그룹 -->
+  <!-- 폼그룹 -->
+  <div class="form-group">
+    <div class="form-tit">
+      <label for="select_size_large">레이블</label>
+    </div>
+    <div class="form-conts">
+      <select id="select_size_large" class="krds-form-select small" title="선택">
+        <option value="">large</option>
+        <option value="">medium</option>
+        <option value="" selected>small</option>
+      </select>
+    </div>
+    <p class="form-hint">도움말</p>
+  </div>
+  <!-- //폼그룹 -->
+</div>
+<!-- //select -->
+```
+<!-- KRDS-CODE:END 사이즈 코드 확인하기 -->
+
 #### 상태
 
 레이블 
@@ -214,11 +325,66 @@ large medium small
 
 ##### 상태 코드 확인하기
 
+<!-- KRDS-CODE:START 상태 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/select_state.html -->
+```html
+<!-- select -->
+<div class="fieldset">
+  <!-- 폼그룹 -->
+  <div class="form-group">
+    <div class="form-tit">
+      <label for="select_error">레이블</label>
+    </div>
+    <div class="form-conts">
+      <select id="select_error" class="krds-form-select is-error" title="선택">
+        <option value="">항목1</option>
+        <option value="">항목2</option>
+        <option value="">항목3</option>
+        <option value="">항목4</option>
+      </select>
+    </div>
+    <p class="form-hint-invalid">도움말</p>
+  </div>
+  <!-- //폼그룹 -->
+</div>
+<!-- //select -->
+```
+<!-- KRDS-CODE:END 상태 코드 확인하기 -->
+
 #### sorting
 
 항목1 항목2 항목3 항목4 항목1 항목2 항목3 항목1 항목2 항목3 항목1 항목2 항목3 
 
 ##### sorting 코드 확인하기
+
+<!-- KRDS-CODE:START sorting 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/select_sorting.html -->
+```html
+<!-- select -->
+<select id="select_sorting" class="krds-form-select-sort" title="선택">
+  <option value="">항목1</option>
+  <option value="">항목2</option>
+  <option value="">항목3</option>
+  <option value="">항목4</option>
+</select>
+<select id="select_sorting_large" class="krds-form-select-sort large" title="선택">
+  <option value="" selected>항목1</option>
+  <option value="">항목2</option>
+  <option value="">항목3</option>
+</select>
+<select id="select_sorting_medium" class="krds-form-select-sort medium" title="선택">
+  <option value="">항목1</option>
+  <option value="" selected>항목2</option>
+  <option value="">항목3</option>
+</select>
+<select id="select_sorting_small" class="krds-form-select-sort small" title="선택">
+  <option value="">항목1</option>
+  <option value="">항목2</option>
+  <option value="" selected>항목3</option>
+</select>
+<!-- //select -->
+```
+<!-- KRDS-CODE:END sorting 코드 확인하기 -->
 
 ### 마크업 가이드
 

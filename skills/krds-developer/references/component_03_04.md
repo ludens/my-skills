@@ -51,8 +51,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**컨테이너** 사이드 메뉴 링크 목록을 담고 있는 영역으로 배경색 또는 테두리로 본문 및 인접 영역과 구분함
 2. 2.**구분선** 링크 목록 내의 항목을 구분하기 위한 가로선
 3. 3.**헤더(선택)** 메뉴 목록의 제목을 제공하는 영역  
@@ -69,20 +67,14 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 사이드 메뉴의 가장 기본적인 형태로 모든 수준의 링크가 표시된다. 사용자는 메인 메뉴와 메인 메뉴의 식별자를 통해 사이드 메뉴 목록의 계층 구조를 파악할 수 있다.
 
-
-
 #### 헤더가 있는 목록
 
  4수준 이상의 계층 구조를 가진 서비스에서 4수준 이상의 메뉴를 점진적으로 공개할 때, 상위 수준 메뉴 텍스트를 보여주는 제목과 이동 버튼으로 구성된 헤더를 포함하여 사용한다.   
  링크 목록이 메인 메뉴에 표시된 정보 구조의 하위 수준에 속하지 않는 경우, 사용자가 정보 구조를 명확하게 파악하는 것을 돕기 위해 제목을 제공할 수 있다.
 
-
-
 #### 드롭다운
 
 4수준 이상의 계층 구조를 가진 서비스에서 햄버거 메뉴로 전환되었을 때 메인 메뉴를 보조하여 탐색할 수 있는 수단으로 사용한다. 본문의 제목이 드롭다운 버튼으로 사용되며, 실행 시 동일한 수준의 메뉴 링크 목록을 표시한다.
-
-
 
 ### 용례
 
@@ -114,11 +106,7 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 하위 수준 메뉴 표시에 확장 가능한 영역을 사용하는 방안을 고려한다.
 
@@ -126,8 +114,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
  만약 모든 수준의 메뉴를 표시하였을 때 목록이 사이드 메뉴 영역을 벗어나지 않으며 간결하다면 기본으로 모든 메뉴가 보이도록 표현할 수 있다.
 
 모범 사례
-
-
 
 피해야 할 사례
 
@@ -139,34 +125,13 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 ### 플랫폼에 대한 고려 사항
 
 화면 너비가 충분하지 않은 경우 사이드 메뉴를 표시하지 않는다.
 
 사용자는 햄버거 아이콘으로 축소된 메인 메뉴를 통해 정보 구조를 탐색한다. 4수준 이상의 정보 구조가 필요하다면 본문 제목을 4수준 메뉴에 대한 보조적 탐색 수단으로 사용하여 사용자의 탐색을 도울 수 있다.
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용                                                  | 리소스                                                                                                                                                            |
-| ------------ | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 3월 05일 | 사이드메뉴 컴포넌트 하위 링크 목록 확장 시 기존에 확장된 링크 목록 확장 상태가 유지되도록 수정 | [ HTML Component Kit v1.0.4 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.4 "새 창 열기")                                                              |
-| 2025년 1월 15일 | 최초 등록                                                  | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.
 
 ### 접근성 가이드라인
 
@@ -243,6 +208,93 @@ __상호작용 가이드라인 메뉴 영역 확장 및 축소에 대한 표로 
 #### 기본
 
 ##### 기본 코드 확인하기
+
+<!-- KRDS-CODE:START 기본 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/side_navigation.html -->
+```html
+<!-- side navigation -->
+<nav class="krds-side-navigation">
+  <h2 class="lnb-tit">1Depth-title</h2>
+  <!-- lnb-list -->
+  <ul class="lnb-list" role="menubar">
+    <li class="lnb-item active" role="none">
+      <button type="button" class="lnb-btn lnb-toggle active" role="menuitem" aria-controls="lnbmenu-1" aria-expanded="true">2Depth-menu</button>
+      <!-- lnb-submenu -->
+      <div class="lnb-submenu">
+        <ul id="lnbmenu-1" role="menu">
+          <li class="lnb-subitem" role="none">
+            <button type="button" class="lnb-btn lnb-toggle-popup" role="menuitem" aria-controls="lnbmenu-2" aria-expanded="false" aria-haspopup="true">3Depth-menu</button>
+            <!-- lnb-submenu-lv2 -->
+            <div class="lnb-submenu-lv2" id="lnbmenu-2" role="menu">
+              <button type="button" class="lnb-btn-tit">3Depth-title</button>
+              <ul>
+                <li role="none"><a href="#" class="lnb-btn" role="menuitem">4Depth</a></li>
+                <li role="none"><a href="#" class="lnb-btn" role="menuitem">4Depth</a></li>
+                <li role="none"><a href="#" class="lnb-btn" role="menuitem">4Depth</a></li>
+              </ul>
+            </div>
+            <!-- //lnb-submenu-lv2 -->
+          </li>
+          <li class="lnb-subitem" role="none"><a href="#" class="lnb-btn lnb-link" role="menuitem">3Depth-link</a></li>
+          <li class="lnb-subitem active" role="none"><a href="#" class="lnb-btn lnb-link" role="menuitem" aria-current="page">3Depth-link</a></li>
+        </ul>
+      </div>
+      <!-- //lnb-submenu -->
+    </li>
+    <li class="lnb-item" role="none">
+      <button type="button" class="lnb-btn lnb-toggle" role="menuitem" aria-controls="lnbmenu-4" aria-expanded="false">2Depth-menu</button>
+      <!-- lnb-submenu -->
+      <div class="lnb-submenu">
+        <ul id="lnbmenu-4" role="menu">
+          <li class="lnb-subitem" role="none">
+            <button type="button" class="lnb-btn lnb-toggle-popup" role="menuitem" aria-controls="lnbmenu-5" aria-expanded="false" aria-haspopup="true">3Depth-menu</button>
+            <!-- lnb-submenu-lv2 -->
+            <div class="lnb-submenu-lv2" id="lnbmenu-5" role="menu">
+              <button type="button" class="lnb-btn-tit">3Depth-title</button>
+              <ul>
+                <li role="none"><a href="#" class="lnb-btn" role="menuitem">4Depth</a></li>
+                <li role="none"><a href="#" class="lnb-btn" role="menuitem">4Depth</a></li>
+                <li role="none"><a href="#" class="lnb-btn" role="menuitem">4Depth</a></li>
+              </ul>
+            </div>
+            <!-- //lnb-submenu-lv2 -->
+          </li>
+          <li class="lnb-subitem" role="none"><a href="#" class="lnb-btn lnb-link" role="menuitem">3Depth-link</a></li>
+          <li class="lnb-subitem" role="none"><a href="#" class="lnb-btn lnb-link" role="menuitem">3Depth-link</a></li>
+        </ul>
+      </div>
+      <!-- //lnb-submenu -->
+    </li>
+    <li class="lnb-item" role="none">
+      <button type="button" class="lnb-btn lnb-toggle" role="menuitem" aria-controls="lnbmenu-6" aria-expanded="false">2Depth-menu</button>
+      <!-- lnb-submenu -->
+      <div class="lnb-submenu">
+        <ul id="lnbmenu-6" role="menu">
+          <li class="lnb-subitem" role="none">
+            <button type="button" class="lnb-btn lnb-toggle-popup" role="menuitem" aria-controls="lnbmenu-7" aria-expanded="false" aria-haspopup="true">3Depth-menu</button>
+            <!-- lnb-submenu-lv2 -->
+            <div class="lnb-submenu-lv2" id="lnbmenu-7" role="menu">
+              <button type="button" class="lnb-btn-tit">3Depth-title</button>
+              <ul>
+                <li role="none"><a href="#" class="lnb-btn" role="menuitem">4Depth</a></li>
+                <li role="none"><a href="#" class="lnb-btn" role="menuitem">4Depth</a></li>
+                <li role="none"><a href="#" class="lnb-btn" role="menuitem">4Depth</a></li>
+              </ul>
+            </div>
+            <!-- //lnb-submenu-lv2 -->
+          </li>
+          <li class="lnb-subitem" role="none"><a href="#" class="lnb-btn lnb-link" role="menuitem">3Depth-link</a></li>
+          <li class="lnb-subitem" role="none"><a href="#" class="lnb-btn lnb-link" role="menuitem">3Depth-link</a></li>
+        </ul>
+      </div>
+      <!-- //lnb-submenu -->
+    </li>
+  </ul>
+  <!-- //lnb-list -->
+</nav>
+<!-- //side navigation -->
+```
+<!-- KRDS-CODE:END 기본 코드 확인하기 -->
 
 | 1Depth | File Link                                                           |
 | ------ | ------------------------------------------------------------------- |

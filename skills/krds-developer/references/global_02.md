@@ -54,23 +54,13 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 #### 안내 영역
 
-
-
 ##### 섹션 헤딩 및 설명
-
-
 
 ##### 레이블
 
-
-
 ##### 인라인 텍스트
 
-
-
 ##### 플레이스홀더
-
-
 
 #### 사용자 요청에 의한 도움말
 
@@ -80,23 +70,13 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ##### 툴팁
 
-
-
 ##### 맥락적 도움말
-
-
 
 ##### 도움 패널
 
-
-
 ##### 코치마크
 
-
-
 ##### 따라하기 패널
-
-
 
 #### 반응형 도움말
 
@@ -224,19 +204,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 개명한 경우 회원 정보에서 이름을 변경한 후 신청 가능합니다. 관련 도움말 을 참고하세요.
 
 ##### 기본 코드 확인하기
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

@@ -74,17 +74,9 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 캐러셀 컨테이너에 기본 항목이 1개만 표시되어 사용자는 한 번의 탐색에서 하나의 정보에 집중할 수 있다. 단일 항목 중에서도 항목이 전체 화면 크기로 제공되거나 본문 높이의 절반 이상을 차지하는 전체 화면 유형은 메인 화면 히어로 영역이나 사용자가 주목해야 하는 콘텐츠를 전달하는 데 사용하기 적합하다.
 
-
-
-
-
 ##### 다중 항목
 
 캐러셀 컨테이너에 기본 항목이 2개 이상 표시된다. 미디어 콘텐츠, 정책, 법령과 같은 여러 항목의 정보를 탐색하는 데 적합하다. 화면 너비에 따라 항목의 크기가 줄어들 경우 정보를 표시하는 데 제약이 있을 수 있으므로 항목 내부에 복잡한 이미지나 텍스트가 제공되어야 한다면 정보를 적절히 인지할 수 있는 항목 수를 선택하거나 단일 항목 레이아웃을 사용해야 한다.
-
-
-
-
 
 #### 애니메이션
 
@@ -111,8 +103,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 캐러셀 항목의 텍스트 콘텐츠는 1\~2줄로 작성한다.
 
 각 캐러셀 항목에 지나치게 많은 정보가 제공되면 사용자의 인지적 부담이 증가한다. 캐러셀 항목에 포함된 텍스트는 가독성 있는 간단한 문구로 1\~2줄 이하로 작성한다.
@@ -127,8 +117,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 피해야 할 사례
 
  
@@ -138,8 +126,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 캐러셀 관련 컨트롤과 항목 탐색 식별자는 항목과 명확하게 구분되어야 한다. 만약 단일 항목, 전체 화면 레이아웃을 사용하여 항목과 요소들이 중첩되어야 하는 경우, 버튼 요소/영역과 항목 간 명도 대비를 분명하게 하거나 버튼 색상과 대비되는 그림자 또는 글로우 등을 활용하여 두 정보가 변별되도록 할 수 있다.
 
 모범 사례
-
-
 
 피해야 할 사례
 
@@ -167,19 +153,13 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 표시할 캐러셀 항목 수가 1개인 경우 캐러셀과 관련된 단서를 숨긴다.
 
 콘텐츠의 변경으로 캐러셀 항목 수가 1개가 되는 상황을 고려하여, 해당 상황이 발생하였을 때 탐색 버튼, 항목 탐색 식별자, 정지/재생 버튼을 숨겨 사용자가 불필요한 정보 탐색 행동을 수행하지 않도록 한다.
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 ### 플랫폼에 대한 고려 사항
 
@@ -189,27 +169,9 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 화면 크기가 충분하지 않은 경우 도형형 항목 탐색 식별자는 분수형으로 전환한다.
 
 페이지 너비가 1023px 미만이 되면 도형을 통한 슬라이드 수와 탐색 위치 파악, 버튼 기능의 이용이 어려워지므로 분수형 식별자로 전환해야 한다.
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.
 
 ### 접근성 가이드라인
 
@@ -304,6 +266,118 @@ __상호작용 가이드라인 자동 재생 중지 및 재생에 대한 표로 
 
 ##### 풀 배너 코드 확인하기
 
+<!-- KRDS-CODE:START 풀 배너 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/carousel.html -->
+```html
+<!-- carousel -->
+<!--
+ 	해당 컴포넌트 사용 시 페이지에
+ 	/resources/css/plugin/swiper-bundle.min.css
+ 	/resources/js/plugin/swiper-bundle.min.js
+ 	를 추가 필요
+ -->
+<!-- visual banner -->
+<div class="main-vban-wrap bg">
+  <div class="inner">
+    <div class="vb-swiper">
+      <div class="swiper">
+        <ul class="swiper-wrapper">
+          <li class="swiper-slide">
+            <div class="in">
+              <div class="text">
+                <p class="tit">타이틀 영역 <br class="w-hide">타이틀 영역</p>
+                <p class="txt">컨텐츠 영역 컨텐츠 영역 <br class="w-hide">컨텐츠 영역 컨텐츠 영역</p>
+                <a href="#" class="krds-btn primary">버튼 영역</a>
+              </div>
+              <div class="im">
+                <svg width="243" height="178" viewBox="0 0 243 178" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="예시">
+                  <rect width="243" height="178" fill="#E6E8EA" />
+                </svg>
+              </div>
+            </div>
+          </li>
+          <li class="swiper-slide">
+            <div class="in">
+              <div class="text">
+                <p class="tit">타이틀 영역 <br class="w-hide">타이틀 영역</p>
+                <p class="txt">컨텐츠 영역 컨텐츠 영역 <br class="w-hide">컨텐츠 영역 컨텐츠 영역</p>
+                <a href="#" class="krds-btn primary">버튼 영역</a>
+              </div>
+              <div class="im">
+                <svg width="243" height="178" viewBox="0 0 243 178" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="예시">
+                  <rect width="243" height="178" fill="#E6E8EA" />
+                </svg>
+              </div>
+            </div>
+          </li>
+          <li class="swiper-slide">
+            <div class="in">
+              <div class="text">
+                <p class="tit">타이틀 영역 <br class="w-hide">타이틀 영역</p>
+                <p class="txt">컨텐츠 영역 컨텐츠 영역 <br class="w-hide">컨텐츠 영역 컨텐츠 영역</p>
+                <a href="#" class="krds-btn primary">버튼 영역</a>
+              </div>
+              <div class="im">
+                <svg width="243" height="178" viewBox="0 0 243 178" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="예시">
+                  <rect width="243" height="178" fill="#E6E8EA" />
+                </svg>
+              </div>
+            </div>
+          </li>
+          <li class="swiper-slide">
+            <div class="in">
+              <div class="text">
+                <p class="tit">타이틀 영역 <br class="w-hide">타이틀 영역</p>
+                <p class="txt">컨텐츠 영역 컨텐츠 영역 <br class="w-hide">컨텐츠 영역 컨텐츠 영역</p>
+                <a href="#" class="krds-btn primary">버튼 영역</a>
+              </div>
+              <div class="im">
+                <svg width="243" height="178" viewBox="0 0 243 178" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="예시">
+                  <rect width="243" height="178" fill="#E6E8EA" />
+                </svg>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <button type="button" class="swiper-button-prev">
+        <span class="sr-only">이전</span>
+      </button>
+      <button type="button" class="swiper-button-next">
+        <span class="sr-only">다음</span>
+      </button>
+      <div class="swiper-indicator text-center">
+        <div class="swiper-pagination"></div>
+        <a href="#" class="swiper-button-more">
+          <span class="sr-only">더 보기</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- //visual banner -->
+
+<script>
+  //비주얼 배너
+  const vbSwiper = new Swiper('.vb-swiper .swiper', {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    speed: 400,
+    loop: true,
+    navigation: {
+      nextEl: '.vb-swiper .swiper-button-next',
+      prevEl: '.vb-swiper .swiper-button-prev',
+    },
+    pagination: {
+      el: ".vb-swiper .swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>
+<!-- //carousel -->
+```
+<!-- KRDS-CODE:END 풀 배너 코드 확인하기 -->
+
 #### 요소 배너
 
 ## 배너영역 타이틀
@@ -318,6 +392,119 @@ __상호작용 가이드라인 자동 재생 중지 및 재생에 대한 표로 
 이전 다음 [ 더 보기 ](#) 
 
 ##### 요소 배너 코드 확인하기
+
+<!-- KRDS-CODE:START 요소 배너 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/carousel_banner.html -->
+```html
+<!-- carousel -->
+<!--
+ 	해당 컴포넌트 사용 시 페이지에
+ 	/resources/css/plugin/swiper-bundle.min.css
+ 	/resources/js/plugin/swiper-bundle.min.js
+ 	를 추가 필요
+ -->
+<div class="main-sect">
+  <div class="inner">
+    <div class="main-box-responsive type-wrap">
+      <div class="d-fix">
+        <div class="main-tit-wrap">
+          <h2 class="tit">배너영역 타이틀</h2>
+        </div>
+
+        <div class="in">
+          <div class="main-d-ban-swiper">
+            <div class="swiper">
+              <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                  <div class="text">
+                    <p class="cate">서브타이틀</p>
+                    <p class="tit">타이틀</p>
+                  </div>
+                  <div class="im">
+                    <svg width="243" height="178" viewBox="0 0 243 178" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="예시">
+                      <rect width="243" height="178" fill="#E6E8EA" />
+                    </svg>
+                  </div>
+                </li>
+                <li class="swiper-slide">
+                  <div class="text">
+                    <p class="cate">서브타이틀</p>
+                    <p class="tit">타이틀</p>
+                  </div>
+                  <div class="im">
+                    <svg width="243" height="178" viewBox="0 0 243 178" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="예시">
+                      <rect width="243" height="178" fill="#E6E8EA" />
+                    </svg>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="swiper-indicator">
+              <div class="swiper-pagination"></div>
+              <div class="swiper-controller">
+                <button type="button" class="swiper-button-play">
+                  <span class="sr-only">슬라이드 재생</span>
+                </button>
+                <button type="button" class="swiper-button-stop">
+                  <span class="sr-only">슬라이드 멈춤</span>
+                </button>
+              </div>
+              <div class="swiper-navigation">
+                <button type="button" class="swiper-button-prev">
+                  <span class="sr-only">이전</span>
+                </button>
+                <button type="button" class="swiper-button-next">
+                  <span class="sr-only">다음</span>
+                </button>
+                <a href="#" class="swiper-button-more">
+                  <span class="sr-only">더 보기</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- //carousel -->
+
+<script>
+  const eleBanSwiper = new Swiper(".main-d-ban-swiper .swiper", {
+    slidesPerView: 1,
+    spaceBetween: 16,
+    speed: 400,
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    navigation: {
+      nextEl: ".main-d-ban-swiper .swiper-button-next",
+      prevEl: ".main-d-ban-swiper .swiper-button-prev",
+    },
+    pagination: {
+      el: ".main-d-ban-swiper .swiper-pagination",
+      type: "fraction",
+    },
+  });
+  const $eleBanSwiperPlay = document.querySelector(".main-d-ban-swiper .swiper-button-play");
+  const $eleBanSwiperStop = document.querySelector(".main-d-ban-swiper .swiper-button-stop");
+  $eleBanSwiperPlay.style.display = "none";
+  $eleBanSwiperPlay.addEventListener("click", () => {
+    eleBanSwiper.autoplay.start();
+    $eleBanSwiperStop.style.display = "";
+    $eleBanSwiperPlay.style.display = "none";
+  });
+  $eleBanSwiperStop.addEventListener("click", () => {
+    eleBanSwiper.autoplay.stop();
+    $eleBanSwiperStop.style.display = "none";
+    $eleBanSwiperPlay.style.display = "";
+  });
+</script>
+```
+<!-- KRDS-CODE:END 요소 배너 코드 확인하기 -->
 
 | 1Depth  | 2Depth                                                                    | File Link                                                               |
 | ------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------------- |

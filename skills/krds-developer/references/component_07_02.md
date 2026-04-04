@@ -51,8 +51,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**경로**식별자가 표시되는 경로로 표현 방식에 따라 시각적으로 경로를 표시하거나 식별자의 운동 경로를 위해 가상으로 설정할 수 있음
 2. 2.**식별자**경로를 따라 이동하는 시각적 표시기로 상태 정보를 안내함
 
@@ -102,22 +100,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 정보 과부하와 시각적 노이즈를 줄이기 위해 가능한 한 화면에는 1개의 스피너만 표시될 수 있도록 한다. 파일 업로드 컴포넌트와 같이 개별 항목에 진행 상태 정보가 표시되어야 하는 경우를 제외하고, 화면이나 관련 영역 중앙에 1개의 스피너를 사용하는 것이 적절하다.
 
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.
-
 ### 접근성 가이드라인
 
 인접 배경과 경로 간 명도 대비, 경로와 식별자 간 명도 대비를 3:1 이상으로 표현한다.
@@ -159,6 +141,39 @@ Label
 로딩 중 Loading data..
 
 ##### 기본 코드 확인하기
+
+<!-- KRDS-CODE:START 기본 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/spinner.html -->
+```html
+<!-- spinner -->
+<!-- 인풋 내 스피너 -->
+<div class="form-group">
+  <div class="form-tit">
+    <label for="consult_name">Label</label>
+  </div>
+  <div class="form-conts">
+    <div class="form-spinner">
+      <input type="text" id="consult_name" class="krds-input" placeholder="placeholder">
+      <div class="krds-spinner" role="status">
+        <span class="sr-only">로딩 중</span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- //인풋 내 스피너 -->
+
+<br>
+<br>
+
+<!-- 스피너 -->
+<div class="krds-spinner" role="status">
+  <span class="sr-only">로딩 중</span>
+  Loading data..
+</div>
+<!-- //스피너 -->
+<!-- //spinner -->
+```
+<!-- KRDS-CODE:END 기본 코드 확인하기 -->
 
 ### 마크업 가이드
 

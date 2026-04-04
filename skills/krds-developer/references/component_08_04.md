@@ -51,8 +51,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**스포트라이트** 지시 사항 제공을 위해 주의를 집중시키고자 하는 사용자 인터페이스 또는 콘텐츠 섹션. 사용자 인터페이스 또는 콘텐츠 섹션 주변을 둘러싼 외곽선과 애니메이션을 통해 주목도를 높임
 2. 2.**코치마크 팝오버**  
    1. a.**제목**과업 수행 단계 번호와 과업 명칭 텍스트를 제공함  
@@ -78,8 +76,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 팝오버 영역이 안내를 제공하고자 하는 본문 콘텐츠 요소를 가리지 않도록 적절한 표시 방향을 설정한다.
 
 모범 사례
-
-
 
 팝오버 영역의 너비를 일관되게 유지한다.
 
@@ -116,15 +112,11 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 액션 버튼을 적절한 강조 수준으로 표현한다.
 
 ’그만보기’, ‘이전’ 버튼은 텍스트 버튼 스타일을, ‘다음’, ‘마치기’ 버튼은 고스트 버튼 스타일을 사용한다. ‘다음’, ‘마치기’ 버튼은 본문 액션 버튼의 강조 수준보다 낮아야 한다.
 
 피해야 할 사례
-
-
 
 사용자의 특정 행동 이후 다음 단계의 코치마크에 접근 가능한 경우, 사용자의 행동 완수 여부를 시스템이 확인하도록 한다.
 
@@ -135,22 +127,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 모든 화면 크기에서 팝오버 영역이 완전히 표시되는지 확인한다.
 
 특정 너비에서 코치마크 팝오버 영역이 시각적으로 확인할 수 없는 화면 밖의 영역에 배치되지 않는지 확인하여 문제가 발견된 경우 적절한 영역으로 배치를 변경해야 한다.
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.
 
 ### 접근성 가이드라인
 
@@ -210,6 +186,41 @@ __상호작용 가이드라인 코치마크 비활성화에 대한 표로 이동
 ### 코치 마크 내용
 
 ##### 기본 코드 확인하기
+
+<!-- KRDS-CODE:START 기본 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/coach_mark.html -->
+```html
+<!-- coach mark -->
+<div class="txt-box bg-white bg-white krds-coach-mark">
+  <!-- 따라하기 말풍선 -->
+  <div class="coach-balloon">
+    <h5 class="sr-only">따라하기 가이드</h5>
+    <h6 class="coach-tit">1단계 : 코치 마크</h6>
+    <p class="desc">1단계 코치 마크 내용입니다.</p>
+    <div class="coach-controls">
+      <div class="num">
+        <span class="sr-only">현재 단계</span>
+        <strong>1</strong>
+        <span class="sr-only">총 단계</span>
+        <span>4</span>
+      </div>
+      <div class="btn-wrap">
+        <button type="button" class="krds-btn small text">그만보기</button>
+        <button type="button" class="krds-btn small tertiary">다음으로</button>
+      </div>
+    </div>
+  </div>
+  <!--// 따라하기 말풍선 -->
+
+  <!-- 코치 마크 내용 -->
+  <div>
+    <h3>코치 마크 내용</h3>
+  </div>
+  <!-- //코치 마크 내용 -->
+</div>
+<!-- coach mark -->
+```
+<!-- KRDS-CODE:END 기본 코드 확인하기 -->
 
 | 1Depth       | 2Depth                                                                 | File Link                                                              |
 | ------------ | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |

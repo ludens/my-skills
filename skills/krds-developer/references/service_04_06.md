@@ -45,8 +45,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**제목**요청하는 행동에 대한 간단한 요약 정보를 제공함
 2. 2.**설명(선택)**제목에 부가적인 정보를 제공하기 위한 텍스트
 3. 3.**확인 정보**사용자에게 확인을 요청하고자 하는 정보 목록
@@ -78,8 +76,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 필수취소/수정 불가한 사항에 대해 사용자에게 명확하게 안내해야 한다.
 
 모달의 헤더 내 제목, 본문 콘텐츠의 제목 또는 설명에 취소나 수정할 수 없음을 안내하는 텍스트를 반드시 포함시켜 사용자가 현재의 상황을 인지하고 이후 과정에서의 결과를 예측할 수 있도록 해야 한다.
@@ -99,19 +95,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 #### 컴포넌트
 
 * [모달](./../component/component%5F04%5F05.html)
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

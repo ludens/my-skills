@@ -49,8 +49,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 디자인 시스템에서 컴포넌트의 형태(shape)는 브랜드의 시각적 아이덴티티를 형성하는 핵심 요소이다. 형태의 변형에 따라 사용자가 해당 서비스나 기관에 느끼는 감정과 인식이 달라질 수 있다. 둥근 모서리와 각진 모서리는 각각 다른 이미지를 전달하며, 이를 통해 각 기관의 아이덴티티를 표현할 수 있다.
 
-
-
 각진 형태와 둥근 형태가 주는 이미지 
 
 각진 형태
@@ -76,8 +74,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 표준형 스타일은 2px\~12px의 래디어스 값을 사용하며, 이는 정부가 주는 신뢰감과 안정감, 친근함을 표현하기 위한 래디어스 값이다. 과하게 둥근 형태로 변형되는 것을 방지하기 위해 래디어스 최댓값을 12px로 설정한다.
 
 [디자인 토큰 확인하기 ](./../style/style%5F07.html) 
-
-
 
 __표준형 스타일에 대한 표로 Level, Usage, Container size, Radius size, Apply components, 대한 내용으로 구성되어 있으며 Level은 Xsmall, Small, Medium, Large,Xlarge 구성되어있다.__
 | Level    | Usage                                                                                                 | Container size | Radius size | Apply components                                                      |
@@ -115,8 +111,6 @@ __표준형 스타일에 대한 표로 Level, Usage, Container size, Radius size
 
 각 기관의 아이덴티티에 맞게 커스터마이즈된 래디어스 값을 설정할 수 있다. 1px 이상의 래디어스 값을 사용할 때는 표준형 스타일의 계층 구조를 참고하여 일관성을 유지한다.
 
-
-
 컴포넌트의 사이즈에 맞는 래디어스 값 설정 
 
 래디어스 비율에 맞게 적용하는 방법
@@ -127,8 +121,6 @@ __표준형 스타일에 대한 표로 Level, Usage, Container size, Radius size
 2. 2.그 비율로 사용되는 컴포넌트 높이 값 기준으로 래디어스 값을 적용한다.
 
 예시
-
-
 
 * 디자인 시스템에서 래디어스 값은 짝수로 사용하는 것을 권장한다.
 * 컨테이너와 비율을 계산 후 나온 수치가 홀수이거나 소수점으로 나올 시 함께 사용될 컴포넌트를 고려하여 근사치에 맞게 올림 하여 짝수의 값을 사용한다.
@@ -152,13 +144,7 @@ __표준형 스타일에 대한 표로 Level, Usage, Container size, Radius size
 
 #### 함께 배치되는 컴포넌트의 일관된 래디어스
 
-
-
-
-
 #### 화면 구성 요소 간의 래디어스 조화
-
-
 
 ### 사용 가이드
 
@@ -168,11 +154,7 @@ __표준형 스타일에 대한 표로 Level, Usage, Container size, Radius size
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 #### 동일한 래디어스 적용
 
@@ -180,11 +162,7 @@ __표준형 스타일에 대한 표로 Level, Usage, Container size, Radius size
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 #### 콘텐츠 영역 침범
 
@@ -192,11 +170,7 @@ __표준형 스타일에 대한 표로 Level, Usage, Container size, Radius size
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
 
 #### % 사용
 
@@ -204,24 +178,4 @@ __표준형 스타일에 대한 표로 Level, Usage, Container size, Radius size
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

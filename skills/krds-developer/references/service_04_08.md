@@ -45,8 +45,6 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 ### 구조
 
-
-
 1. 1.**필터링·정렬 컨트롤** 신청 내역 목록을 필터링·정렬하는 데 사용되는 컨트롤
 2. 2.**페이지네이션** 신청 내역 목록을 탐색하는 데 사용되는 컨트롤
 3. 3.**제목** 신청 서비스명을 보여주는 텍스트. 상세 화면으로 이동하기 위한 링크 또는 신청 이력 화면으로 이동하기 위한 링크로 사용됨
@@ -71,15 +69,11 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 필수신청 이력을 제공한다.
 
 사용자가 이용한 신청 서비스의 이력 목록을 제공하여 사용자가 과거의 신청 사항을 조회할 수 있도록 해야 한다. 신청 이력의 제공 기간은 서비스 특성이나 사용자 인증 방식에 적합한 수준으로 제공하면 된다.
 
 모범 사례
-
-
 
 권장신청 이력을 알기 쉽게 구조화한다.
 
@@ -95,15 +89,11 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 권장일괄 선택 기능을 제공한다.
 
 일괄 선택 기능은 사용자가 여러 건의 신청 내역에 같은 동작을 여러 번 반복하지 않고 필요한 작업을 빠르게 수행하도록 돕는다.
 
 모범 사례
-
-
 
 권장신청 취소 버튼을 명확하게 표현한다.
 
@@ -136,19 +126,3 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 * [구조화 목록](./../component/component%5F04%5F01.html)
 * [배지](./../component/component%5F04%5F06.html)
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용 | 리소스                                                                                                                                                            |
-| ------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2025년 1월 15일 | 최초 등록 | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.

@@ -54,13 +54,9 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 (대상 : 정부 상징 로고를 사용하는 중앙행정기관(부/처/청), 특별지방행정기관, 부속기관 등)
 
-
-
 #### 확장형
 
 (대상 : 독자적인 로고를 사용하는 중앙기관 (운영 서비스·시스템) 및 공공기관 (대표·운영서비스·시스템)
-
-
 
 ### 사용성 가이드라인
 
@@ -70,39 +66,29 @@ image: https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png
 
 모범 사례
 
-
-
 라이트·다크 테마 모두에서 구분되도록 버전을 마련한다.
 
 라이트·다크 테마 및 브라우저 및 OS UI 배경 변화에도 식별성이 유지되도록 테마 대응 버전을 제공하며 동일한 심볼 형태를 유지한 채 명도 반전, 외곽선, 배경판 적용 등으로 충분한 대비를 확보한다.
 
 모범 사례
 
-
-
 피해야 할 사례
-
-
-
-### 자주 묻는 질문
-
-[자주 묻는 질문더보기](../community/community%5F02.html) 
-
-### 정보 변경 내역
-
-__정보 변경 내역 표로 변경일자, 변경 내용으로 구성되어있음__
-| 변경일자         | 변경 내용                | 리소스                                                                                                                                                            |
-| ------------ | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026년 1월 13일 | 파비콘 대표 이미지, 코드 예시 추가 | [ HTML Component Kit v1.1.0 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.1.0 "새 창 열기")                                                              |
-| 2025년 1월 15일 | 최초 등록                | [ Figma 라이브러리 v1.0.0 ](https://www.figma.com/@krds "새 창 열기") [ HTML Component Kit v1.0.1 ](https://github.com/KRDS-uiux/krds-uiux/releases/tag/1.0.1 "새 창 열기") |
-
-### 궁금한 점이나 의견이 있으십니까?
-
-* 소식·소통의 [문의 및 건의](/html/site/community/community%5F06.html)게시판을 이용하세요.
-* 문의하시기 전 [자주 묻는 질문](/html/site/community/community%5F02.html) 을 통해 문제 해결방법을 확인하실 수 있습니다.
 
 ### 예시
 
 #### 기본
 
 ##### 기본 코드 확인하기
+
+<!-- KRDS-CODE:START 기본 코드 확인하기 -->
+<!-- Source: https://www.krds.go.kr/html/code/favicon.html -->
+```html
+<!-- 파비콘 - 기본 png -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
+
+<!-- 파비콘 - 기본 svg -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+```
+<!-- KRDS-CODE:END 기본 코드 확인하기 -->
