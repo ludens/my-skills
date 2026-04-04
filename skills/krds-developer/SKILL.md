@@ -58,6 +58,182 @@ KRDS를 참고해 화면을 만들거나 고칠 때는 임의의 UI 관습보다
 - KRDS는 SCSS 기반 사용을 권장한다. 가능하면 토큰과 원본 구조를 유지하고, 임의 CSS 덮어쓰기는 최소화한다.
 - SCSS 경로 문제가 있으면 Kit의 `resources` 디렉터리를 프로젝트로 복제해 참조 경로를 명시적으로 관리한다.
 
+## 문서 인덱스
+
+`rg`로 다시 찾기 전에 아래 인덱스에서 필요한 문서를 바로 고른다. 요약 문서에서 이름을 찾고, 아래 파일 인덱스에서 실제 파일을 열면 된다.
+
+### 공통·시작 문서
+
+- `references/utility_01.md`: KRDS 소개, 구성 요소, 역할 구분
+- `references/utility_03.md`: 토큰·파일·컴포넌트 네이밍 원칙
+- `references/utility_04.md`: 디지털 포용, 접근성 참고 방법
+- `references/utility_07.md`: UI/UX 가이드라인 목적, 적용 수준(필수/권장/우수)
+- `references/outline_03.md`: 개발자 설치 가이드, NPM/CDN/React/Vue/SCSS
+- `references/디지털 정부 서비스 UIUX 가이드라인 자체 검증 체크리스트.md`: 최종 자체 검증
+
+### 스타일 문서
+
+- `references/style_01.md`: 스타일 전체 구조와 적용 범위
+- `references/style_02.md`: 색상
+- `references/style_03.md`: 타이포그래피
+- `references/style_04.md`: 형태
+- `references/style_05.md`: 레이아웃
+- `references/style_06.md`: 아이콘
+- `references/style_07.md`: 디자인 토큰
+- `references/style_08.md`: 엘리베이션
+- `references/style_09.md`: 선명한 화면 모드
+
+### 컴포넌트 문서
+
+- 아이덴티티
+- `references/component_02_01.md`: 공식 배너
+- `references/component_02_02.md`: 운영기관 식별자
+- `references/component_02_03.md`: 헤더
+- `references/component_02_04.md`: 푸터
+- 탐색
+- `references/component_03_01.md`: 건너뛰기 링크
+- `references/component_03_02.md`: 메인 메뉴
+- `references/component_03_03.md`: 브레드크럼
+- `references/component_03_04.md`: 사이드 메뉴
+- `references/component_03_05.md`: 콘텐츠 내 탐색
+- `references/component_03_06.md`: 페이지네이션
+- 레이아웃 및 표현
+- `references/component_04_01.md`: 구조화 목록
+- `references/component_04_02.md`: 긴급 공지
+- `references/component_04_03.md`: 달력
+- `references/component_04_04.md`: 디스클로저
+- `references/component_04_05.md`: 모달
+- `references/component_04_06.md`: 배지
+- `references/component_04_07.md`: 아코디언
+- `references/component_04_08.md`: 이미지
+- `references/component_04_09.md`: 캐러셀
+- `references/component_04_10.md`: 탭
+- `references/component_04_11.md`: 표
+- `references/component_04_13.md`: 텍스트 목록
+- `references/component_04_14.md`: 파비콘
+- 액션
+- `references/component_05_01.md`: 링크
+- `references/component_05_02.md`: 버튼
+- `references/component_05_03.md`: 플로팅 버튼
+- 선택
+- `references/component_06_01.md`: 라디오 버튼
+- `references/component_06_02.md`: 체크박스
+- `references/component_06_03.md`: 셀렉트
+- `references/component_06_04.md`: 태그
+- `references/component_06_07.md`: 토글 스위치
+- 피드백
+- `references/component_07_01.md`: 단계 표시기
+- `references/component_07_02.md`: 스피너
+- 도움
+- `references/component_08_01.md`: 도움 패널
+- `references/component_08_02.md`: 따라하기 패널
+- `references/component_08_03.md`: 맥락적 도움말
+- `references/component_08_04.md`: 코치마크
+- `references/component_08_05.md`: 툴팁
+- `references/component_08_06.md`: 음성지원
+- 입력
+- `references/component_09_01.md`: 날짜 입력 필드
+- `references/component_09_02.md`: 텍스트 영역
+- `references/component_09_03.md`: 텍스트 입력 필드
+- `references/component_09_04.md`: 파일 업로드
+- 설정
+- `references/component_10_01.md`: 언어 변경
+- `references/component_10_02.md`: 화면 크기 조정
+- 콘텐츠
+- `references/component_11_01.md`: 접근 가능한 미디어
+- `references/component_11_02.md`: 숨긴 콘텐츠
+- 모바일
+- `references/component_12_01.md`: 범위 슬라이드
+- `references/component_12_02.md`: 뒤로가기 버튼
+- `references/component_12_03.md`: 바텀시트
+- `references/component_12_04.md`: 수량 토글
+- `references/component_12_05.md`: 토스트
+- `references/component_12_06.md`: 스낵바
+- `references/component_12_07.md`: 탭바
+- `references/component_12_08.md`: 스플래시 스크린
+
+### 기본 패턴 문서
+
+- `references/global_01.md`: 개인 식별 정보 입력
+- `references/global_02.md`: 도움
+- `references/global_03.md`: 동의
+- `references/global_04.md`: 목록 탐색
+- `references/global_05.md`: 사용자 피드백
+- `references/global_06.md`: 상세 정보 확인
+- `references/global_07.md`: 오류
+- `references/global_08.md`: 입력폼
+- `references/global_09.md`: 첨부파일
+- `references/global_10.md`: 필터링·정렬
+- `references/global_11.md`: 확인
+- `references/global_12.md`: 모바일 알림
+- `references/global_13.md`: 모바일 설정
+
+### 서비스 패턴 문서
+
+- 방문
+- `references/service_01_01.md`: 개요
+- `references/service_01_02.md`: 방문
+- 검색
+- `references/service_02_01.md`: 개요
+- `references/service_02_02.md`: 검색 기능 찾기
+- `references/service_02_03.md`: 검색어 입력
+- `references/service_02_04.md`: 검색 결과 확인
+- `references/service_02_05.md`: 상세 검색
+- `references/service_02_06.md`: 검색 결과 이용
+- `references/service_02_07.md`: 재검색
+- `references/service_02_08.md`: 검색 종료
+- 로그인
+- `references/service_03_01.md`: 개요
+- `references/service_03_02.md`: 로그인 기능 찾기
+- `references/service_03_03.md`: 로그인 안내
+- `references/service_03_04.md`: 로그인 방식 확인/선택
+- `references/service_03_05.md`: 로그인 정보 입력
+- `references/service_03_06.md`: 로그인 완료
+- `references/service_03_07.md`: 서비스 이용
+- `references/service_03_08.md`: 로그아웃
+- 신청
+- `references/service_04_01.md`: 개요
+- `references/service_04_02.md`: 신청 대상 탐색
+- `references/service_04_03.md`: 서비스 정보 확인
+- `references/service_04_04.md`: 유의 사항/자격 확인
+- `references/service_04_05.md`: 신청서 작성
+- `references/service_04_06.md`: 확인·확정
+- `references/service_04_07.md`: 완료
+- `references/service_04_08.md`: 신청 결과 확인
+- 정책정보 확인
+- `references/service_05_01.md`: 개요
+- `references/service_05_02.md`: 정책 탐색
+- `references/service_05_03.md`: 정보 확인
+- `references/service_05_04.md`: 정책 자료 탐색
+
+## 빠른 선택표
+
+### 이런 요청이면 이 문서를 먼저 연다
+
+- 색상, 대비, 브랜드 컬러, 상태색: `references/style_02.md`
+- 글자 크기, 행간, 본문/제목 계층: `references/style_03.md`
+- 라운드, 모서리, shape 언어: `references/style_04.md`
+- 레이아웃, 간격, 그리드, 반응형: `references/style_05.md`
+- 아이콘 규칙: `references/style_06.md`
+- 토큰 구조, CSS 변수, 시멘틱 토큰: `references/style_07.md`
+- 선명한 화면 모드: `references/style_09.md`
+- 헤더, 푸터, 정부 식별, 배너: `references/component_02_01.md`, `references/component_02_02.md`, `references/component_02_03.md`, `references/component_02_04.md`
+- 메뉴, 브레드크럼, 페이지 이동: `references/component_03_02.md`, `references/component_03_03.md`, `references/component_03_04.md`, `references/component_03_06.md`
+- 모달, 탭, 아코디언, 표, 배지: `references/component_04_05.md`, `references/component_04_10.md`, `references/component_04_07.md`, `references/component_04_11.md`, `references/component_04_06.md`
+- 버튼, 링크, 플로팅 액션: `references/component_05_01.md`, `references/component_05_02.md`, `references/component_05_03.md`
+- 라디오, 체크박스, 셀렉트, 토글: `references/component_06_01.md`, `references/component_06_02.md`, `references/component_06_03.md`, `references/component_06_07.md`
+- 툴팁, 도움말, 코치마크: `references/component_08_01.md`, `references/component_08_03.md`, `references/component_08_04.md`, `references/component_08_05.md`
+- 입력 필드, 텍스트 영역, 파일 첨부: `references/component_09_01.md`, `references/component_09_02.md`, `references/component_09_03.md`, `references/component_09_04.md`
+- 에러 메시지, 오류 복구: `references/global_07.md`
+- 동의, 확인, 제출 전 검토: `references/global_03.md`, `references/global_11.md`
+- 목록, 검색 결과, 필터, 정렬: `references/global_04.md`, `references/global_10.md`, `references/service_02_04.md`, `references/service_02_05.md`, `references/service_02_06.md`
+- 긴 입력 절차, 신청서, 단계형 폼: `references/global_08.md`, `references/service_04_05.md`, `references/service_04_06.md`, `references/service_04_07.md`
+- 로그인 전 과정: `references/service_03_02.md`부터 `references/service_03_08.md`까지
+- 신청 전 과정: `references/service_04_02.md`부터 `references/service_04_08.md`까지
+- 정책/정보형 서비스: `references/service_05_02.md`, `references/service_05_03.md`, `references/service_05_04.md`
+- 설치, Kit 적용, React/Vue, SCSS 경로: `references/outline_03.md`
+- 접근성 전반 점검: `references/utility_04.md`와 각 상세 문서의 `접근성 가이드라인`
+
 ## 작업 절차
 
 1. 현재 작업이 스타일, 컴포넌트, 기본 패턴, 서비스 플로 중 무엇인지 먼저 정한다.
@@ -111,9 +287,9 @@ KRDS를 참고해 화면을 만들거나 고칠 때는 임의의 UI 관습보다
 
 체크리스트는 가능한 한 “통과/수정 필요/해당 없음”으로 짧게 판정한다. 문제가 있으면 어느 문서의 어느 계층에서 어긋났는지 함께 적는다.
 
-## 검색 요령
+## 검색은 마지막 수단
 
-참조 문서가 많으니 필요한 파일만 찾는다.
+위 인덱스로도 문서를 못 찾았을 때만 검색한다. 기본 동작은 `요약 문서 -> 파일 인덱스 -> 상세 문서` 순서다.
 
 ```bash
 rg --files references
