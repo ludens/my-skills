@@ -34,7 +34,7 @@
 
 ## 접근 방식
 
-Python 모듈 2개 이상으로 역할을 분리한다.
+`uv` 기반 Python 프로젝트로 구성하고, 모듈 2개 이상으로 역할을 분리한다.
 
 - `scripts/station_lookup.py`
   - 역명 정규화
@@ -46,6 +46,12 @@ Python 모듈 2개 이상으로 역할을 분리한다.
   - 응답 파싱 및 포맷
 
 필요 시 출력 포맷 관련 함수는 `get_arrivals.py` 내부 함수로 시작하고, 복잡해지면 별도 모듈로 분리한다.
+
+사용 라이브러리:
+
+- `httpx`: API 호출
+- `python-dotenv`: `.env` 로드
+- `pytest`: 테스트
 
 ## 데이터 소스
 
@@ -128,7 +134,7 @@ SEOUL_OPEN_API_KEY=your_api_key_here
 1. `skills/seoul-metro-realtime/.env`
 2. 필요 시 repo root `.env`
 
-의존성 최소화를 위해 아주 얇은 `.env` 파서를 직접 구현하거나 표준 라이브러리만으로 처리한다. 별도 패키지 추가는 기본값으로 하지 않는다.
+`.env` 로딩은 `python-dotenv`를 사용한다. 직접 파서는 구현하지 않는다.
 
 ## 처리 흐름
 
@@ -214,11 +220,15 @@ SEOUL_OPEN_API_KEY=your_api_key_here
 
 ```text
 skills/seoul-metro-realtime/
+├── pyproject.toml
 ├── SKILL.md
 ├── .env.example
 ├── scripts/
 │   ├── get_arrivals.py
 │   └── station_lookup.py
+├── tests/
+│   ├── test_station_lookup.py
+│   └── test_arrival_formatting.py
 └── references/
     ├── 서울시 지하철 실시간 도착정보 API 명세서.md
     └── 실시간도착_역정보(20260108).csv
@@ -230,7 +240,7 @@ skills/seoul-metro-realtime/
 - 먼저 역명을 정규화한다.
 - 명세서의 예외 역명 표를 우선 적용한다.
 - CSV로 역 후보와 호선 정보를 확인한다.
-- `scripts/get_arrivals.py "<역명>"`로 실제 조회를 수행한다.
+- `uv run python scripts/get_arrivals.py "<역명>"`로 실제 조회를 수행한다.
 - 동명이역은 전 호선 결과를 한 번에 보여준다.
 - API 키가 없으면 `.env` 설정 안내를 반환한다.
 
@@ -251,6 +261,8 @@ skills/seoul-metro-realtime/
 
 ## 구현 메모
 
-- 초기 버전은 CLI 스크립트로 구현한다.
+- 초기 버전은 `uv` 기반 CLI 스크립트로 구현한다.
 - 스킬은 스크립트를 실행하는 래퍼 역할에 집중한다.
 - 응답 포맷은 짧고 안정적으로 유지한다.
+- HTTP 호출은 `httpx`를 사용한다.
+- `.env` 로딩은 `python-dotenv`를 사용한다.
