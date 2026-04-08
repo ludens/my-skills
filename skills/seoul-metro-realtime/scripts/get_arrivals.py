@@ -60,6 +60,35 @@ def parse_api_arrivals(payload: list[dict[str, str]]) -> list[dict[str, object]]
     return results
 
 
+def extract_arrival_rows(payload: dict[str, object]) -> list[dict[str, str]]:
+    if "realtimeArrivalList" in payload:
+        return list(payload["realtimeArrivalList"])
+
+    error = payload.get("errorMessage")
+    if isinstance(error, dict) and error.get("code") == "INFO-200":
+        return []
+
+    if isinstance(error, dict):
+        code = error.get("code", "UNKNOWN")
+        message = error.get("message", "알 수 없는 오류")
+        raise RuntimeError(f"{code}: {message}")
+
+    raise RuntimeError("응답 형식을 해석할 수 없습니다.")
+
+
+def build_summary_for_station(raw_name: str, rows: list[dict[str, str]], now: datetime) -> str:
+    parsed = parse_api_arrivals(rows)
+    normalized = [
+        {
+            **item,
+            "seconds": adjust_arrival_seconds(int(item["seconds"]), str(item["receipt_time"]), now),
+        }
+        for item in parsed
+    ]
+    normalized.sort(key=lambda item: int(item["seconds"]))
+    return format_arrivals_summary(raw_name.removesuffix("역"), normalized)
+
+
 def load_api_key(candidate_env_files: list[Path]) -> str:
     for env_file in candidate_env_files:
         if env_file.exists():
@@ -88,7 +117,8 @@ def main() -> int:
     raw_name = sys.argv[1]
     api_key = load_api_key(env_files)
     payload = fetch_realtime_arrivals(api_key, raw_name)
-    print(payload)
+    rows = extract_arrival_rows(payload)
+    print(build_summary_for_station(raw_name, rows, datetime.now()))
     return 0
 
 

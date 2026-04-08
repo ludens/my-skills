@@ -4,7 +4,13 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from get_arrivals import adjust_arrival_seconds, format_arrivals_summary, load_api_key
+from get_arrivals import (
+    adjust_arrival_seconds,
+    build_summary_for_station,
+    extract_arrival_rows,
+    format_arrivals_summary,
+    load_api_key,
+)
 
 
 def test_adjust_arrival_seconds_accounts_for_receipt_delay():
@@ -33,3 +39,39 @@ def test_load_api_key_reads_dotenv(tmp_path: Path):
     env_file.write_text("SEOUL_OPEN_API_KEY=test-key\n", encoding="utf-8")
 
     assert load_api_key([env_file]) == "test-key"
+
+
+def test_extract_arrival_rows_returns_empty_for_info_200():
+    payload = {
+        "errorMessage": {"status": 200, "code": "INFO-200", "message": "해당하는 데이터가 없습니다."}
+    }
+
+    assert extract_arrival_rows(payload) == []
+
+
+def test_build_summary_for_station_adjusts_and_sorts_arrivals():
+    now = datetime(2026, 4, 8, 10, 5, 30, tzinfo=timezone.utc)
+    rows = [
+        {
+            "subwayId": "1001",
+            "trainLineNm": "인천행",
+            "barvlDt": "180",
+            "btrainSttus": "일반",
+            "lstcarAt": "0",
+            "recptnDt": "2026-04-08 10:03:30",
+        },
+        {
+            "subwayId": "1063",
+            "trainLineNm": "문산행",
+            "barvlDt": "240",
+            "btrainSttus": "급행",
+            "lstcarAt": "1",
+            "recptnDt": "2026-04-08 10:05:00",
+        },
+    ]
+
+    output = build_summary_for_station("서울역", rows, now)
+
+    assert output.startswith("서울 실시간 도착정보")
+    assert "인천행: 1분 후 도착" in output
+    assert "문산행: 3분 후 도착 (급행, 막차)" in output
