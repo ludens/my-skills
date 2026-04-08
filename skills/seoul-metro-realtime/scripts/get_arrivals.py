@@ -9,6 +9,8 @@ import sys
 import httpx
 from dotenv import load_dotenv
 
+from station_lookup import normalize_station_name
+
 LINE_NAME_BY_ID = {
     "1001": "1호선",
     "1063": "경의중앙선",
@@ -100,7 +102,8 @@ def load_api_key(candidate_env_files: list[Path]) -> str:
 
 
 def fetch_realtime_arrivals(api_key: str, station_name: str) -> dict[str, object]:
-    url = f"http://swopenAPI.seoul.go.kr/api/subway/{api_key}/json/realtimeStationArrival/0/100/{station_name}"
+    normalized_station_name = normalize_station_name(station_name)
+    url = f"http://swopenAPI.seoul.go.kr/api/subway/{api_key}/json/realtimeStationArrival/0/100/{normalized_station_name}"
     with httpx.Client(timeout=10.0) as client:
         response = client.get(url)
         response.raise_for_status()

@@ -8,9 +8,37 @@ from get_arrivals import (
     adjust_arrival_seconds,
     build_summary_for_station,
     extract_arrival_rows,
+    fetch_realtime_arrivals,
     format_arrivals_summary,
     load_api_key,
 )
+
+
+class DummyResponse:
+    def __init__(self, payload: dict[str, object]):
+        self._payload = payload
+
+    def raise_for_status(self) -> None:
+        return None
+
+    def json(self) -> dict[str, object]:
+        return self._payload
+
+
+class DummyClient:
+    def __init__(self, payload: dict[str, object]):
+        self.payload = payload
+        self.requested_url: str | None = None
+
+    def __enter__(self) -> "DummyClient":
+        return self
+
+    def __exit__(self, exc_type, exc, tb) -> None:
+        return None
+
+    def get(self, url: str) -> DummyResponse:
+        self.requested_url = url
+        return DummyResponse(self.payload)
 
 
 def test_adjust_arrival_seconds_accounts_for_receipt_delay():
@@ -75,3 +103,19 @@ def test_build_summary_for_station_adjusts_and_sorts_arrivals():
     assert output.startswith("서울 실시간 도착정보")
     assert "인천행: 1분 후 도착" in output
     assert "문산행: 3분 후 도착 (급행, 막차)" in output
+
+
+def test_fetch_realtime_arrivals_normalizes_station_name_before_request(monkeypatch):
+    payload = {"ok": True}
+    dummy_client = DummyClient(payload)
+
+    def fake_client(*args, **kwargs):
+        return dummy_client
+
+    monkeypatch.setattr("get_arrivals.httpx.Client", fake_client)
+
+    result = fetch_realtime_arrivals("secret-key", "서울역")
+
+    assert result == payload
+    assert dummy_client.requested_url is not None
+    assert dummy_client.requested_url.endswith("/서울")
