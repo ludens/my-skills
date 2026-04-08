@@ -2,6 +2,12 @@ from __future__ import annotations
 
 from collections import defaultdict
 from datetime import datetime
+from pathlib import Path
+import os
+import sys
+
+import httpx
+from dotenv import load_dotenv
 
 LINE_NAME_BY_ID = {
     "1001": "1호선",
@@ -52,3 +58,39 @@ def parse_api_arrivals(payload: list[dict[str, str]]) -> list[dict[str, object]]
             }
         )
     return results
+
+
+def load_api_key(candidate_env_files: list[Path]) -> str:
+    for env_file in candidate_env_files:
+        if env_file.exists():
+            load_dotenv(env_file, override=False)
+            key = os.getenv("SEOUL_OPEN_API_KEY")
+            if key:
+                return key
+    raise RuntimeError("SEOUL_OPEN_API_KEY not found in .env")
+
+
+def fetch_realtime_arrivals(api_key: str, station_name: str) -> dict[str, object]:
+    url = f"http://swopenAPI.seoul.go.kr/api/subway/{api_key}/json/realtimeStationArrival/0/100/{station_name}"
+    with httpx.Client(timeout=10.0) as client:
+        response = client.get(url)
+        response.raise_for_status()
+        return response.json()
+
+
+def main() -> int:
+    if len(sys.argv) < 2:
+        print('사용법: uv run python scripts/get_arrivals.py "서울역"')
+        return 1
+
+    skill_root = Path(__file__).resolve().parents[1]
+    env_files = [skill_root / ".env", skill_root.parent.parent / ".env"]
+    raw_name = sys.argv[1]
+    api_key = load_api_key(env_files)
+    payload = fetch_realtime_arrivals(api_key, raw_name)
+    print(payload)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
