@@ -34,23 +34,30 @@ description: Query Seoul subway realtime arrival information for a station name 
    - `skills/seoul-metro-realtime/.env`
    - 필요 시 repo root `.env`
 3. 환경변수 이름은 `SEOUL_OPEN_API_KEY`를 사용한다.
-4. API 응답은 `extract_arrival_rows()`로 해석한다.
+4. API 호출 전 역명은 `normalize_station_name()`으로 정규화한다.
+   - 예: `서울역` -> `서울`
+   - alias 예외 역명도 함께 보정한다.
+5. API 응답은 `extract_arrival_rows()`로 해석한다.
    - `INFO-200`이면 빈 결과로 처리한다.
    - 다른 에러 코드는 사용자에게 드러나는 오류로 변환한다.
-5. 도착 시간은 `adjust_arrival_seconds()`로 수신 시각 기준 stale 보정을 적용한다.
-6. 최종 응답은 `format_arrivals_summary()` 형식으로 한국어 요약을 출력한다.
+6. 도착 시간은 `adjust_arrival_seconds()`로 수신 시각 기준 stale 보정을 적용한다.
+7. 최종 응답은 `format_arrivals_summary()` 형식으로 한국어 요약을 출력한다.
+   - `0분 후 도착` 대신 `곧 도착`을 사용한다.
+   - `trainLineNm`에 이미 `(급행)` 같은 상태가 포함되어 있으면 앞쪽 중복 표시는 제거하고 뒤 메타데이터에만 남긴다.
+   - 노선별로 먼저 묶고, 같은 노선 안에서는 `OO방면` 기준으로 한 번 더 묶는다.
 
 ## 출력 원칙
 
 - 헤더는 `<역명> 실시간 도착정보`
 - 노선별로 그룹화해서 출력
 - 같은 역명이 여러 노선에 있으면 모두 포함
+- 같은 노선 안에서는 방면별로 다시 묶어서 출력
 - 급행/막차 여부를 괄호 메타데이터로 표시
 - 데이터가 없으면 빈 결과임을 명확히 설명
 
 ## 문제 해결
 
-- `.env` 또는 `SEOUL_OPEN_API_KEY`가 없으면 `skills/seoul-metro-realtime/.env` 파일을 만들고 `SEOUL_OPEN_API_KEY=...`를 넣도록 안내한다.
+- `.env` 또는 `SEOUL_OPEN_API_KEY`가 없으면 `skills/seoul-metro-realtime/.env` 파일을 만들고 `SEOUL_OPEN_API_KEY=<발급받은_키>`를 넣도록 안내한다.
 - API 필드 의미가 헷갈리면 `references/서울시 지하철 실시간 도착정보 API 명세서.md`만 추가로 읽는다.
 - 역명 예외 처리가 필요하면 `scripts/station_lookup.py`의 alias map과 CSV 데이터를 함께 확인한다.
 

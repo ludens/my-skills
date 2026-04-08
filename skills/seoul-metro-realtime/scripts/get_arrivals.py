@@ -50,6 +50,13 @@ def _clean_train_line_name(train_line_nm: str, status: str) -> str:
     return cleaned.strip()
 
 
+def _split_train_line_name(train_line_nm: str) -> tuple[str, str]:
+    if " - " in train_line_nm:
+        destination, direction = train_line_nm.split(" - ", 1)
+        return destination.strip(), direction.strip()
+    return train_line_nm.strip(), "기타"
+
+
 def _format_arrival_eta(seconds: int, arvl_cd: str = "", arvl_msg2: str = "") -> str:
     if arvl_msg2:
         normalized_msg = arvl_msg2.strip()
@@ -78,22 +85,30 @@ def format_arrivals_summary(station_name: str, arrivals: list[dict[str, object]]
     lines = [f"{station_name} 실시간 도착정보", ""]
     for line_name, items in grouped.items():
         lines.append(line_name)
+        direction_groups: dict[str, list[dict[str, object]]] = defaultdict(list)
         for item in items:
-            seconds = max(0, int(item["seconds"]))
-            eta = _format_arrival_eta(
-                seconds,
-                str(item.get("arvl_cd", "")),
-                str(item.get("arvl_msg2", "")),
-            )
-            suffix = []
             status = str(item["status"])
-            if status != "일반":
-                suffix.append(status)
-            if item["is_last_train"]:
-                suffix.append("막차")
-            meta = f" ({', '.join(suffix)})" if suffix else ""
             train_line_nm = _clean_train_line_name(str(item["train_line_nm"]), status)
-            lines.append(f"- {train_line_nm}: {eta}{meta}")
+            destination, direction = _split_train_line_name(train_line_nm)
+            direction_groups[direction].append({**item, "destination": destination})
+
+        for direction, direction_items in direction_groups.items():
+            lines.append(f"- {direction}")
+            for item in direction_items:
+                seconds = max(0, int(item["seconds"]))
+                eta = _format_arrival_eta(
+                    seconds,
+                    str(item.get("arvl_cd", "")),
+                    str(item.get("arvl_msg2", "")),
+                )
+                suffix = []
+                status = str(item["status"])
+                if status != "일반":
+                    suffix.append(status)
+                if item["is_last_train"]:
+                    suffix.append("막차")
+                meta = f" ({', '.join(suffix)})" if suffix else ""
+                lines.append(f"  - {item['destination']}: {eta}{meta}")
         lines.append("")
     return "\n".join(lines).strip()
 

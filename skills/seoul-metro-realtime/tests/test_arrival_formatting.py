@@ -51,17 +51,36 @@ def test_adjust_arrival_seconds_accounts_for_receipt_delay():
 
 def test_format_arrivals_summary_groups_by_line_name():
     arrivals = [
-        {"line_name": "1호선", "train_line_nm": "인천행", "seconds": 120, "status": "일반", "is_last_train": False},
-        {"line_name": "경의중앙선", "train_line_nm": "문산행", "seconds": 240, "status": "급행", "is_last_train": True},
+        {"line_name": "1호선", "train_line_nm": "인천행 - 남영방면", "seconds": 120, "status": "일반", "is_last_train": False},
+        {"line_name": "경의중앙선", "train_line_nm": "문산행 - 효창공원앞방면", "seconds": 240, "status": "급행", "is_last_train": True},
     ]
 
     output = format_arrivals_summary("서울", arrivals)
 
     assert "서울 실시간 도착정보" in output
     assert "1호선" in output
+    assert "- 남영방면" in output
     assert "인천행: 2분 후 도착" in output
     assert "경의중앙선" in output
+    assert "- 효창공원앞방면" in output
     assert "문산행: 4분 후 도착 (급행, 막차)" in output
+
+
+def test_format_arrivals_summary_groups_by_direction_within_line():
+    arrivals = [
+        {"line_name": "1호선", "train_line_nm": "광운대행 - 남영방면", "seconds": 0, "status": "일반", "is_last_train": False, "arvl_msg2": "용산 도착", "arvl_cd": "1"},
+        {"line_name": "1호선", "train_line_nm": "동두천행 - 남영방면", "seconds": 120, "status": "일반", "is_last_train": False},
+        {"line_name": "1호선", "train_line_nm": "인천행 - 노량진방면", "seconds": 180, "status": "일반", "is_last_train": False},
+    ]
+
+    output = format_arrivals_summary("용산", arrivals)
+
+    assert "1호선" in output
+    assert "- 남영방면" in output
+    assert "  - 광운대행: 곧 도착" in output
+    assert "  - 동두천행: 2분 후 도착" in output
+    assert "- 노량진방면" in output
+    assert "  - 인천행: 3분 후 도착" in output
 
 
 def test_format_arrivals_summary_uses_soon_and_removes_duplicate_status_in_train_name():
@@ -79,7 +98,8 @@ def test_format_arrivals_summary_uses_soon_and_removes_duplicate_status_in_train
 
     output = format_arrivals_summary("가좌", arrivals)
 
-    assert "용문행 - 홍대입구방면: 곧 도착 (급행)" in output
+    assert "- 홍대입구방면" in output
+    assert "  - 용문행: 곧 도착 (급행)" in output
     assert "용문행 - 홍대입구방면 (급행): 곧 도착 (급행)" not in output
 
 
@@ -98,7 +118,8 @@ def test_format_arrivals_summary_uses_arvl_msg2_for_running_trains():
 
     output = format_arrivals_summary("가좌", arrivals)
 
-    assert "용문행 - 홍대입구방면: [5]번째 전역 (행신) (급행)" in output
+    assert "- 홍대입구방면" in output
+    assert "  - 용문행: [5]번째 전역 (행신) (급행)" in output
     assert "곧 도착" not in output
 
 
