@@ -13,7 +13,24 @@ from station_lookup import normalize_station_name
 
 LINE_NAME_BY_ID = {
     "1001": "1호선",
+    "1002": "2호선",
+    "1003": "3호선",
+    "1004": "4호선",
+    "1005": "5호선",
+    "1006": "6호선",
+    "1007": "7호선",
+    "1008": "8호선",
+    "1009": "9호선",
+    "1061": "중앙선",
     "1063": "경의중앙선",
+    "1065": "공항철도",
+    "1067": "경춘선",
+    "1075": "수인분당선",
+    "1077": "신분당선",
+    "1081": "경강선",
+    "1092": "우이신설선",
+    "1093": "서해선",
+    "1032": "GTX-A",
 }
 
 
@@ -25,6 +42,34 @@ def adjust_arrival_seconds(barvl_dt: int, receipt_time: str, now: datetime) -> i
     return max(0, barvl_dt - delay_seconds)
 
 
+def _clean_train_line_name(train_line_nm: str, status: str) -> str:
+    cleaned = train_line_nm.strip()
+    if status != "일반":
+        cleaned = cleaned.replace(f" ({status})", "")
+        cleaned = cleaned.replace(f"({status})", "")
+    return cleaned.strip()
+
+
+def _format_arrival_eta(seconds: int, arvl_cd: str = "", arvl_msg2: str = "") -> str:
+    if arvl_msg2:
+        normalized_msg = arvl_msg2.strip()
+        if "번째 전역" in normalized_msg or normalized_msg.endswith("후"):
+            return normalized_msg
+        if normalized_msg.endswith("도착") or normalized_msg.endswith("진입") or normalized_msg.endswith("출발"):
+            return "곧 도착"
+
+    if arvl_cd in {"0", "1", "2", "3", "4", "5"} and seconds <= 0:
+        return "곧 도착"
+
+    if seconds <= 0:
+        return "운행중"
+
+    minutes = seconds // 60
+    if minutes <= 0:
+        return "곧 도착"
+    return f"{minutes}분 후 도착"
+
+
 def format_arrivals_summary(station_name: str, arrivals: list[dict[str, object]]) -> str:
     grouped: dict[str, list[dict[str, object]]] = defaultdict(list)
     for item in arrivals:
@@ -34,14 +79,21 @@ def format_arrivals_summary(station_name: str, arrivals: list[dict[str, object]]
     for line_name, items in grouped.items():
         lines.append(line_name)
         for item in items:
-            minutes = max(0, int(item["seconds"]) // 60)
+            seconds = max(0, int(item["seconds"]))
+            eta = _format_arrival_eta(
+                seconds,
+                str(item.get("arvl_cd", "")),
+                str(item.get("arvl_msg2", "")),
+            )
             suffix = []
-            if item["status"] != "일반":
-                suffix.append(str(item["status"]))
+            status = str(item["status"])
+            if status != "일반":
+                suffix.append(status)
             if item["is_last_train"]:
                 suffix.append("막차")
             meta = f" ({', '.join(suffix)})" if suffix else ""
-            lines.append(f"- {item['train_line_nm']}: {minutes}분 후 도착{meta}")
+            train_line_nm = _clean_train_line_name(str(item["train_line_nm"]), status)
+            lines.append(f"- {train_line_nm}: {eta}{meta}")
         lines.append("")
     return "\n".join(lines).strip()
 
@@ -57,6 +109,8 @@ def parse_api_arrivals(payload: list[dict[str, str]]) -> list[dict[str, object]]
                 "status": item.get("btrainSttus") or "일반",
                 "is_last_train": item.get("lstcarAt") == "1",
                 "receipt_time": item.get("recptnDt") or "",
+                "arvl_msg2": item.get("arvlMsg2") or "",
+                "arvl_cd": item.get("arvlCd") or "",
             }
         )
     return results

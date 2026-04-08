@@ -5,12 +5,14 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from get_arrivals import (
+    LINE_NAME_BY_ID,
     adjust_arrival_seconds,
     build_summary_for_station,
     extract_arrival_rows,
     fetch_realtime_arrivals,
     format_arrivals_summary,
     load_api_key,
+    parse_api_arrivals,
 )
 
 
@@ -62,6 +64,44 @@ def test_format_arrivals_summary_groups_by_line_name():
     assert "문산행: 4분 후 도착 (급행, 막차)" in output
 
 
+def test_format_arrivals_summary_uses_soon_and_removes_duplicate_status_in_train_name():
+    arrivals = [
+        {
+            "line_name": "경의중앙선",
+            "train_line_nm": "용문행 - 홍대입구방면 (급행)",
+            "seconds": 0,
+            "status": "급행",
+            "is_last_train": False,
+            "arvl_msg2": "가좌 도착",
+            "arvl_cd": "1",
+        }
+    ]
+
+    output = format_arrivals_summary("가좌", arrivals)
+
+    assert "용문행 - 홍대입구방면: 곧 도착 (급행)" in output
+    assert "용문행 - 홍대입구방면 (급행): 곧 도착 (급행)" not in output
+
+
+def test_format_arrivals_summary_uses_arvl_msg2_for_running_trains():
+    arrivals = [
+        {
+            "line_name": "경의중앙선",
+            "train_line_nm": "용문행 - 홍대입구방면 (급행)",
+            "seconds": 0,
+            "status": "급행",
+            "is_last_train": False,
+            "arvl_msg2": "[5]번째 전역 (행신)",
+            "arvl_cd": "99",
+        }
+    ]
+
+    output = format_arrivals_summary("가좌", arrivals)
+
+    assert "용문행 - 홍대입구방면: [5]번째 전역 (행신) (급행)" in output
+    assert "곧 도착" not in output
+
+
 def test_load_api_key_reads_dotenv(tmp_path: Path):
     env_file = tmp_path / ".env"
     env_file.write_text("SEOUL_OPEN_API_KEY=test-key\n", encoding="utf-8")
@@ -103,6 +143,24 @@ def test_build_summary_for_station_adjusts_and_sorts_arrivals():
     assert output.startswith("서울 실시간 도착정보")
     assert "인천행: 1분 후 도착" in output
     assert "문산행: 3분 후 도착 (급행, 막차)" in output
+
+
+def test_parse_api_arrivals_maps_subway_id_to_line_name():
+    arrivals = parse_api_arrivals([
+        {
+            "subwayId": "1065",
+            "trainLineNm": "인천공항2터미널행 - 홍대입구방면",
+            "barvlDt": "0",
+            "btrainSttus": "일반",
+            "lstcarAt": "0",
+            "recptnDt": "2026-04-08 10:03:30",
+            "arvlMsg2": "공덕 도착",
+            "arvlCd": "1",
+        }
+    ])
+
+    assert LINE_NAME_BY_ID["1065"] == "공항철도"
+    assert arrivals[0]["line_name"] == "공항철도"
 
 
 def test_fetch_realtime_arrivals_normalizes_station_name_before_request(monkeypatch):
