@@ -3,6 +3,8 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
+REQUIRED_COLUMNS = ("SUBWAY_ID", "STATN_ID", "STATN_NM", "호선이름")
+
 ALIAS_MAP = {
     "응암": "응암순환(상선)",
     "공릉": "공릉(서울산업대입구)",
@@ -34,6 +36,14 @@ def find_station_candidates(raw_name: str, rows: list[dict[str, str]]) -> list[d
     ]
 
 
+def _validate_required_columns(fieldnames: list[str] | None, csv_path: Path) -> None:
+    missing = [column for column in REQUIRED_COLUMNS if column not in (fieldnames or [])]
+    if missing:
+        raise ValueError(f"CSV {csv_path} is missing required headers: {', '.join(missing)}")
+
+
 def load_station_rows(csv_path: Path) -> list[dict[str, str]]:
     with csv_path.open("r", encoding="utf-8-sig", newline="") as handle:
-        return list(csv.DictReader(handle))
+        reader = csv.DictReader(handle)
+        _validate_required_columns(reader.fieldnames, csv_path)
+        return list(reader)
