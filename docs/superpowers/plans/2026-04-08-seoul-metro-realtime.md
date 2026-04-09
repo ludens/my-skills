@@ -27,19 +27,8 @@
 - Create: `skills/seoul-metro-realtime/pyproject.toml`
 - Create: `skills/seoul-metro-realtime/.gitignore`
 - Create: `skills/seoul-metro-realtime/.env.example`
-- Create: `skills/seoul-metro-realtime/docs/task-1-checklist.md`
 
-- [ ] **Step 1: Write the failing metadata test expectation as a checklist**
-
-Record this checklist in `skills/seoul-metro-realtime/docs/task-1-checklist.md`:
-
-```text
-- uv can resolve dependencies from pyproject.toml
-- .env is ignored by git
-- .env.example documents SEOUL_OPEN_API_KEY
-```
-
-- [ ] **Step 2: Create project metadata and dependencies**
+- [ ] **Step 1: Create the package skeleton and metadata files**
 
 ```toml
 [project]
@@ -87,8 +76,6 @@ Expected: `Resolved` and environment created with no errors
 git add skills/seoul-metro-realtime/pyproject.toml skills/seoul-metro-realtime/.gitignore skills/seoul-metro-realtime/.env.example
 git commit -m "chore: bootstrap seoul metro realtime skill project"
 ```
-
-If spec-review follow-up requires a separate checklist-artifact fix, allow one additional commit limited to `skills/seoul-metro-realtime/docs/task-1-checklist.md`.
 
 ### Task 2: Build Station Lookup with TDD
 
