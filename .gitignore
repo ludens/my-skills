@@ -16,3 +16,4 @@ build/
 # Local Codex agent data
 .agents/
 tmp/
+.codex

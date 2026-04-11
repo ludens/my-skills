@@ -1,67 +1,90 @@
 ---
 name: seoul-metro-realtime
-description: Query Seoul subway realtime arrival information for a station name using the Seoul open API. Use when Codex needs to look up train arrival times, realtime subway status for a station, or summarize arrivals across duplicate station names. Supports `.env`-managed API keys and station alias normalization for Seoul Metro names.
+description: Query Seoul subway realtime arrival information for a station name with `uvx seoul-metro-realtime`. Use when Codex needs current Seoul subway arrivals, realtime subway status for a station, or JSON arrival data from the Seoul Open API.
 ---
 
 # Seoul Metro Realtime
 
-서울 지하철 역명을 받아 서울시 실시간 도착정보 API를 조회하고, 같은 역명이 여러 노선에 걸쳐 있으면 한 번에 묶어서 요약한다.
+서울 지하철 역명을 받아 `uvx seoul-metro-realtime`로 서울시 실시간 도착정보를 조회한다.
 
 ## 사용 시점
 
 - 특정 역의 실시간 도착 예정 열차를 확인해야 할 때
-- 동명이역 포함 결과를 한 번에 정리해야 할 때
-- 서울시 open API 기반 지하철 도착정보가 필요할 때
+- 서울시 Open API 기반 지하철 도착정보가 필요할 때
+- 사람이 읽는 요약 또는 JSON 구조화 데이터가 필요할 때
 
 ## 기본 사용법
 
-- 스킬 루트에서 실행: `uv run python scripts/get_arrivals.py "<역명>"`
-- 예: `uv run python scripts/get_arrivals.py "서울역"`
-- 역명 끝의 `역`은 자동 정규화된다.
-- 일부 예외 역명은 `scripts/station_lookup.py`의 alias map으로 보정한다.
+- 조회: `uvx seoul-metro-realtime "<역명>"`
+- 예: `uvx seoul-metro-realtime "서울역"`
+- JSON 출력: `uvx seoul-metro-realtime --json "<역명>"`
+- 최초 API 키 저장: `uvx seoul-metro-realtime configure`
 
-## 파일 역할
+## API 키
 
-- `scripts/station_lookup.py`: 역명 정규화, alias 처리, CSV 기반 역 후보 조회
-- `scripts/get_arrivals.py`: `.env` 로드, API 호출, payload 파싱, stale 시간 보정, 출력 포맷
-- `references/실시간도착_역정보(20260108).csv`: 역/노선 기준 데이터 소스
-- `references/서울시 지하철 실시간 도착정보 API 명세서.md`: API 필드와 응답 구조 확인용 참고 문서
+`seoul-metro-realtime`은 아래 순서로 API 키를 찾는다.
 
-## 실행 규칙
+1. `SEOUL_OPEN_API_KEY` 환경변수
+2. 현재 작업 디렉터리의 `.env`
+3. `~/.config/seoul-metro-realtime/config.env`
+4. 패키지 루트의 `.env`
 
-1. 먼저 `scripts/station_lookup.py`로 역명 정규화와 후보 조회를 수행한다.
-2. API 키는 아래 순서로 찾는다.
-   - `skills/seoul-metro-realtime/.env`
-   - 필요 시 repo root `.env`
-3. 환경변수 이름은 `SEOUL_OPEN_API_KEY`를 사용한다.
-4. API 호출 전 역명은 `normalize_station_name()`으로 정규화한다.
-   - 예: `서울역` -> `서울`
-   - alias 예외 역명도 함께 보정한다.
-5. API 응답은 `extract_arrival_rows()`로 해석한다.
-   - `INFO-200`이면 빈 결과로 처리한다.
-   - 다른 에러 코드는 사용자에게 드러나는 오류로 변환한다.
-6. 도착 시간은 `adjust_arrival_seconds()`로 수신 시각 기준 stale 보정을 적용한다.
-7. 최종 응답은 `format_arrivals_summary()` 형식으로 한국어 요약을 출력한다.
-   - `0분 후 도착` 대신 `곧 도착`을 사용한다.
-   - `trainLineNm`에 이미 `(급행)` 같은 상태가 포함되어 있으면 앞쪽 중복 표시는 제거하고 뒤 메타데이터에만 남긴다.
-   - 노선별로 먼저 묶고, 같은 노선 안에서는 `OO방면` 기준으로 한 번 더 묶는다.
+키가 없으면 먼저 아래 명령을 실행한다.
+
+```bash
+uvx seoul-metro-realtime configure
+```
+
+환경변수로 직접 지정해도 된다.
+
+```bash
+export SEOUL_OPEN_API_KEY=your_api_key_here
+```
 
 ## 출력 원칙
 
-- 헤더는 `<역명> 실시간 도착정보`
-- 노선별로 그룹화해서 출력
-- 같은 역명이 여러 노선에 있으면 모두 포함
-- 같은 노선 안에서는 방면별로 다시 묶어서 출력
-- 급행/막차 여부를 괄호 메타데이터로 표시
-- 데이터가 없으면 빈 결과임을 명확히 설명
+- 기본 출력은 한국어 텍스트 요약이다.
+- 사용자가 구조화된 처리, 비교, 필터링을 원하면 `--json`을 사용한다.
+- JSON 응답의 주요 필드:
+  - `station_name`: 조회 역명
+  - `generated_at`: 결과 생성 시각
+  - `arrivals`: 도착 예정 정보 배열
+  - `line_name`: 호선 이름
+  - `direction`: 방면
+  - `destination`: 행선지
+  - `eta`: 사람이 읽는 도착 문구
+  - `seconds`: 남은 초
+  - `status`: 열차 상태
+  - `is_last_train`: 막차 여부
+
+## 사용 예
+
+텍스트 요약:
+
+```bash
+uvx seoul-metro-realtime "서울역"
+```
+
+JSON 조회:
+
+```bash
+uvx seoul-metro-realtime --json "서울역"
+```
+
+JSON에서 특정 정보만 골라야 하면 `jq` 같은 표준 도구로 후처리한다.
+
+```bash
+uvx seoul-metro-realtime --json "서울역" | jq '.arrivals[] | {line_name, direction, destination, eta}'
+```
 
 ## 문제 해결
 
-- `.env` 또는 `SEOUL_OPEN_API_KEY`가 없으면 `skills/seoul-metro-realtime/.env` 파일을 만들고 `SEOUL_OPEN_API_KEY=<발급받은_키>`를 넣도록 안내한다.
-- API 필드 의미가 헷갈리면 `references/서울시 지하철 실시간 도착정보 API 명세서.md`만 추가로 읽는다.
-- 역명 예외 처리가 필요하면 `scripts/station_lookup.py`의 alias map과 CSV 데이터를 함께 확인한다.
+- `uvx`가 없으면 `uv` 설치가 필요하다.
+- API 키 오류가 나면 `uvx seoul-metro-realtime configure`로 키를 다시 저장하거나 `SEOUL_OPEN_API_KEY`를 확인한다.
+- 현재 작업 디렉터리의 `.env`를 쓸 때는 `SEOUL_OPEN_API_KEY=<발급받은_키>` 형식을 사용한다.
 
 ## 검증
 
-- 테스트: `uv run pytest -v`
-- 단일 실행: `uv run python scripts/get_arrivals.py "서울역"`
+- 키 저장: `uvx seoul-metro-realtime configure`
+- 키 없는 상태 확인: `uvx seoul-metro-realtime "서울역"` 실행 시 API 키 설정 안내가 나온다.
+- 키 있는 상태 조회: `uvx seoul-metro-realtime "서울역"`
