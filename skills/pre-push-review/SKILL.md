@@ -1,6 +1,6 @@
 ---
 name: pre-push-review
-description: Push, release, 배포, PR 머지 직전에 작업 트리를 최종 점검한다. 의미 없거나 항상 참인 불필요한 테스트를 찾아 제거하고, pyproject.toml, package.json 같은 프로젝트 설정 파일의 버전업 필요 여부를 사용자에게 확인한 뒤 사용자가 올려야 한다고 답한 경우 버전을 올릴 때 사용한다.
+description: Push, release, 배포, PR 머지 직전에 작업 트리를 최종 점검한다. README.md 같은 문서 파일을 포함해 추적되지 않아 커밋에서 빠질 파일을 확인하고, 의미 없거나 항상 참인 불필요한 테스트를 찾아 제거하고, pyproject.toml, package.json 같은 프로젝트 설정 파일의 버전업 필요 여부를 사용자에게 확인한 뒤 사용자가 올려야 한다고 답한 경우 버전을 올릴 때 사용한다.
 ---
 
 # Pre Push Review
@@ -13,10 +13,15 @@ description: Push, release, 배포, PR 머지 직전에 작업 트리를 최종 
 
 ```bash
 git status --short
+git ls-files --others --exclude-standard
 git diff --stat
 git diff
 git diff --staged
 ```
+
+- `git status --short`와 `git ls-files --others --exclude-standard` 출력에서 추적되지 않은 파일을 확인한다.
+- 새로 만든 소스, 테스트, README.md 같은 문서, 설정, lock 파일, 스냅샷, 생성물 중 커밋에 포함되어야 하는 파일이 빠졌는지 점검한다.
+- 의도적으로 제외할 파일이면 `.gitignore`에 이미 맞게 반영되어 있는지 확인하고, 불확실하면 사용자에게 포함/제외 선택지를 묻는다.
 
 2. 테스트 변경을 집중 검토한다.
 
@@ -66,6 +71,7 @@ git diff --staged
 최종 응답에는 아래만 간단히 포함한다.
 
 - 제거한 불필요 테스트가 있으면 파일과 이유
+- 추적에서 빠진 파일 점검 결과와 필요한 조치
 - 버전 확인 결과와 사용자 결정
 - 수정한 버전이 있으면 이전 버전과 새 버전
 - 실행한 검증 명령과 결과
