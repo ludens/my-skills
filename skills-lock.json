@@ -5,21 +5,6 @@
       "source": "daleseo/korean-skills",
       "sourceType": "github",
       "computedHash": "f0eb2aa9e2515e99471fbd085d514141bfc4873f3683f76815a237d64c2cd834"
-    },
-    "markdown.new": {
-      "source": "ctxinf/markdown.new-skill",
-      "sourceType": "github",
-      "computedHash": "f7f96a2c67e608378b1e114c13d3574749d1d9fce937344d3c20e1e40f563539"
-    },
-    "pdf": {
-      "source": "openai/skills",
-      "sourceType": "github",
-      "computedHash": "ae0a8fde8447e83a08edd0baf5373cd52febce32494e47e17d5d695a441a1884"
-    },
-    "split-commit": {
-      "source": "ludens/my-skills",
-      "sourceType": "github",
-      "computedHash": "deaed06038317fc13da1229d6866e57e40c716a6c271861b73c4d6f793933a44"
     }
   }
 }
