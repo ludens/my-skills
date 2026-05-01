@@ -1,0 +1,4 @@
+interface:
+  display_name: "CalVer Versioning"
+  short_description: "CalVer release version workflow"
+  default_prompt: "Use $calver-versioning to choose and apply a CalVer release version."
