@@ -1,4 +1,4 @@
 interface:
   display_name: "Pre Push Review"
-  short_description: "Push 전 테스트 품질과 버전 변경 여부를 점검합니다."
-  default_prompt: "푸시 전에 의미 없는 테스트를 제거하고 버전업 필요 여부를 확인해줘."
+  short_description: "Push 직전 누락 파일, 테스트, 버전을 점검합니다."
+  default_prompt: "Use $pre-push-review before pushing changes."
