@@ -24,13 +24,14 @@
 ## 조회
 
 1. 입력에서 숫자 place ID를 추출한다. URL에 ID가 없으면 리다이렉트를 따라간 뒤 최종 URL에서 다시 추출한다.
-2. markdown.new 스킬을 사용해 아래 URL을 읽는다.
+2. markdown.new 스킬을 사용해 홈과 정보 탭을 읽는다.
 
 ```text
 https://pcmap.place.naver.com/place/{id}/home
+https://pcmap.place.naver.com/place/{id}/information
 ```
 
-3. 페이지에서 보이는 값만 추출한다. 없는 필드는 추측하지 않고 `없음`으로 둔다.
+3. 페이지에서 보이는 값만 추출한다. 없는 필드는 추측하지 않고 `없음`으로 둔다. 영업시간에 `펼쳐보기`만 있으면 `scripts/expand-hours.py`로 Chromium `dump-dom`에서 요일 시간을 읽는다.
 
 `map.naver.com` 본문은 SPA라 쓰지 않는다. `pcmap.place.naver.com/place/{id}/home`은 음식점 ID에도 동작한다.
 
