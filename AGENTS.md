@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-이 저장소는 Codex에서 재사용할 개인 스킬을 관리한다. 각 스킬은 `skills/<skill-name>/` 아래에 두며, 진입점은 반드시 `SKILL.md`다. 스킬 전용 에이전트 설정은 필요할 때 `skills/<skill-name>/agents/*.yaml`에 둔다. 긴 참고 자료나 원문은 해당 스킬의 `references/` 하위 디렉터리에 둔다. 현재 주요 스킬은 `skills/calver-versioning/`, `skills/split-commit/`, `skills/pre-push-review/`다.
+이 저장소는 Codex에서 재사용할 개인 스킬을 관리한다. 각 스킬은 `skills/<skill-name>/` 아래에 두며, 진입점은 반드시 `SKILL.md`다. 스킬 전용 에이전트 설정은 필요할 때 `skills/<skill-name>/agents/*.yaml`에 둔다. 긴 참고 자료나 원문은 해당 스킬의 `references/` 하위 디렉터리에 둔다. 현재 주요 스킬은 `skills/calver-versioning/`, `skills/split-commit/`, `skills/pre-push-review/`, `skills/naver-place-info/`다.
 
 ## Build, Test, and Development Commands
 
