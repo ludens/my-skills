@@ -1,6 +1,6 @@
 # My Skills Repository
 
-Codex에서 재사용할 개인 스킬을 관리하는 저장소입니다.
+재사용할 개인 스킬을 관리하는 저장소입니다.
 
 ## 현재 스킬
 
@@ -10,6 +10,7 @@ Codex에서 재사용할 개인 스킬을 관리하는 저장소입니다.
 | `split-commit` | 뒤섞인 작업 트리를 논리적인 커밋 단위로 나누고, Conventional Commits 형식의 메시지까지 정리합니다. |
 | `pre-push-review` | 푸시, 릴리스, 배포, PR 머지 직전에 작업 트리, 누락 파일, 테스트 품질, 버전업 필요 여부를 점검합니다. |
 | `naver-place-info` | 네이버지도 장소 URL, naver.me 짧은 링크, 또는 place ID로 주소, 전화, 영업시간 등 장소 정보를 가져옵니다. |
+| `tistory-skin` | 티스토리 스킨(skin.html, index.xml, style.css)과 치환자·홈 커버·사이드바·댓글·리스트를 조회하고 적용합니다. |
 
 ## 설치
 
