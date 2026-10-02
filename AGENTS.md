@@ -1,3 +1,7 @@
+# 프로젝트 규칙
+
+- 이 프로젝트의 스킬(`skills/` 디렉터리)을 수정할 때, 다른 로컬 복사본(`~/.agents/skills/`, `~/.pi/agent/skills/`)은 손대지 않는다. 편집은 항상 이 프로젝트 내 복사본에만 한다.
+
 # Agents
 
 An agent is a markdown file: YAML frontmatter on top, a system prompt below. The frontmatter defines the specialist that runs as the child session.
