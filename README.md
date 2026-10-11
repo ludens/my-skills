@@ -11,6 +11,7 @@
 | `pre-push-review` | 푸시, 릴리스, 배포, PR 머지 직전에 작업 트리, 누락 파일, 테스트 품질, 버전업 필요 여부를 점검합니다. |
 | `naver-place-info` | 네이버지도 장소 URL, naver.me 짧은 링크, 또는 place ID로 주소, 전화, 영업시간 등 장소 정보를 가져옵니다. |
 | `tistory-skin` | 티스토리 스킨(skin.html, index.xml, style.css)과 치환자·홈 커버·사이드바·댓글·리스트를 조회하고 적용합니다. |
+| `pagespeed-insights` | PageSpeed Insights API로 사이트 URL의 점수·핵심 지표·실패 감사·개선 기회를 한국어 리포트로 정리합니다. |
 
 ## 설치
 
