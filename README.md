@@ -12,6 +12,7 @@
 | `naver-place-info` | 네이버지도 장소 URL, naver.me 짧은 링크, 또는 place ID로 주소, 전화, 영업시간 등 장소 정보를 가져옵니다. |
 | `tistory-skin` | 티스토리 스킨(skin.html, index.xml, style.css)과 치환자·홈 커버·사이드바·댓글·리스트를 조회하고 적용합니다. |
 | `pagespeed-insights` | PageSpeed Insights API로 사이트 URL의 점수·핵심 지표·실패 감사·개선 기회를 한국어 리포트로 정리합니다. |
+| `env-sync` | 여러 `.env` 파일의 키 목록을 비교하고, `.env.example` 템플릿과 실제 `.env` 사이의 누락·추가 키를 찾아 동기화합니다. |
 
 ## 설치
 
