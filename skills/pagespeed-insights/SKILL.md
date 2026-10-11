@@ -115,7 +115,7 @@ jq -r '.lighthouseResult.audits | to_entries[] | select(.value.details.type == "
 
 없는 필드는 `없음`으로 적는다. 추측으로 채우지 않는다.
 
-리포트는 마크다운 파일로 저장한다. 사용자가 경로를 지정하면 그대로 쓰고, 없으면 현재 작업 디렉터리에 `pagespeed-<domain>-<YYYYMMDD>.md`로 저장한다 (`<domain>`은 URL 호스트명). `/tmp`는 재부팅 시 사라지므로 쓰지 않는다.
+리포트는 마크다운 파일로 저장한다. 기본 경로는 프로젝트의 `docs/pagespeed/<domain>-<YYYYMMDD>.md` (`<domain>`은 URL 호스트명). 디렉터리 없으면 만든다. 사용자가 경로를 지정하면 그대로 쓴다. `/tmp`는 재부팅 시 사라지므로 쓰지 않는다.
 
 ```markdown
 # PageSpeed Insights 리포트 — {URL}
