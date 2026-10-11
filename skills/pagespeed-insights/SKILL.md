@@ -35,10 +35,11 @@ test -n "$PAGESPEED_API_KEY" || { echo "PAGESPEED_API_KEY 없음"; echo "발급:
 ## 작업 순서
 
 1. URL 확인. 없으면 사용자에게 요청.
-2. key 확인. 없으면 위 안내 출력 후 중단.
-3. curl 호출, 응답을 `/tmp/psi.json`에 저장.
-4. 점수·핵심 지표·실패 audit·개선 기회 추출.
-5. 한국어 리포트 작성.
+2. `strategy` 확인. 사용자가 지정 안 하면 `mobile`.
+3. key 확인. 없으면 위 안내 출력 후 중단.
+4. curl 호출, 응답을 `/tmp/psi.json`에 저장.
+5. 점수·핵심 지표·실패 audit·개선 기회 추출.
+6. 한국어 리포트 작성.
 
 ## 명령
 
@@ -48,7 +49,7 @@ test -n "$PAGESPEED_API_KEY" || { echo "PAGESPEED_API_KEY 없음"; echo "발급:
 API="https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
 curl -sS --get "$API" \
   --data-urlencode "url=$URL" \
-  --data-urlencode "strategy=mobile" \
+  --data-urlencode "strategy=${STRATEGY:-mobile}" \
   --data-urlencode "category=performance" \
   --data-urlencode "category=accessibility" \
   --data-urlencode "category=best-practices" \
