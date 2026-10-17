@@ -14,6 +14,8 @@
 | `pagespeed-insights` | PageSpeed Insights API로 사이트 URL의 점수·핵심 지표·실패 감사·개선 기회를 한국어 리포트로 정리합니다. |
 | `env-sync` | 여러 `.env` 파일의 키 목록을 비교하고, `.env.example` 템플릿과 실제 `.env` 사이의 누락·추가 키를 찾아 동기화합니다. |
 | `codepen-example` | 간결한 HTML/CSS/JS 예시를 CodePen API v2로 펜 게시하고 에디터 URL을 반환합니다. |
+| `wp-site-health` | WP-CLI로 WordPress 사이트 건강(Site Health) 점검을 실행하고 good/recommended/critical 항목을 요약합니다. |
+| `wp-update-all` | WP-CLI로 WordPress 코어·플러그인·테마·번역을 백업과 검증을 거쳐 순서대로 최신화합니다. |
 
 ## 설치
 
