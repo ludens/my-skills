@@ -16,6 +16,8 @@
 | `codepen-example` | 간결한 HTML/CSS/JS 예시를 CodePen API v2로 펜 게시하고 에디터 URL을 반환합니다. |
 | `wp-site-health` | WP-CLI로 WordPress 사이트 건강(Site Health) 점검을 실행하고 good/recommended/critical 항목을 요약합니다. |
 | `wp-update-all` | WP-CLI로 WordPress 코어·플러그인·테마·번역을 백업과 검증을 거쳐 순서대로 최신화합니다. |
+| `cloudflare-icons` | Cloudflare 서비스 아이콘의 slug·SVG URL을 찾고, 구조도에 인라인 심볼로 삽입합니다. |
+| `usercss` | Stylus용 UserCSS 스타일(메타데이터·`@var`·`@preprocessor`·`@-moz-document`)을 작성하고 설치·배포합니다. |
 
 ## 설치
 
