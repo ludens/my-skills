@@ -26,7 +26,7 @@ SVG 구조도·다이어그램에 이모지 아이콘을 쓸 때, 코드포인�
 ```
 skills/twemoji/
   SKILL.md          # 소스·URL 패턴, 코드포인트 규칙, symbol 인라인 규칙, 배치·주의사항
-  fetch-emoji.sh    # 이모지 → 코드포인트 변환 → CDN 다운로드 + 캐시
+  scripts/fetch-emoji.sh    # 이모지 → 코드포인트 변환 → CDN 다운로드 + 캐시
 ```
 
 ### SKILL.md 담을 내용

@@ -22,7 +22,7 @@ FALLBACK="https://raw.githubusercontent.com/jdecked/twemoji/v${VERSION}/assets/s
 CACHE_DIR="${TWEMOJI_CACHE_DIR:-$HOME/.cache/twemoji/${VERSION}}"
 
 usage() {
-  sed -n '2,12p' "$0" | sed 's/^# \{0,1\}//'
+  sed -n '2,15p' "$0" | sed 's/^# \{0,1\}//'
   exit 2
 }
 
