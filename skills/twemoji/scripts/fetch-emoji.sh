@@ -42,7 +42,7 @@ print("-".join(format(ord(c), "x") for c in s))
 print("-".join(format(ord(c), "x") for c in s if ord(c) != 0xFE0F))
 '
 emoji_to_name() {
-  # 첫 줄: U+FE0F 제거본, 둘째 줄: 원본(제거 없음). 나머지는 실패로 처리.
+  # 첫 줄: 원본(제거 없음), 둘째 줄: U+FE0F 제거본. 나머지는 실패로 처리.
   python3 -c "$PYCODE" "$1"
 }
 
