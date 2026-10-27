@@ -1,6 +1,6 @@
 ---
 name: tistory-skin
-description: 티스토리 스킨(skin.html, index.xml, style.css)을 만들거나 수정하거나, 치환자·그룹치환자·홈 커버·사이드바·댓글·방명록·리스트·페이징을 조회할 때 사용합니다. /tistory-skin
+description: 티스토리 스킨(skin.html, index.xml, style.css)을 만들거나 수정하거나, 치환자·그룹치환자·홈 커버·사이드바·댓글·방명록·리스트·페이징을 조회할 때 사용합니다. / Triggers: edit a Tistory blog skin, work with skin.html index.xml style.css, query Tistory template variables (치환자), sidebar comment guestbook list paging markers
 ---
 
 # Tistory Skin

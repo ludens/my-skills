@@ -1,6 +1,6 @@
 ---
 name: codepen-example
-description: 간결한 HTML/CSS/JS 코드 예시를 만들어 CodePen 펜으로 게시하고 공유 URL을 반환해야 할 때, 또는 CodePen API v2로 데모·예제를 올려달라는 요청을 받았을 때 사용합니다. "codepen", "예시 코드", "데모"와 함께 예제 제작·게시를 요청받을 때 사용합니다.
+description: 간결한 HTML/CSS/JS 코드 예시를 만들어 CodePen 펜으로 게시하고 공유 URL을 반환해야 할 때, 또는 CodePen API v2로 데모·예제를 올려달라는 요청을 받았을 때 사용합니다. "codepen", "예시 코드", "데모"와 함께 예제 제작·게시를 요청받을 때 사용합니다. / Triggers: create a CodePen demo, publish a pen via CodePen API, share a CodePen URL, post an HTML/CSS/JS example
 ---
 
 # CodePen Example

@@ -1,6 +1,6 @@
 ---
 name: inspect-install-script
-description: Use when reviewing an installation script, curl|bash one-liner, setup script, or bootstrap script to assess security, persistence, and reversibility before running it.
+description: Use when reviewing an installation script, curl|bash one-liner, setup script, or bootstrap script to assess security, persistence, and reversibility before running it. / 트리거: 설치 스크립트 실행 전 검토, curl|bash 안전 점검, 부트스트랩·셋업 스크립트 보안 확인
 license: MIT
 allowed-tools: Bash Read Grep
 ---

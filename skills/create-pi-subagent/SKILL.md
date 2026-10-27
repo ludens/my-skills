@@ -1,6 +1,6 @@
 ---
 name: create-pi-subagent
-description: Use when 사용자가 pi 서브에이전트를 만들거나, 특정 역할의 전문가 에이전트 정의 파일을 생성·추가해달라고 요청할 때. 서브에이전트, agent, 전문가 에이전트, 하위 에이전트 생성 시 사용한다.
+description: Use when 사용자가 pi 서브에이전트를 만들거나, 특정 역할의 전문가 에이전트 정의 파일을 생성·추가해달라고 요청할 때. 서브에이전트, agent, 전문가 에이전트, 하위 에이전트 생성 시 사용한다. / Triggers: create a pi subagent, add an expert agent definition, generate an agent markdown file with frontmatter
 ---
 
 # 서브에이전트 생성

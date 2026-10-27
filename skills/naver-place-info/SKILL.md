@@ -1,6 +1,6 @@
 ---
 name: naver-place-info
-description: 네이버지도 장소 URL(map.naver.com/p/entry/place/…), naver.me 짧은 링크, 또는 숫자 place ID로 주소·전화·영업시간 등 장소 정보를 조회할 때 사용합니다. /naver-place-info
+description: 네이버지도 장소 URL(map.naver.com/p/entry/place/…), naver.me 짧은 링크, 또는 숫자 place ID로 주소·전화·영업시간 등 장소 정보를 조회할 때 사용합니다. / Triggers: look up Naver Map place info, address phone hours from map.naver.com URL or naver.me short link
 ---
 
 # Naver Place Info

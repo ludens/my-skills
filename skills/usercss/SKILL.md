@@ -1,6 +1,6 @@
 ---
 name: usercss
-description: Stylus용 UserCSS 스타일(`/* ==UserStyle== */` 메타데이터, `@var` 변수, `@preprocessor` 전처리기, `@-moz-document` 적용 범위)을 작성·수정하거나, `.user.css`/`.user.styl`/`.user.less` 파일을 만들어 설치·배포하려 할 때 사용합니다.
+description: Stylus용 UserCSS 스타일(`/* ==UserStyle== */` 메타데이터, `@var` 변수, `@preprocessor` 전처리기, `@-moz-document` 적용 범위)을 작성·수정하거나, `.user.css`/`.user.styl`/`.user.less` 파일을 만들어 설치·배포하려 할 때 사용합니다. / Triggers: write UserCSS for Stylus, create user.css user.styl or user.less file, UserStyle metadata @var @preprocessor @-moz-document
 ---
 
 # UserCSS
