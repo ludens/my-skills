@@ -1,6 +1,6 @@
 ---
 name: aws-icons
-description: Use when AWS 서비스가 포함된 구조도·아키텍처 다이어그램을 그릴 때, 또는 AWS Architecture Icons의 정확한 파일명·카테고리·크기·SVG 다운로드·삽입 방법이 필요할 때. EC2, S3, Lambda, RDS, DynamoDB, VPC, IAM, CloudFront, Route 53 같은 공식 아이콘의 slug와 경로를 찾는 경우를 포함한다. / Triggers: draw AWS architecture diagram SVG, official AWS service icons download, find EC2 S3 Lambda icon slug and path
+description: Use when AWS 서비스가 포함된 구조도·아키텍처 다이어그램을 그릴 때, 또는 AWS Architecture Icons의 정확한 파일명·카테고리·크기·SVG 다운로드·삽입 방법이 필요할 때. EC2, S3, Lambda, RDS, DynamoDB, VPC, IAM, CloudFront, Route 53 같은 공식 아이콘의 slug와 경로를 찾는 경우를 포함한다. / Triggers: draw AWS architecture diagram SVG, download official AWS service icons, find icon slug and path
 ---
 
 # AWS Icons

@@ -1,6 +1,6 @@
 ---
 name: split-commit
-description: 하나의 작업 트리에서 변경 사항을 논리적인 단위로 묶어 여러 개의 git 커밋으로 나눕니다. 커밋을 쪼개 달라는 요청이 있거나, 한 번에 커밋하지 않고 여러 번 나눠 커밋해야 할 때, 또는 변경 사항을 묶음별로 스테이징하고 커밋해야 할 때 사용합니다. / Triggers: split changes into multiple commits, stage and commit in logical batches, break a diff into separate git commits
+description: 커밋을 쪼개 달라는 요청이 있거나, 한 번에 커밋하지 않고 여러 번에 걸쳐 커밋해야 할 때, 또는 변경 사항을 논리적인 묶음별로 스테이징하고 커밋해야 할 때 사용합니다. / Triggers: split changes into multiple commits, stage and commit in logical batches, break a diff into separate git commits
 license: MIT
 allowed-tools: Bash
 ---

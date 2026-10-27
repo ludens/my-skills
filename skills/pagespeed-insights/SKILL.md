@@ -1,6 +1,6 @@
 ---
 name: pagespeed-insights
-description: Use when 사용자가 사이트 URL의 페이지 속도·성능·접근성·SEO 점수를 PageSpeed Insights API로 측정해 달라 하거나 Lighthouse 점수·Core Web Vitals·개선 제안을 정리해 달라고 할 때. /pagespeed-insights / Triggers: measure site performance with PageSpeed Insights API, get Lighthouse score, check Core Web Vitals
+description: Use when 사용자가 사이트 URL의 페이지 속도·성능·접근성·SEO 점수를 PageSpeed Insights API로 측정해 달라 하거나 Lighthouse 점수·Core Web Vitals·개선 제안을 정리해 달라고 할 때. / Triggers: measure site performance with PageSpeed Insights API, get Lighthouse score, check Core Web Vitals
 ---
 
 # Pagespeed Insights

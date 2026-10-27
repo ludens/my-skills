@@ -1,6 +1,6 @@
 ---
 name: twemoji-svg-icons
-description: Use when SVG 도식·다이어그램·문서에 twemoji 이모지 아이콘을 넣을 때, 또는 이모지를 twemoji 파일명(코드포인트)으로 변환해 내려받는 방법이 필요할 때. ZWJ·피부 톤·U+FE0F 때문에 파일명이 까다로운 이모지(❤️ 🇰🇷 🧑‍💻 👍🏽 등)를 다루는 경우를 포함한다. / Triggers: add twemoji emoji icons to SVG or docs, convert emoji to twemoji codepoint filename, handle tricky emoji with ZWJ skin tone U+FE0F, handle tricky emoji with ZWJ skin tone U+FE0F
+description: Use when SVG 도식·다이어그램·문서에 twemoji 이모지 아이콘을 넣을 때, 또는 이모지를 twemoji 파일명(코드포인트)으로 변환해 내려받는 방법이 필요할 때. ZWJ·피부 톤·U+FE0F 때문에 파일명이 까다로운 이모지(❤️ 🇰🇷 🧑‍💻 👍🏽 등)를 다루는 경우를 포함한다. / Triggers: add twemoji emoji icons to SVG or docs, convert emoji to twemoji codepoint filename
 ---
 
 # Twemoji
