@@ -1,6 +1,6 @@
 ---
 name: env-sync
-description: 여러 프로젝트나 환경의 `.env` 파일 키 목록을 비교하거나, `.env.example` 템플릿과 실제 `.env` 사이에 누락되거나 불필요한 키가 있는지 찾아 동기화해야 할 때 사용합니다.
+description: 여러 프로젝트나 환경의 `.env` 파일 키 목록을 비교하거나, `.env.example` 템플릿과 실제 `.env` 사이에 누락되거나 불필요한 키가 있는지 찾아 동기화해야 할 때 사용합니다. / Triggers: compare .env files across projects, find missing or extra keys against .env.example, sync environment variables
 ---
 
 # env-sync

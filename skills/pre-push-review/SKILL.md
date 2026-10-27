@@ -1,6 +1,6 @@
 ---
 name: pre-push-review
-description: Use before any git push, release, 배포, PR 머지, 또는 사용자가 푸시/배포/릴리스를 진행하려 할 때 작업 트리를 최종 점검한다. 명시적으로 요청받지 않아도 push 직전이면 사용한다. 추적되지 않아 커밋에서 빠질 파일, 의미 없거나 항상 참인 테스트, 버전업 필요 여부를 확인할 때 사용한다.
+description: Use before any git push, release, 배포, PR 머지, 또는 사용자가 푸시/배포/릴리스를 진행하려 할 때 작업 트리를 최종 점검한다. 명시적으로 요청받지 않아도 push 직전이면 사용한다. 추적되지 않아 커밋에서 빠질 파일, 의미 없거나 항상 참인 테스트, 버전업 필요 여부를 확인할 때 사용한다. / Triggers: final check before git push, pre-release or pre-merge review, catch untracked files before commit, verify version bump
 ---
 
 # Pre Push Review

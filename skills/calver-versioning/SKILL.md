@@ -1,6 +1,6 @@
 ---
 name: calver-versioning
-description: CalVer(Calendar Versioning)를 적용하거나, YYYY.MM.DD.N 형식의 릴리스 버전을 정하거나, SemVer 대신 날짜 기반 버전으로 전환하거나, 여러 파일의 버전 필드와 Git 태그를 일관되게 맞춰야 할 때 사용합니다.
+description: CalVer(Calendar Versioning)를 적용하거나, YYYY.MM.DD.N 형식의 릴리스 버전을 정하거나, SemVer 대신 날짜 기반 버전으로 전환하거나, 여러 파일의 버전 필드와 Git 태그를 일관되게 맞춰야 할 때 사용합니다. / Triggers: apply calendar versioning, pick a YYYY.MM.DD.N release scheme, switch from SemVer to date-based versioning, sync version fields with git tags
 ---
 
 # CalVer Versioning

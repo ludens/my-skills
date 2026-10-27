@@ -1,6 +1,6 @@
 ---
 name: cloudflare-icons
-description: Cloudflare 서비스가 포함된 구조도·아키텍처 다이어그램을 그릴 때, 또는 Cloudflare 서비스 아이콘의 slug·SVG URL·다운로드·삽입 방법이 필요할 때 사용합니다. WAF, Workers, R2, D1, Zero Trust, Magic Transit 같은 공식 서비스 아이콘을 찾는 경우를 포함합니다.
+description: Cloudflare 서비스가 포함된 구조도·아키텍처 다이어그램을 그릴 때, 또는 Cloudflare 서비스 아이콘의 slug·SVG URL·다운로드·삽입 방법이 필요할 때 사용합니다. WAF, Workers, R2, D1, Zero Trust, Magic Transit 같은 공식 서비스 아이콘을 찾는 경우를 포함합니다. / Triggers: draw Cloudflare architecture diagram SVG, official Cloudflare service icons download, find WAF Workers R2 D1 icon slug
 ---
 
 # Cloudflare Icons
