@@ -17,7 +17,7 @@ description: Use when SVG 구조도·문서에 Bootstrap Icons를 넣을 때, �
 | 카테고리 | 29개 |
 | 라이선스 | MIT. 단 브랜드 로고는 각 상표권자의 상표다. |
 | 개별 SVG URL | `https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/icons/<name>.svg` |
-| 스프라이트 | `bootstrap-icons.svg` (`<symbol id="bi-<name>">`) |
+| 스프라이트 | `bootstrap-icons.svg` (업스트림 심볼 id는 `<name>`, 클래스는 `bi bi-<name>`. 이 스킬의 `build-sprite.py`는 `bi-<name>` id를 쓴다) |
 | 메타데이터 | <https://icons.getbootstrap.com/icons/index.json> |
 | 이름 카탈로그 | [references/icon-names.txt](references/icon-names.txt) |
 | 스냅샷 | 2026-11-12 |
@@ -33,7 +33,7 @@ description: Use when SVG 구조도·문서에 Bootstrap Icons를 넣을 때, �
 | 인증 / 권한 | `shield-check` | 접근 허용·인증 경계 |
 | 관리자 | `person-gear` | 운영자·어드민 계정 |
 | 데이터베이스 | `database` | 실린더 |
-| 캐시 | `database-fill` | 전용 캐시 아이콘 없음. 라벨로 구분한다 |
+| 캐시 | `database` | 전용 캐시 아이콘 없음. 같은 표의 아웃라인 원칙을 지키고 라벨로 구분한다 |
 | 큐 | `inboxes` | 적재된 트레이. `list-task`도 가능 |
 | 스토리지 | `hdd-stack` | 디스크 스택 |
 | 파일 | `file-earmark` | 낱개 파일 |
@@ -94,7 +94,7 @@ description: Use when SVG 구조도·문서에 Bootstrap Icons를 넣을 때, �
 - 원본은 16×16에 1px 선이다. 구조도에서는 24–32px를 권장한다. 32px까지는 선이 유지되고, 40px를 넘기면 선이 상대적으로 가늘어 보인다.
 - 48px가 필요하면 아이콘을 확대하지 말고 노드 크기를 줄이거나, 선이 두꺼운 다른 세트를 쓴다. 48px로 늘리면 선 굵기가 3px로 보여 AWS·Cloudflare의 채워진 아이콘 옆에서 흐릿해진다.
 - AWS·Cloudflare 아이콘은 타일·면 기반이고 Bootstrap Icons는 선 기반이다. 같은 행에 같은 크기로 섞지 않는다. 섞어야 하면 Bootstrap Icons를 24px, 상대를 32–40px로 두어 시각 무게를 맞춘다.
-- 색은 `fill="currentColor"` 상속을 기본으로 한다. `<symbol>`에 `fill="currentColor"`를 넣고 상위에서 `color`를 정하면 `<use>`마다 색을 반복하지 않아도 된다.
+- 색은 `fill="currentColor"` 상속을 기본으로 한다. `<symbol>`에 `fill="currentColor"`를 넣고 `<use>`나 상위 그룹에 `color`를 정하면 색을 한 곳에서 바꿀 수 있다. `currentColor`는 `color`로 해석되므로 `<use fill="#495057">`은 심볼 안의 색을 바꾸지 못한다.
 - 기본 색은 Bootstrap primary `#0d6efd`, 중립 노드는 `#495057`. 배경과 대비가 부족하면 `#212529`까지 어둡게 한다. 상태색은 경고 `#ffc107`, 오류 `#dc3545`, 성공 `#198754`를 쓰되 아이콘과 라벨에 같은 색을 적용한다.
 - `stroke`를 따로 주지 않는다. Bootstrap Icons는 `fill` 경로로 그려져 있어 `stroke`를 추가하면 형태가 뭉개진다.
 
@@ -144,7 +144,7 @@ curl -fsSL "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/icons/database.s
   </defs>
 
   <rect x="30" y="45" width="120" height="80" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
-  <use href="#bi-database" x="52" y="63" width="28" height="28" fill="#495057"/>
+  <use href="#bi-database" x="52" y="63" width="28" height="28" color="#495057"/>
   <text x="90" y="112" font-size="12" text-anchor="middle" fill="#334155">Database</text>
 </svg>
 ```
@@ -154,7 +154,7 @@ curl -fsSL "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/icons/database.s
 1. 원본의 바깥 `<svg ...>`를 `<symbol id="bi-<name>" viewBox="0 0 16 16" fill="currentColor">`로 바꾼다. `viewBox`는 원본 값을 그대로 옮긴다.
 2. `class="bi bi-database"`, `width="16"`, `height="16"`은 남기지 않는다. 남기면 문서 CSS·레이아웃과 충돌하고, `<use>`의 크기 지정을 덮어쓴다.
 3. `<?xml ...?>`, `<!DOCTYPE ...>`, 주석은 제거한다. `<symbol>` 안에 두면 XML 선언이 중첩되어 파싱이 깨진다.
-4. 크기와 색은 `<use>`에 준다. `<use href="#bi-database" width="28" height="28" fill="#495057"/>`. `x`/`y`로 위치를 잡는다.
+4. 크기와 색은 `<use>`에 준다. `<use href="#bi-database" width="28" height="28" color="#495057"/>`. `x`/`y`로 위치를 잡는다. 색은 `fill`이 아니라 `color`로 준다. `<symbol>`의 `fill="currentColor"`는 상속된 `color`를 따르므로, `<use fill="...">`는 내부 `fill`을 덮어쓰지 못한다.
 5. 기본은 `href`만 쓴다. 구형 렌더러가 필요할 때만 `xmlns:xlink`와 `xlink:href`를 함께 넣는다.
 6. 같은 아이콘을 여러 번 쓰면 `<symbol>`은 한 번만 정의하고 `<use>`를 반복한다.
 
@@ -177,9 +177,10 @@ python3 scripts/build-sprite.py --dir assets/bootstrap-icons --fragment \
 | --- | --- |
 | `firewall` 아이콘이 있다 | 없다. `shield-lock`, `shield-check`, `shield-exclamation`으로 매핑하고 라벨에 Firewall을 적는다. |
 | URL에 버전을 넣지 않는다 | `.../bootstrap-icons@latest/icons/x.svg`는 내용이 바뀐다. `@1.13.2`로 고정한다. |
-| CDN에서 받은 HTML을 `.svg`로 저장한다 | 404·SPA 응답은 `text/html`이다. `content-type`과 본문 `<svg`를 확인하고, `fetch-icons.sh`를 쓴다. |
+| CDN에서 받은 HTML을 `.svg`로 저장한다 | `image/svg+xml`이 아니다(404는 `text/plain`, SPA fallback은 `text/html`). `content-type`과 본문 `<svg`를 확인하고, `fetch-icons.sh`를 쓴다. |
 | `<symbol>`에 `class="bi bi-x"`를 남긴다 | Bootstrap CSS가 없으면 무의미하고, 있으면 크기·색을 덮어쓴다. 제거한다. |
 | `<symbol>`에 `width`/`height`를 남긴다 | `<use>`의 크기 지정이 무시된다. `viewBox`만 남긴다. |
+| `<use fill="#495057">`로 색을 바꾼다 | 심볼의 `fill="currentColor"`가 우선해 검정으로 남는다. `<use color="#495057">` 또는 상위 그룹의 `color`를 쓴다. |
 | 16×16 아이콘을 48px로 확대한다 | 선이 상대적으로 가늘어져 흐릿하다. 24–32px를 쓰거나 노드를 줄인다. |
 | 브랜드 아이콘을 일반 노드에 쓴다 | `github`, `slack`은 제품 노드용이다. 서버·클라우드 일반 노드에는 `server`, `cloud`를 쓴다. |
 | 모든 아이콘에 `-fill` 짝이 있다 | 아니다. 739개는 채운 변형이 없다. 이름을 추측하지 말고 카탈로그에서 확인한다. |
