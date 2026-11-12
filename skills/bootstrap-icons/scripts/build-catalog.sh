@@ -2,33 +2,50 @@
 # Build the Bootstrap Icons name catalog from two upstream snapshots.
 #
 # Usage:
-#   bash build-catalog.sh > references/icon-names.txt
+#   bash build-catalog.sh [OUTPUT_FILE]
+#
+# With OUTPUT_FILE the catalog is written to a temporary file next to it and
+# moved into place only after a successful build, so a failed run never leaves
+# a partial or empty catalog. Without it the catalog goes to stdout.
 #
 # Names come from the pinned jsDelivr file listing of the npm package, so the
 # catalog can never contain an icon that the pinned release does not ship.
 # Categories come from the project site's index.json. Icons missing from the
 # pinned release are dropped with a warning on stderr.
 #
+# Env:
+#   SNAPSHOT  catalog date (default: today, `date +%F`)
+#   NPM_URL   override the pinned npm file-listing URL
+#   SITE_URL  override the site index.json URL
+#
 # Exits nonzero if either fetch fails.
 
 set -euo pipefail
 
 VERSION="1.13.2"
-SNAPSHOT="2026-11-12"
-NPM_URL="https://data.jsdelivr.com/v1/packages/npm/bootstrap-icons@${VERSION}?structure=flat"
-SITE_URL="https://icons.getbootstrap.com/icons/index.json"
+SNAPSHOT="${SNAPSHOT:-$(date +%F)}"
+NPM_URL="${NPM_URL:-https://data.jsdelivr.com/v1/packages/npm/bootstrap-icons@${VERSION}?structure=flat}"
+SITE_URL="${SITE_URL:-https://icons.getbootstrap.com/icons/index.json}"
+EXPECTED_TOTAL=2078
+
+out="${1:-}"
+out_tmp=""
 
 tmp="$(mktemp -d)"
-trap 'rm -rf "$tmp"' EXIT
+trap 'rm -rf "$tmp"; [ -n "$out_tmp" ] && rm -f "$out_tmp"' EXIT
 
-curl -fsSL --retry 3 --retry-delay 2 "$NPM_URL" -o "$tmp/npm.json"
-curl -fsSL --retry 3 --retry-delay 2 "$SITE_URL" -o "$tmp/site.json"
+curl -fsSL --retry 3 --retry-delay 2 --retry-connrefused --retry-all-errors \
+  --max-time 60 "$NPM_URL" -o "$tmp/npm.json"
+curl -fsSL --retry 3 --retry-delay 2 --retry-connrefused --retry-all-errors \
+  --max-time 60 "$SITE_URL" -o "$tmp/site.json"
 
-python3 - "$tmp/npm.json" "$tmp/site.json" "$VERSION" "$SNAPSHOT" <<'PY'
+generate() {
+  python3 - "$tmp/npm.json" "$tmp/site.json" "$VERSION" "$SNAPSHOT" "$EXPECTED_TOTAL" <<'PY'
 import json
 import sys
 
-npm_path, site_path, version, snapshot = sys.argv[1:5]
+npm_path, site_path, version, snapshot, expected = sys.argv[1:6]
+expected = int(expected)
 
 # Site navigation order, not alphabetical.
 CATEGORIES = [
@@ -64,6 +81,7 @@ CATEGORIES = [
 ]
 ORDER = [slug for slug, _ in CATEGORIES]
 LABEL = dict(CATEGORIES)
+RANK = {slug: i for i, slug in enumerate(ORDER)}
 
 with open(npm_path, encoding="utf-8") as f:
     npm = json.load(f)
@@ -88,11 +106,14 @@ for entry in site:
         print(f"warning: dropping {name}: not in bootstrap-icons {version}", file=sys.stderr)
         continue
     slugs = [s for s in (entry.get("c") or []) if s in buckets]
+    if len(slugs) > 1:
+        print(f"warning: {name} lists {len(slugs)} categories, using {slugs[0]}", file=sys.stderr)
     if not slugs:
         uncategorized.append(name)
         print(f"warning: no category for {name}", file=sys.stderr)
-    for slug in slugs:
-        buckets[slug].append(name)
+        continue
+    # One bucket per name keeps the catalog free of duplicate lines.
+    buckets[min(slugs, key=RANK.__getitem__)].append(name)
 
 # Report pinned names the site does not know about; they stay uncategorized.
 known = {e.get("n") for e in site}
@@ -100,19 +121,38 @@ for name in sorted(names - known):
     uncategorized.append(name)
     print(f"warning: no category for {name}", file=sys.stderr)
 
-print(f"# bootstrap-icons {version} · {snapshot} · {len(names)} icons")
-
+total = 0
+sections = []
 for slug in ORDER:
-    items = sorted(set(buckets[slug]))
+    items = sorted(buckets[slug])
     if not items:
+        print(f"warning: known category {slug} is empty", file=sys.stderr)
         continue
-    print(f"## {LABEL[slug]} ({len(items)})")
-    for name in items:
-        print(name)
+    total += len(items)
+    sections.append((LABEL[slug], items))
 
 if uncategorized:
     items = sorted(set(uncategorized))
-    print(f"## Uncategorized ({len(items)})")
+    total += len(items)
+    sections.append(("Uncategorized", items))
+
+if total != expected:
+    print(f"warning: catalog has {total} icons, expected {expected}", file=sys.stderr)
+
+print(f"# bootstrap-icons {version} · {snapshot} · {len(names)} icons")
+for label, items in sections:
+    print(f"## {label} ({len(items)})")
     for name in items:
         print(name)
 PY
+}
+
+if [ -n "$out" ]; then
+  mkdir -p "$(dirname "$out")"
+  out_tmp="$(mktemp "$out.XXXXXX")"
+  generate > "$out_tmp"
+  mv -f "$out_tmp" "$out"
+  out_tmp=""
+else
+  generate
+fi
