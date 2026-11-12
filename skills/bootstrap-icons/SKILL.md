@@ -22,6 +22,8 @@ description: Use when SVG 구조도·문서에 Bootstrap Icons를 넣을 때, �
 | 이름 카탈로그 | [references/icon-names.txt](references/icon-names.txt) |
 | 스냅샷 | 2026-11-12 |
 
+아이콘 path를 파일에 인라인할 때는 MIT 저작권 고지(또는 파일 주석)를 함께 남긴다. 인라인은 재배포다.
+
 모든 아이콘은 `viewBox="0 0 16 16"`, 1px 선 기반이다. 이름은 케밥 케이스이고, 전체 2,078개 이름과 29개 카테고리는 `references/icon-names.txt`에 있다. 새 이름은 그 파일에 있는 것만 쓴다.
 
 ## 빠른 선택
@@ -152,7 +154,7 @@ curl -fsSL "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/icons/database.s
 삽입 규칙:
 
 1. 원본의 바깥 `<svg ...>`를 `<symbol id="bi-<name>" viewBox="0 0 16 16" fill="currentColor">`로 바꾼다. `viewBox`는 원본 값을 그대로 옮긴다.
-2. `class="bi bi-database"`, `width="16"`, `height="16"`은 남기지 않는다. 남기면 문서 CSS·레이아웃과 충돌하고, `<use>`의 크기 지정을 덮어쓴다.
+2. `class="bi bi-database"`, `width="16"`, `height="16"`은 남기지 않는다. `<use>`가 크기를 지정하므로 `<symbol>`의 값이 렌더 크기를 직접 덮어쓰지는 않지만, 남은 `class`는 문서의 CSS/전역 스타일과 충돌하고 `width`/`height`는 의도치 않은 크기가 새어 들어갈 여지를 만든다.
 3. `<?xml ...?>`, `<!DOCTYPE ...>`, 주석은 제거한다. `<symbol>` 안에 두면 XML 선언이 중첩되어 파싱이 깨진다.
 4. 크기와 색은 `<use>`에 준다. `<use href="#bi-database" width="28" height="28" color="#495057"/>`. `x`/`y`로 위치를 잡는다. 색은 `fill`이 아니라 `color`로 준다. `<symbol>`의 `fill="currentColor"`는 상속된 `color`를 따르므로, `<use fill="...">`는 내부 `fill`을 덮어쓰지 못한다.
 5. 기본은 `href`만 쓴다. 구형 렌더러가 필요할 때만 `xmlns:xlink`와 `xlink:href`를 함께 넣는다.
@@ -169,7 +171,7 @@ python3 scripts/build-sprite.py --dir assets/bootstrap-icons --fragment \
   database server shield-lock cloud
 ```
 
-`build-sprite.py`는 XML 선언·DOCTYPE·바깥 `<svg>`를 제거하고, `viewBox`를 심볼로 옮기며, `class`/`width`/`height`를 넣지 않는다. id는 `bi-<name>`이고, `bi-` 접두가 붙은 이름에는 다시 붙이지 않는다. 없는 파일은 `missing: <name>`으로 보고하고 exit 1로 끝난다.
+`build-sprite.py`는 XML 선언·DOCTYPE·바깥 `<svg>`를 제거하고, `viewBox`를 심볼로 옮기며, `class`/`width`/`height`를 넣지 않는다. id는 `bi-<name>`이다. 없는 파일은 `missing: <name>`으로 보고하고 exit 1로 끝난다.
 
 ## 자주 틀리는 것
 
@@ -179,7 +181,7 @@ python3 scripts/build-sprite.py --dir assets/bootstrap-icons --fragment \
 | URL에 버전을 넣지 않는다 | `.../bootstrap-icons@latest/icons/x.svg`는 내용이 바뀐다. `@1.13.2`로 고정한다. |
 | CDN에서 받은 HTML을 `.svg`로 저장한다 | `image/svg+xml`이 아니다(404는 `text/plain`, SPA fallback은 `text/html`). `content-type`과 본문 `<svg`를 확인하고, `fetch-icons.sh`를 쓴다. |
 | `<symbol>`에 `class="bi bi-x"`를 남긴다 | Bootstrap CSS가 없으면 무의미하고, 있으면 크기·색을 덮어쓴다. 제거한다. |
-| `<symbol>`에 `width`/`height`를 남긴다 | `<use>`의 크기 지정이 무시된다. `viewBox`만 남긴다. |
+| `<symbol>`에 `width`/`height`를 남긴다 | `<use>`가 크기를 정하므로 렌더 크기는 유지되지만, 문서 CSS/전역 스타일과 충돌하고 의도치 않은 크기가 새어 들어갈 수 있다. `viewBox`만 남긴다. |
 | `<use fill="#495057">`로 색을 바꾼다 | 심볼의 `fill="currentColor"`가 우선해 검정으로 남는다. `<use color="#495057">` 또는 상위 그룹의 `color`를 쓴다. |
 | 16×16 아이콘을 48px로 확대한다 | 선이 상대적으로 가늘어져 흐릿하다. 24–32px를 쓰거나 노드를 줄인다. |
 | 브랜드 아이콘을 일반 노드에 쓴다 | `github`, `slack`은 제품 노드용이다. 서버·클라우드 일반 노드에는 `server`, `cloud`를 쓴다. |
