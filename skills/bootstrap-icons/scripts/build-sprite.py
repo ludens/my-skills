@@ -5,19 +5,23 @@ Usage:
   build-sprite.py --dir <svgdir> --out <file> <name...>
   build-sprite.py --dir <svgdir> --fragment <name...>
 
-Each input is <svgdir>/<name>.svg. The outer <svg> element is replaced by
+Each input is <svgdir>/<name>.svg. Names are restricted to letters, digits,
+"_" and "-", so a name can never reach outside --dir or break the id attribute.
+The outer <svg> element is replaced by
 <symbol id="bi-<name>" viewBox="<svg viewBox>" fill="currentColor">, so the
 sprite inherits no width, height or Bootstrap class from upstream. A name that
-already starts with "bi-" is not prefixed again.
+already starts with "bi-" is not prefixed again, and a repeated name is emitted
+once.
 
 --out writes a complete file with an XML declaration and a <defs> wrapper. The
 file is written to a temporary file first and moved into place with
 os.replace(), so a failed run never leaves a partial sprite. --fragment prints
 only the symbol blocks to stdout, for pasting into an existing <svg><defs>.
 
-Missing or unparseable inputs are reported as "missing: <name>" or
-"invalid: <name>" on stderr; the remaining names still produce output and the
-run exits 1.
+Invalid names, missing or unparseable inputs are reported as
+"invalid name: <name>", "missing: <name>" or "invalid: <name>" on stderr; the
+remaining names still produce output and the run exits 1. When every name
+fails, an existing --out file is left untouched.
 
 Exit: 0 when every name was converted, 1 when any name failed, 2 for a usage
 error.
@@ -28,15 +32,13 @@ import os
 import re
 import sys
 import tempfile
-import textwrap
 import xml.etree.ElementTree as ET
 
 DEFAULT_VIEWBOX = "0 0 16 16"
 
-DECL_RE = re.compile(r"^\s*<\?xml.*?\?>", re.S)
-DOCTYPE_RE = re.compile(r"<!DOCTYPE[^>\[]*(\[[^\]]*\])?[^>]*>", re.S)
-COMMENT_RE = re.compile(r"<!--.*?-->", re.S)
-OPEN_SVG_RE = re.compile(r"<svg\b([^>]*)>", re.S)
+NAME_RE = re.compile(r"^[A-Za-z0-9_-]+$")
+OPEN_SVG_RE = re.compile(r"<\s*svg\b", re.I)
+CLOSE_SVG_RE = re.compile(r"</\s*svg\s*>", re.I)
 VIEWBOX_RE = re.compile(r"""\bviewBox\s*=\s*["']([^"']*)["']""", re.I)
 
 
@@ -44,54 +46,86 @@ def symbol_id(name):
     return name if name.startswith("bi-") else "bi-" + name
 
 
+def scan_open_tag(text):
+    """Return (attributes, index after ">", self_closing) for the outer <svg>.
+
+    Attributes are scanned by hand because a quoted value may contain ">",
+    which a plain regular expression would treat as the end of the tag.
+    """
+    match = OPEN_SVG_RE.search(text)
+    if not match:
+        raise ValueError("no <svg> element")
+
+    i = match.end()
+    quote = None
+    while i < len(text):
+        char = text[i]
+        if quote:
+            if char == quote:
+                quote = None
+        elif char in "\"'":
+            quote = char
+        elif char == ">":
+            return text[match.end():i], i + 1, text[i - 1] == "/"
+        i += 1
+    raise ValueError("unterminated <svg> tag")
+
+
 def read_inner(path):
     """Return (viewBox, inner markup) for one icon SVG.
 
     Raises ValueError when the file is not a single <svg> element. ElementTree
     parses the text only to reject malformed XML; the inner markup is then cut
-    out of the original text so it is not re-indented or re-serialized.
+    out of the original text, so comments and whitespace inside the icon are
+    preserved byte for byte.
     """
     with open(path, encoding="utf-8") as f:
         text = f.read()
 
     ET.fromstring(text)
 
-    text = DECL_RE.sub("", text, count=1)
-    text = DOCTYPE_RE.sub("", text, count=1)
-    text = COMMENT_RE.sub("", text)
-
-    match = OPEN_SVG_RE.search(text)
-    if not match:
-        raise ValueError("no <svg> element")
-
-    start = match.end()
-    if text[match.start():start].rstrip().endswith("/>"):
+    attributes, inner_start, self_closing = scan_open_tag(text)
+    if self_closing:
         inner = ""
     else:
-        end = text.rfind("</svg>")
-        if end < start:
+        close = CLOSE_SVG_RE.search(text, inner_start)
+        if not close:
             raise ValueError("unclosed <svg> element")
-        inner = text[start:end]
+        inner = text[inner_start:close.start()]
 
-    viewbox = VIEWBOX_RE.search(match.group(1))
-    return (viewbox.group(1) if viewbox else DEFAULT_VIEWBOX), inner.strip()
+    viewbox = VIEWBOX_RE.search(attributes)
+    return (viewbox.group(1) if viewbox else DEFAULT_VIEWBOX), inner
 
 
 def render_symbol(name, viewbox, inner, indent):
+    """Render one <symbol>. Inner markup is emitted exactly as it was read."""
     pad = " " * indent
-    inner_pad = " " * (indent + 2)
-    lines = [f'{pad}<symbol id="{symbol_id(name)}" viewBox="{viewbox}" fill="currentColor">']
-    if inner:
-        body = textwrap.indent(textwrap.dedent(inner), inner_pad)
-        lines.append(body)
-    lines.append(f"{pad}</symbol>")
-    return "\n".join(lines)
+    body = ""
+    if inner.strip():
+        if not inner.startswith("\n"):
+            body += "\n"
+        body += inner
+        if not body.endswith("\n"):
+            body += "\n"
+    head = f'{pad}<symbol id="{symbol_id(name)}" viewBox="{viewbox}" fill="currentColor">'
+    return f"{head}{body}{pad}</symbol>\n"
 
 
-def build_fragment(names, svgdir):
+def build_fragment(names, svgdir, indent):
     blocks = []
     failed = 0
+    seen = set()
     for name in names:
+        if name in seen:
+            print(f"duplicate: {name}", file=sys.stderr)
+            continue
+        seen.add(name)
+
+        if not NAME_RE.match(name):
+            print(f"invalid name: {name}", file=sys.stderr)
+            failed += 1
+            continue
+
         path = os.path.join(svgdir, name + ".svg")
         if not os.path.isfile(path):
             print(f"missing: {name}", file=sys.stderr)
@@ -103,23 +137,13 @@ def build_fragment(names, svgdir):
             print(f"invalid: {name}: {exc}", file=sys.stderr)
             failed += 1
             continue
-        blocks.append(render_symbol(name, viewbox, inner, 0))
-    return "\n".join(blocks), failed
+        blocks.append(render_symbol(name, viewbox, inner, indent))
+    return "".join(blocks), failed
 
 
 def wrap_sprite(fragment):
-    if not fragment:
-        return (
-            '<?xml version="1.0" encoding="UTF-8"?>\n'
-            '<svg xmlns="http://www.w3.org/2000/svg"><defs>\n</defs></svg>\n'
-        )
-    indented = textwrap.indent(fragment, "  ")
-    return (
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<svg xmlns="http://www.w3.org/2000/svg"><defs>\n'
-        f"{indented}\n"
-        "</defs></svg>\n"
-    )
+    open_tag = '<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg"><defs>\n'
+    return open_tag + fragment + "</defs></svg>\n"
 
 
 def write_atomic(path, data):
@@ -151,11 +175,19 @@ def main(argv):
         print(f"not a directory: {args.dir}", file=sys.stderr)
         return 2
 
-    fragment, failed = build_fragment(args.names, args.dir)
+    if not args.fragment:
+        out_dir = os.path.dirname(os.path.abspath(args.out))
+        if not os.path.isdir(out_dir):
+            print(f"not a directory: {out_dir}", file=sys.stderr)
+            return 2
+
+    fragment, failed = build_fragment(args.names, args.dir, 0 if args.fragment else 2)
+
+    if failed and not fragment:
+        return 1
 
     if args.fragment:
-        if fragment:
-            print(fragment)
+        print(fragment, end="")
     else:
         write_atomic(args.out, wrap_sprite(fragment))
 
