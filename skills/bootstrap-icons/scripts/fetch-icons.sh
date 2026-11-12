@@ -34,15 +34,8 @@ EOF
 }
 
 # --retry-all-errors needs curl 7.71; macOS 11 ships 7.64.1 and rejects the
-# flag outright, which would fail every fetch.
-RETRY_ALL_ERRORS=""
-curl_version="$(curl --version 2>/dev/null | awk 'NR == 1 { print $2 }')"
-if [ -n "$curl_version" ] && awk -v v="$curl_version" 'BEGIN {
-    split(v, p, ".")
-    exit !(p[1] > 7 || (p[1] == 7 && p[2] >= 71))
-  }'; then
-  RETRY_ALL_ERRORS="--retry-all-errors"
-fi
+# flag outright, which would fail every fetch. Probed lazily below, because
+# --help and --list must work with no curl installed at all.
 
 if [ ! -f "$CATALOG" ]; then
   echo "missing catalog: $CATALOG" >&2
@@ -81,15 +74,6 @@ normalize_key() {
     | sed -e 's/&/ and /g' -e 's/[^a-z0-9][^a-z0-9]*/-/g' -e 's/^-//' -e 's/-$//'
 }
 
-for arg in "$@"; do
-  case "$arg" in
-    -h|--help)
-      usage
-      exit 0
-      ;;
-  esac
-done
-
 case "${1:-}" in
   --list)
     [ $# -eq 1 ] || { usage >&2; exit 2; }
@@ -102,12 +86,32 @@ case "${1:-}" in
     ;;
 esac
 
+for arg in "$@"; do
+  case "$arg" in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+  esac
+done
+
 OUT_DIR="$1"
 case "$OUT_DIR" in
   -*) usage >&2; exit 2 ;;
 esac
 shift
 [ $# -gt 0 ] || { usage >&2; exit 2; }
+
+# Missing or unparsable curl version keeps the conservative flag set; a real
+# fetch then fails loudly on its own rather than silently dropping retries.
+RETRY_ALL_ERRORS=""
+curl_version="$(curl --version 2>/dev/null | awk 'NR == 1 { print $2 }')" || curl_version=""
+if [ -n "$curl_version" ] && awk -v v="$curl_version" 'BEGIN {
+    split(v, p, ".")
+    exit !(p[1] > 7 || (p[1] == 7 && p[2] >= 71))
+  }' 2>/dev/null; then
+  RETRY_ALL_ERRORS="--retry-all-errors"
+fi
 
 TMP_DIR="$(mktemp -d)"
 PART_FILE=""
