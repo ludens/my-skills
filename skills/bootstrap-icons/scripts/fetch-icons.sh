@@ -106,6 +106,11 @@ shift
 # fetch then fails loudly on its own rather than silently dropping retries.
 RETRY_ALL_ERRORS=""
 curl_version="$(curl --version 2>/dev/null | awk 'NR == 1 { print $2 }')" || curl_version=""
+# "x.y" must not slip past the numeric compare as 0 > 7.
+case $curl_version in
+  [0-9]*.[0-9]*) ;;
+  *) curl_version="" ;;
+esac
 if [ -n "$curl_version" ] && awk -v v="$curl_version" 'BEGIN {
     split(v, p, ".")
     exit !(p[1] > 7 || (p[1] == 7 && p[2] >= 71))
