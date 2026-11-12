@@ -34,9 +34,9 @@ out_tmp=""
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"; [ -n "$out_tmp" ] && rm -f "$out_tmp"' EXIT
 
-curl -fsSL --retry 3 --retry-delay 2 --retry-connrefused --retry-all-errors \
+curl -fsSL --retry 3 --retry-delay 2 --retry-connrefused \
   --max-time 60 "$NPM_URL" -o "$tmp/npm.json"
-curl -fsSL --retry 3 --retry-delay 2 --retry-connrefused --retry-all-errors \
+curl -fsSL --retry 3 --retry-delay 2 --retry-connrefused \
   --max-time 60 "$SITE_URL" -o "$tmp/site.json"
 
 generate() {
@@ -97,23 +97,29 @@ with open(site_path, encoding="utf-8") as f:
 
 buckets = {slug: [] for slug in ORDER}
 uncategorized = []
+seen = set()
 
 for entry in site:
     name = entry.get("n")
     if not name:
         continue
+    if name in seen:
+        print(f"warning: dropping duplicate entry for {name}", file=sys.stderr)
+        continue
+    seen.add(name)
     if name not in names:
         print(f"warning: dropping {name}: not in bootstrap-icons {version}", file=sys.stderr)
         continue
     slugs = [s for s in (entry.get("c") or []) if s in buckets]
-    if len(slugs) > 1:
-        print(f"warning: {name} lists {len(slugs)} categories, using {slugs[0]}", file=sys.stderr)
     if not slugs:
         uncategorized.append(name)
         print(f"warning: no category for {name}", file=sys.stderr)
         continue
     # One bucket per name keeps the catalog free of duplicate lines.
-    buckets[min(slugs, key=RANK.__getitem__)].append(name)
+    slug = min(slugs, key=RANK.__getitem__)
+    if len(slugs) > 1:
+        print(f"warning: {name} lists {len(slugs)} categories, using {slug}", file=sys.stderr)
+    buckets[slug].append(name)
 
 # Report pinned names the site does not know about; they stay uncategorized.
 known = {e.get("n") for e in site}
@@ -151,6 +157,7 @@ if [ -n "$out" ]; then
   mkdir -p "$(dirname "$out")"
   out_tmp="$(mktemp "$out.XXXXXX")"
   generate > "$out_tmp"
+  chmod 644 "$out_tmp"
   mv -f "$out_tmp" "$out"
   out_tmp=""
 else
