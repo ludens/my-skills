@@ -13,8 +13,8 @@
 # actually contains an <svg> element; downloads go to a temporary file first,
 # so a failed fetch never leaves a partial or empty <name>.svg behind.
 #
-# Exit: 0 when every name was fetched or skipped, 1 when any failed, 2 for a
-# usage error or an unknown category.
+# Exit: 0 when every name was fetched or skipped, 1 when any fetch failed
+# (including an unknown category), 2 for a usage error.
 
 set -euo pipefail
 
@@ -25,13 +25,24 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 CATALOG="$SCRIPT_DIR/../references/icon-names.txt"
 
 usage() {
-  cat >&2 <<EOF
+  cat <<EOF
 usage: fetch-icons.sh <outdir> <name...>
        fetch-icons.sh <outdir> --all
        fetch-icons.sh <outdir> --category <slug|name>
        fetch-icons.sh --list
 EOF
 }
+
+# --retry-all-errors needs curl 7.71; macOS 11 ships 7.64.1 and rejects the
+# flag outright, which would fail every fetch.
+RETRY_ALL_ERRORS=""
+curl_version="$(curl --version 2>/dev/null | awk 'NR == 1 { print $2 }')"
+if [ -n "$curl_version" ] && awk -v v="$curl_version" 'BEGIN {
+    split(v, p, ".")
+    exit !(p[1] > 7 || (p[1] == 7 && p[2] >= 71))
+  }'; then
+  RETRY_ALL_ERRORS="--retry-all-errors"
+fi
 
 if [ ! -f "$CATALOG" ]; then
   echo "missing catalog: $CATALOG" >&2
@@ -70,35 +81,52 @@ normalize_key() {
     | sed -e 's/&/ and /g' -e 's/[^a-z0-9][^a-z0-9]*/-/g' -e 's/^-//' -e 's/-$//'
 }
 
+for arg in "$@"; do
+  case "$arg" in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+  esac
+done
+
 case "${1:-}" in
   --list)
-    [ $# -eq 1 ] || { usage; exit 2; }
+    [ $# -eq 1 ] || { usage >&2; exit 2; }
     names_of_catalog
     exit 0
     ;;
-  -h|--help)
-    usage
-    exit 0
-    ;;
   "")
-    usage
+    usage >&2
     exit 2
     ;;
 esac
 
 OUT_DIR="$1"
+case "$OUT_DIR" in
+  -*) usage >&2; exit 2 ;;
+esac
 shift
-[ $# -gt 0 ] || { usage; exit 2; }
+[ $# -gt 0 ] || { usage >&2; exit 2; }
 
 TMP_DIR="$(mktemp -d)"
-trap 'rm -rf "$TMP_DIR"' EXIT
+PART_FILE=""
+cleanup() {
+  rm -rf "$TMP_DIR"
+  if [ -n "$PART_FILE" ]; then
+    rm -f "$PART_FILE"
+  fi
+}
+trap cleanup EXIT
+trap 'cleanup; exit 130' INT
+trap 'cleanup; exit 143' TERM
 
 NAMES_FILE="$TMP_DIR/names"
 FAILED_FILE="$TMP_DIR/failed"
 names_of_catalog > "$NAMES_FILE"
 : > "$FAILED_FILE"
 
-mkdir -p "$OUT_DIR"
+mkdir -p -- "$OUT_DIR"
 
 fetched=0
 skipped=0
@@ -114,35 +142,40 @@ fetch_one() {
   fi
 
   part="$(mktemp "$OUT_DIR/.fetch.XXXXXX")"
-  ctype="$(curl -fsSL --max-time 60 --retry 3 --retry-delay 2 --retry-all-errors \
-    -w '%{content_type}' -o "$part" "$BASE_URL/$name.svg" 2>/dev/null)" || ctype=""
+  PART_FILE="$part"
+  # stderr stays visible so a rejected flag, TLS or HTTP error is diagnosable.
+  ctype="$(curl -fsSL --max-time 60 --retry 3 --retry-delay 2 $RETRY_ALL_ERRORS \
+    -w '%{content_type}' -o "$part" "$BASE_URL/$name.svg")" || ctype=""
   ctype="${ctype%%;*}"
 
   if [ "$ctype" != "image/svg+xml" ] || ! grep -q '<svg' "$part" 2>/dev/null; then
     rm -f "$part"
+    PART_FILE=""
     echo "$name" >> "$FAILED_FILE"
     return 0
   fi
 
+  chmod 644 "$part"
   mv -f "$part" "$dest"
+  PART_FILE=""
   fetched=$((fetched + 1))
 }
 
 case "$1" in
   --all)
-    [ $# -eq 1 ] || { usage; exit 2; }
+    [ $# -eq 1 ] || { usage >&2; exit 2; }
     while IFS= read -r name; do
       fetch_one "$name"
     done < "$NAMES_FILE"
     ;;
   --category)
-    [ $# -eq 2 ] || { usage; exit 2; }
+    [ $# -eq 2 ] || { usage >&2; exit 2; }
     key="$(normalize_key "$2")"
     list="$TMP_DIR/category"
     names_of_category "$key" > "$list"
     if [ ! -s "$list" ]; then
       echo "unknown category: $2" >&2
-      exit 2
+      exit 1
     fi
     while IFS= read -r name; do
       fetch_one "$name"
