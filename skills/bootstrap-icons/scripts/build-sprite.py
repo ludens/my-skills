@@ -23,6 +23,9 @@ Invalid names, missing or unparseable inputs are reported as
 remaining names still produce output and the run exits 1. When every name
 fails, an existing --out file is left untouched.
 
+Inner markup runs to the last uncommented </svg>, so a nested <svg> or a
+comment mentioning </svg> never truncates a symbol.
+
 Exit: 0 when every name was converted, 1 when any name failed, 2 for a usage
 error.
 """
@@ -36,9 +39,10 @@ import xml.etree.ElementTree as ET
 
 DEFAULT_VIEWBOX = "0 0 16 16"
 
-NAME_RE = re.compile(r"^[A-Za-z0-9_-]+$")
+NAME_RE = re.compile(r"[A-Za-z0-9_-]+")
 OPEN_SVG_RE = re.compile(r"<\s*svg\b", re.I)
 CLOSE_SVG_RE = re.compile(r"</\s*svg\s*>", re.I)
+COMMENT_RE = re.compile(r"<!--.*?-->", re.S)
 VIEWBOX_RE = re.compile(r"""\bviewBox\s*=\s*["']([^"']*)["']""", re.I)
 
 
@@ -46,13 +50,23 @@ def symbol_id(name):
     return name if name.startswith("bi-") else "bi-" + name
 
 
-def scan_open_tag(text):
+def mask_comments(text):
+    """Blank out comment spans so tag searches cannot match inside a comment.
+
+    The replacement is space-filled and the same length, so indices into the
+    masked text are valid indices into the original.
+    """
+    return COMMENT_RE.sub(lambda m: " " * (m.end() - m.start()), text)
+
+
+def scan_open_tag(text, masked):
     """Return (attributes, index after ">", self_closing) for the outer <svg>.
 
-    Attributes are scanned by hand because a quoted value may contain ">",
-    which a plain regular expression would treat as the end of the tag.
+    index after ">" for the outer <svg>. Attributes are scanned by hand on
+    the original text because a quoted value may contain ">", which a plain
+    regular expression would treat as the end of the tag.
     """
-    match = OPEN_SVG_RE.search(text)
+    match = OPEN_SVG_RE.search(masked)
     if not match:
         raise ValueError("no <svg> element")
 
@@ -78,20 +92,24 @@ def read_inner(path):
     parses the text only to reject malformed XML; the inner markup is then cut
     out of the original text, so comments and whitespace inside the icon are
     preserved byte for byte.
+
+    Inner markup runs to the last uncommented </svg>, so a comment mentioning
+    </svg> or a nested <svg> cannot truncate a symbol.
     """
     with open(path, encoding="utf-8") as f:
         text = f.read()
 
     ET.fromstring(text)
 
-    attributes, inner_start, self_closing = scan_open_tag(text)
+    masked = mask_comments(text)
+    attributes, inner_start, self_closing = scan_open_tag(text, masked)
     if self_closing:
         inner = ""
     else:
-        close = CLOSE_SVG_RE.search(text, inner_start)
-        if not close:
+        closes = list(CLOSE_SVG_RE.finditer(masked, inner_start))
+        if not closes:
             raise ValueError("unclosed <svg> element")
-        inner = text[inner_start:close.start()]
+        inner = text[inner_start:closes[-1].start()]
 
     viewbox = VIEWBOX_RE.search(attributes)
     return (viewbox.group(1) if viewbox else DEFAULT_VIEWBOX), inner
@@ -121,7 +139,7 @@ def build_fragment(names, svgdir, indent):
             continue
         seen.add(name)
 
-        if not NAME_RE.match(name):
+        if not NAME_RE.fullmatch(name):
             print(f"invalid name: {name}", file=sys.stderr)
             failed += 1
             continue
@@ -176,6 +194,9 @@ def main(argv):
         return 2
 
     if not args.fragment:
+        if os.path.isdir(args.out):
+            print(f"is a directory: {args.out}", file=sys.stderr)
+            return 2
         out_dir = os.path.dirname(os.path.abspath(args.out))
         if not os.path.isdir(out_dir):
             print(f"not a directory: {out_dir}", file=sys.stderr)
