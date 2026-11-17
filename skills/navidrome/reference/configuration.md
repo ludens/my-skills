@@ -63,6 +63,8 @@ navidrome --musicfolder "/mnt/music"
 | `Scanner.PurgeMissing` | `ND_SCANNER_PURGEMISSING` | `never`(표시만), `always`, `full`(전체 스캔 후) | `never` |
 | `Scanner.FollowSymlinks` | `ND_SCANNER_FOLLOWSYMLINKS` | 심볼릭 링크 따라가기 | `true` |
 | `Scanner.IgnoreDotFolders` | `ND_SCANNER_IGNOREDOTFOLDERS` | 점으로 시작하는 폴더 무시 | `true` |
+| `Scanner.ArtistJoiner` | `ND_SCANNER_ARTISTJOINER` | 다중 아티스트 표시명 연결 문자열 | ` • ` |
+| `Scanner.ArtistSplitExceptions` | `ND_SCANNER_ARTISTSPLITEXCEPTIONS` | 아티스트 구분자로 쪼개지 않을 이름 목록(예: `AC/DC`) | 비어 있음 |
 | `AutoImportPlaylists` | `ND_AUTOIMPORTPLAYLISTS` | `.m3u` 자동 가져오기 | `true` |
 | `PlaylistsPath` | `ND_PLAYLISTSPATH` | 재생목록 검색 경로. `MusicFolder` 기준 상대 경로만 | 비어 있음(전체) |
 | `PID.Album` | `ND_PID_ALBUM` | 앨범 ID에 쓸 태그 | `musicbrainz_albumid\|albumartistid,album,albumversion,releasedate` |
@@ -137,6 +139,8 @@ navidrome --musicfolder "/mnt/music"
 | --- | --- | --- | --- |
 | `CoverArtPriority` | `ND_COVERARTPRIORITY` | 커버 아트 탐색 순서. `embedded`는 파일 내장 이미지 | `cover.*, folder.*, front.*, embedded, external` |
 | `ArtistArtPriority` | `ND_ARTISTARTPRIORITY` | 아티스트 이미지 탐색 순서 | `artist.*, album/artist.*, external` |
+| `ArtistImageFolder` | `ND_ARTISTIMAGEFOLDER` | 아티스트 이미지 중앙 폴더. `ArtistArtPriority`에 `image-folder`가 있어야 쓴다 | 비어 있음 |
+| `DiscArtPriority` | `ND_DISCARTPRIORITY` | 다중 디스크 앨범의 디스크별 아트워크 탐색 순서. 빈 값이면 앨범 아트로 통일 | `disc*.*, cd*.*, cover.*, folder.*, front.*, discsubtitle, embedded` |
 | `LyricsPriority` | `ND_LYRICSPRIORITY` | 가사 소스 순서 | `.ttml,.yaml,.yml,.elrc,.lrc,.srt,.txt,embedded` |
 | `EnableArtworkUpload` | `ND_ENABLEARTWORKUPLOAD` | UI에서 아트워크 업로드(JPEG/PNG/WebP/GIF, 최대 10MB) | `true` |
 | `MaxImageUploadSize` | `ND_MAXIMAGEUPLOADSIZE` | 업로드 최대 크기 | `10MB` |

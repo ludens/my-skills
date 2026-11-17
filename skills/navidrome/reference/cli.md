@@ -89,14 +89,64 @@ navidrome backup restore --backup-file navidrome_backup_2026.04.01_04.00.00.db
 - `restore`는 `YES` 확인 또는 `--force`. 상대 경로는 `Backup.Path` 기준.
 - **`restore` 전에 Navidrome을 중지한다.** 백업 이후의 사용자·재생 횟수·재생목록 변경은 사라진다.
 
-되돌릴 수 없는 명령: `backup restore`, `backup prune`, `missing fix`. 실행 전 `backup create`를 먼저 한다.
+되돌릴 수 없는 명령: `backup restore`, `backup prune`(백업 삭제), `missing fix`. 실행 전 `backup create`를 먼저 한다.
 
-기타 자주 쓰는 명령:
+## scan
+
+라이브러리의 새 파일·변경 파일·삭제된 파일을 찾는다.
 
 ```bash
-navidrome scan --full          # 전체 스캔
+navidrome scan                          # 변경분 스캔
+navidrome scan --full                   # 모든 폴더 검사, mtime 무시
+navidrome scan -t 1:Music/Rock          # 라이브러리 1의 Music/Rock만
+navidrome scan -t 1:Music/Rock -t 2:Audiobooks
+navidrome scan --target-file ./targets.txt
+```
+
+- `-f, --full`: mtime을 무시하고 전부 다시 읽는다. 태그를 일괄 수정한 뒤 쓴다.
+- `-t, --target`: `libraryID:folderPath`. 경로는 라이브러리 루트 기준. 반복 지정 가능.
+- `--target-file`: 한 줄에 하나씩 target. `--target`과 함께 주면 파일만 쓴다.
+- `--subprocess`는 서버 내부용이다. 직접 넘기지 않는다.
+- 라이브러리 ID는 `user list`의 libraries 열에서 확인한다.
+
+## missing
+
+스캔이 찾지 못한 파일은 DB에 남아 missing으로 표시된다. 재생 횟수·별점·북마크를 새 파일로 옮기려면 `fix`를 쓴다.
+
+```bash
+navidrome missing list                      # CSV: id, library id, title, album, artist, path
+navidrome missing list --format json
+navidrome missing fix "Rock/Old/track01.mp3" "Rock/New/track01.mp3"
+navidrome missing fix 3Unsdwsei9i2ZvRtFKRfwA 7KpqZmXe4Ab2NvTuGHRcxQ
+navidrome missing fix 2:"Podcasts/ep01.mp3" 2:"Podcasts/episode-01.mp3"
+```
+
+- 첫 인자는 missing 파일, 두 번째는 데이터를 받을 파일.
+- 인자는 media file ID, 라이브러리 상대 경로, `libraryID:path` 중 하나.
+- 대상 파일은 이미 스캔되어 있어야 하고 missing이 아니어야 한다.
+- `fix`는 되돌릴 수 없다. 대량 작업 전 `backup create`.
+- DB에서 영구 삭제하는 방법은 `Scanner.PurgeMissing` 또는 관리자 UI의 Missing Files 메뉴다. 둘 다 재생 기록을 지운다.
+
+## inspect
+
+파일 태그를 Navidrome이 읽는 형태로 출력한다. 원본 태그와 매핑된 태그를 함께 보여준다.
+
+```bash
+navidrome inspect "Artist/Album/01 Track.flac"
+navidrome inspect --format pretty "/music/Artist/Album/01 Track.flac"
+navidrome inspect --format yaml /music/Artist/Album/*.mp3
+docker compose run --rm navidrome inspect "/music/Artist/Album/01 Track.flac"
+```
+
+- `-f, --format`: `pretty`, `toml`, `yaml`, `json`, `jsonindent`(기본).
+- 오디오가 아니거나 읽을 수 없는 파일은 경고를 남기고 건너뛴다.
+- Docker에서는 컨테이너 안 경로를 넘긴다.
+
+## 기타
+
+```bash
 navidrome search rebuild       # 검색 색인 재구축 (서버 중지 후)
-navidrome inspect <file>       # 파일 태그 확인
+navidrome doctor               # DB 문제 검사
 ```
 
 플래그는 릴리스마다 바뀔 수 있으므로 설치 버전에서 `--help`로 확인한다.
