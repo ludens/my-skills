@@ -154,6 +154,24 @@ def search(client, artist, song):
     return query, candidates
 
 
+def album_artist_id(doc):
+    m = re.search(r'<th scope="row">아티스트</th>\s*<td[^>]*>(.*?)</td>', doc, re.S)
+    if not m:
+        return None
+    a = re.search(r"/artist/(\d+)", m.group(1))
+    return a.group(1) if a else None
+
+
+def artist_meta(client, artist_id):
+    doc = client.get(BASE + "/artist/" + artist_id)
+    ld = jsonld(doc, "MusicGroup")
+    return {
+        "name": ld.get("name") or "없음",
+        "image_url": ld.get("image") or meta(doc, "og:image") or "없음",
+        "url": ld.get("sameAs") or BASE + "/artist/" + artist_id,
+    }
+
+
 def album_meta(client, aid):
     doc = client.get(BASE + "/album/" + aid)
     ld, info = jsonld(doc, "MusicAlbum"), info_table(doc)
@@ -174,7 +192,7 @@ def album_meta(client, aid):
         "total_discs": len(discs),
         "genre": info.get("장르"),
         "url": BASE + "/album/" + aid,
-    }, rows
+    }, rows, album_artist_id(doc)
 
 
 def participants(doc):
@@ -207,7 +225,7 @@ def track_meta(client, tid, preferred_album=None):
     ld, info = jsonld(doc, "MusicRecording"), info_table(doc)
     part, full = participants(doc)
     aid = preferred_album or album_id(child(ld, "inAlbum").get("url") or "")
-    album, rows = (album_meta(client, aid) if aid else ({}, []))
+    album, rows, _artist_id = (album_meta(client, aid) if aid else ({}, [], None))
     match = next((r for r in rows if r[0] == tid), (None, None, None))
     number = meta(doc, "sc:track_no") or match[2]
     result = {

@@ -9,6 +9,27 @@ sys.path.insert(0, str(Path(__file__).parent))
 import fetch_bugs as fb
 
 
+ALBUM_DOC = '''
+<table class="info">
+  <tr><th scope="row">아티스트</th><td><a href="https://music.bugs.co.kr/artist/80327438">유나</a></td></tr>
+</table>
+<a href="https://music.bugs.co.kr/artist/99999999">참여 아티스트</a>
+'''
+
+ARTIST_DOC = '''
+<script type="application/ld+json">{"@graph":[
+  {"@type":"WebPage","name":"무관"},
+  {"@type":"MusicGroup","name":"유나",
+   "image":"https://image.bugsm.co.kr/artist/images/1200/803274/80327438.jpg",
+   "sameAs":"https://music.bugs.co.kr/artist/80327438"}
+]}</script>
+'''
+
+class FakeClient:
+    def get(self, url):
+        return ARTIST_DOC
+
+
 DOC = """
 <meta property="sc:track_no" content="1"/>
 <meta property="og:title" content="Ice Cream / 유나 (ITZY)"/>
@@ -63,6 +84,24 @@ class ParserTest(unittest.TestCase):
     def test_lyrics_with_attributes(self):
         doc = '<div class="foo lyricsContainer bar"><span>x</span><xmp>가사</xmp></div>'
         self.assertEqual(fb.lyrics(doc), "가사")
+
+    def test_album_artist_id_uses_info_row(self):
+        self.assertEqual(fb.album_artist_id(ALBUM_DOC), "80327438")
+
+    def test_album_artist_id_missing(self):
+        self.assertIsNone(fb.album_artist_id("<html/>"))
+
+    def test_artist_meta_from_graph(self):
+        got = fb.artist_meta(FakeClient(), "80327438")
+        self.assertEqual(got["name"], "유나")
+        self.assertEqual(got["image_url"], "https://image.bugsm.co.kr/artist/images/1200/803274/80327438.jpg")
+        self.assertEqual(got["url"], "https://music.bugs.co.kr/artist/80327438")
+
+    def test_artist_meta_without_image(self):
+        class NoImage(FakeClient):
+            def get(self, url):
+                return '<script type="application/ld+json">{"@type":"MusicGroup","name":"유나"}</script>'
+        self.assertEqual(fb.artist_meta(NoImage(), "80327438")["image_url"], "없음")
 
 
 if __name__ == "__main__":
