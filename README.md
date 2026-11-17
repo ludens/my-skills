@@ -20,6 +20,7 @@
 | `bootstrap-icons` | Bootstrap Icons의 이름을 찾고, SVG를 내려받아 구조도에 인라인 심볼로 삽입합니다. |
 | `usercss` | Stylus용 UserCSS 스타일(메타데이터·`@var`·`@preprocessor`·`@-moz-document`)을 작성하고 설치·배포합니다. |
 | `navidrome` | Navidrome 음악 서버 설치·설정·CLI·기능·Subsonic API·트러블슈팅 정보를 공식 문서 기준으로 제공합니다. |
+| `bugs-track-info` | 벅스뮤직에서 가수·곡명으로 앨범·곡 태그용 정보(커버, 발매일, 크레딧, 가사 등)를 가져옵니다. |
 
 ## 설치
 
