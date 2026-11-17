@@ -155,7 +155,10 @@ def search(client, artist, song):
 
 
 def album_artist_id(doc):
-    m = re.search(r'<th scope="row">아티스트</th>\s*<td[^>]*>(.*?)</td>', doc, re.S)
+    table = re.search(r'<table class="info"[^>]*>(.*?)</table>', doc, re.S)
+    if not table:
+        return None
+    m = re.search(r'<th scope="row">아티스트</th>\s*<td[^>]*>(.*?)</td>', table.group(1), re.S)
     if not m:
         return None
     a = re.search(r"/artist/(\d+)", m.group(1))

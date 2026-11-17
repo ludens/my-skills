@@ -108,6 +108,10 @@ class ParserTest(unittest.TestCase):
     def test_album_artist_id_missing(self):
         self.assertIsNone(fb.album_artist_id("<html/>"))
 
+    def test_album_artist_id_ignores_row_outside_info_table(self):
+        decoy = '<tr><th scope="row">아티스트</th><td><a href="/artist/111">오답</a></td></tr>'
+        self.assertEqual(fb.album_artist_id(decoy + ALBUM_DOC), "80327438")
+
     def test_artist_meta_from_graph(self):
         got = fb.artist_meta(FakeClient(), "80327438")
         self.assertEqual(got["name"], "유나")
