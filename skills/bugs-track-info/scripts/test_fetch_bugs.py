@@ -30,6 +30,23 @@ class FakeClient:
         return ARTIST_DOC
 
 
+TRACK_DOC = ('<meta property="og:title" content="Ice Cream / 유나 (ITZY)"/>'
+             '<script type="application/ld+json">{"@type":"MusicRecording",'
+             '"name":"Ice Cream","inAlbum":{"url":"https://music.bugs.co.kr/album/20798430"}}</script>')
+ALBUM_MIN_DOC = ('<script type="application/ld+json">{"@type":"MusicAlbum",'
+                 '"name":"Ice Cream","image":"https://img/a.jpg"}</script>' + ALBUM_DOC)
+
+class RoutingClient:
+    def get(self, url):
+        if "/artist/" in url:
+            return ARTIST_DOC
+        if "/track/" in url:
+            return TRACK_DOC
+        if "/album/" in url:
+            return ALBUM_MIN_DOC
+        raise AssertionError(url)
+
+
 DOC = """
 <meta property="sc:track_no" content="1"/>
 <meta property="og:title" content="Ice Cream / 유나 (ITZY)"/>
@@ -102,6 +119,27 @@ class ParserTest(unittest.TestCase):
             def get(self, url):
                 return '<script type="application/ld+json">{"@type":"MusicGroup","name":"유나"}</script>'
         self.assertEqual(fb.artist_meta(NoImage(), "80327438")["image_url"], "없음")
+
+    def test_flag_off_omits_artist_key(self):
+        got = fb.track_meta(RoutingClient(), "33878893", want_artist_image=False)
+        self.assertNotIn("artist", got)
+
+    def test_flag_on_adds_artist_image(self):
+        got = fb.track_meta(RoutingClient(), "33878893", want_artist_image=True)
+        self.assertEqual(got["artist"]["image_url"],
+                         "https://image.bugsm.co.kr/artist/images/1200/803274/80327438.jpg")
+
+    def test_artist_failure_keeps_core_fields(self):
+        class FailArtist(RoutingClient):
+            def get(self, url):
+                if "/artist/" in url:
+                    raise RuntimeError("bot wall")
+                return super().get(url)
+        got = fb.track_meta(FailArtist(), "33878893", want_artist_image=True)
+        self.assertEqual(got["album"]["name"], "Ice Cream")
+        self.assertEqual(got["track"]["title"], "Ice Cream")
+        self.assertEqual(got["artist"]["image_url"], "없음")
+        self.assertTrue(any("아티스트 이미지" in n for n in got["notes"]))
 
 
 if __name__ == "__main__":

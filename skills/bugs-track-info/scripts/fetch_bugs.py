@@ -220,7 +220,7 @@ def lyrics(doc):
     return html.unescape(xmp.group(1)).strip() if xmp else "없음"
 
 
-def track_meta(client, tid, preferred_album=None):
+def track_meta(client, tid, preferred_album=None, want_artist_image=False):
     doc = client.get(BASE + "/track/" + tid)
     ld, info = jsonld(doc, "MusicRecording"), info_table(doc)
     part, full = participants(doc)
@@ -247,6 +247,16 @@ def track_meta(client, tid, preferred_album=None):
         result["notes"].append("전체 보기 레이어 없음: 작곡/작사/편곡이 없을 수 있음")
     if not aid:
         result["notes"].append("앨범 ID 없음: 앨범/디스크 정보 수집 불가")
+    if want_artist_image:
+        if not _artist_id:
+            result["artist"] = {"name": "없음", "image_url": "없음", "url": "없음"}
+            result["notes"].append("앨범 아티스트 ID 없음: 아티스트 이미지 조회 불가")
+        else:
+            try:
+                result["artist"] = artist_meta(client, _artist_id)
+            except (RuntimeError, OSError, urllib.error.URLError) as exc:
+                result["artist"] = {"name": "없음", "image_url": "없음", "url": "없음"}
+                result["notes"].append("아티스트 이미지 조회 실패: " + str(exc))
     return result
 
 
@@ -256,6 +266,7 @@ def main():
     ap.add_argument("--song")
     ap.add_argument("--track")
     ap.add_argument("--album")
+    ap.add_argument("--artist-image", action="store_true")
     args = ap.parse_args()
 
     tid = id_from(args.track, "track")
@@ -277,7 +288,7 @@ def main():
                 return 1
             tid = candidates[0]["track_id"]
             out["notes"] = []
-        out.update(track_meta(client, tid, aid))
+        out.update(track_meta(client, tid, aid, want_artist_image=args.artist_image))
         if "candidates" in out and out["candidates"][0]["score"] < 5:
             out["notes"].append("검색 1위가 정확 일치 아님: 후보 확인 필요")
     except (RuntimeError, OSError, urllib.error.URLError) as exc:

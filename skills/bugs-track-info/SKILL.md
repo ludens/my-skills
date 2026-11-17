@@ -12,6 +12,7 @@ description: 벅스뮤직(music.bugs.co.kr)에서 음원 파일 태그용 앨범
 - 가수명 + 곡명. 예: `유나`, `Ice Cream`
 - 곡 URL 또는 숫자 ID. 예: `https://music.bugs.co.kr/track/33878893`, `33878893`
 - 앨범 URL 또는 숫자 ID와 곡 ID 조합. 예: `--album 20798430 --track 33878893`
+- 아티스트 이미지가 필요하면 `--artist-image`를 붙인다. 기본은 끄기. 곡의 대표 아티스트가 아니라 앨범 아티스트 기준.
 
 ## 실행
 
@@ -19,6 +20,7 @@ description: 벅스뮤직(music.bugs.co.kr)에서 음원 파일 태그용 앨범
 python3 skills/bugs-track-info/scripts/fetch_bugs.py --artist "유나 (ITZY)" --song "Ice Cream"
 python3 skills/bugs-track-info/scripts/fetch_bugs.py --track 33878893
 python3 skills/bugs-track-info/scripts/fetch_bugs.py --album 20798430 --track 33878893
+python3 skills/bugs-track-info/scripts/fetch_bugs.py --track 33878893 --artist-image
 ```
 
 stdout에 JSON 하나가 나온다. 표준 라이브러리만 쓴다. 설치할 의존성 없다.
@@ -34,6 +36,7 @@ stdout에 JSON 하나가 나온다. 표준 라이브러리만 쓴다. 설치할 
 | 앨범명 | JSON-LD `name`. 없으면 `og:title`의 ` / ` 앞 부분 |
 | 앨범 커버 | JSON-LD `image` (`og:image`, 1200x1200) |
 | 앨범 아티스트 | JSON-LD `byArtist.name`. 없으면 기본정보 표 `아티스트` |
+| 아티스트 이미지 (`--artist-image`) | 앨범 기본정보 `아티스트` 링크의 ID로 `/artist/{id}`를 요청, JSON-LD `MusicGroup.image` (1200x1200) |
 | 발매일 | JSON-LD `datePublished`. 페이지 표기는 `YYYY.MM.DD` |
 | 총 트랙수 | 앨범 수록곡 표의 `trackId` 행 수 |
 | 총 디스크수 | 수록곡 `disc_id`의 서로 다른 값 개수 |
@@ -77,15 +80,20 @@ stdout에 JSON 하나가 나온다. 표준 라이브러리만 쓴다. 설치할 
 ### 가사
 …
 
+## 아티스트 이미지 (`--artist-image` 사용 시에만)
+- 이름: …
+- 이미지 URL: …
+
 ## 출처
 - 곡: https://music.bugs.co.kr/track/{id}
 - 앨범: https://music.bugs.co.kr/album/{id}
 ```
 
-없는 값은 `없음`이다. 추측으로 채우지 않는다. 총 디스크수와 디스크 번호는 페이지에 명시된 필드가 아니라 `disc_id`에서 유도한 값임을 출력에 한 줄로 적는다.
+없는 값은 `없음`이다. 추측으로 채우지 않는다. 총 디스크수와 디스크 번호는 페이지에 명시된 필드가 아니라 `disc_id`에서 유도한 값임을 출력에 한 줄로 적는다. `--artist-image`가 없으면 아티스트 이미지 블록과 JSON의 `artist` 키를 출력하지 않는다.
 
 ## 실패 처리
 
 - 검색 결과 없음: 질의를 다시 적거나 URL을 달라고 한다.
 - 429 반복: 벅스 차단으로 보고하고 중단한다. 우회 위해 다른 사이트를 쓰지 않는다.
 - 앨범 ID 없음: 곡 정보만 출력하고 앨범·디스크 필드는 `없음`으로 둔다.
+- 아티스트 이미지 조회 실패: 전체 조회는 유지하고 `artist.image_url`을 `없음`으로 두고 `notes`에 경고를 적는다. 앨범 아티스트 ID가 없을 때도 같다.
