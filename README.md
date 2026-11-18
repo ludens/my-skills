@@ -21,6 +21,7 @@
 | `usercss` | Stylus용 UserCSS 스타일(메타데이터·`@var`·`@preprocessor`·`@-moz-document`)을 작성하고 설치·배포합니다. |
 | `navidrome` | Navidrome 음악 서버 운영(스캔·누락 파일·DB 백업/복구·재생목록·멀티라이브러리)과 태그 기반 앨범 그룹핑·Persistent ID·Subsonic API 정보를 공식 문서 기준으로 제공합니다. |
 | `bugs-track-info` | 벅스뮤직에서 가수·곡명으로 앨범·곡 태그용 정보(커버, 발매일, 크레딧, 가사 등)를 가져옵니다. |
+| `sync-lrc` | 음원 메타데이터로 LRCLIB을 조회해 같은 이름의 `.lrc` 사이드카(싱크 가사)를 만들고, 기존 파일은 백업합니다. |
 
 ## 설치
 
