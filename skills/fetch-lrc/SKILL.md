@@ -27,7 +27,7 @@ description: Use when a user wants a synced-lyrics .lrc sidecar for an audio fil
 입력:
 
 ```
-python3 sync_lrc.py <음원경로> [--lyrics <싱크가사파일>] [--out <출력경로>]
+python3 fetch_lrc.py <음원경로> [--lyrics <싱크가사파일>] [--out <출력경로>]
 ```
 
 - 음원: `.m4a`, `.mp3`, `.flac` 등 ffprobe가 읽는 형식
