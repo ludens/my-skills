@@ -215,6 +215,14 @@ def participants(doc):
     return out, True
 
 
+def lyrics(doc):
+    box = re.search(r'<div[^>]*class="[^"]*lyricsContainer[^"]*"[^>]*>', doc)
+    if not box:
+        return "없음"
+    xmp = re.search(r"<xmp[^>]*>(.*?)</xmp>", doc[box.end():], re.S)
+    return html.unescape(xmp.group(1)).strip() if xmp else "없음"
+
+
 def track_meta(client, tid, preferred_album=None, want_artist_image=False):
     doc = client.get(BASE + "/track/" + tid)
     ld, info = jsonld(doc, "MusicRecording"), info_table(doc)
@@ -233,6 +241,7 @@ def track_meta(client, tid, preferred_album=None, want_artist_image=False):
             "composer": part.get("작곡", []),
             "lyricist": part.get("작사", []),
             "arranger": part.get("편곡", []),
+            "lyrics": lyrics(doc),
             "url": BASE + "/track/" + tid,
         },
         "notes": [],
