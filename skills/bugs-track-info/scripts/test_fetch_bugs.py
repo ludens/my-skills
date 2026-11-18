@@ -56,7 +56,6 @@ DOC = """
   <table><tr><th scope="row">작곡</th><td><a>A</a>, <a>B</a></td></tr>
   <tr><th scope="row">편곡</th><td><a>C</a></td></tr></table>
 </aside>
-<div class="lyricsContainer"><xmp>한 줄 가사</xmp></div>
 """
 
 
@@ -70,10 +69,6 @@ class ParserTest(unittest.TestCase):
         self.assertTrue(found)
         self.assertEqual(part["작곡"], ["A", "B"])
         self.assertEqual(part["편곡"], ["C"])
-
-    def test_lyrics(self):
-        self.assertEqual(fb.lyrics(DOC), "한 줄 가사")
-        self.assertEqual(fb.lyrics("<html/>"), "없음")
 
     def test_no_layer(self):
         part, found = fb.participants("<html/>")
@@ -98,9 +93,9 @@ class ParserTest(unittest.TestCase):
         self.assertEqual(fb.id_from("33878893", "track"), "33878893")
         self.assertIsNone(fb.id_from("https://x:8080/t/1", "track"))
 
-    def test_lyrics_with_attributes(self):
-        doc = '<div class="foo lyricsContainer bar"><span>x</span><xmp>가사</xmp></div>'
-        self.assertEqual(fb.lyrics(doc), "가사")
+    def test_no_lyrics_field(self):
+        got = fb.track_meta(RoutingClient(), "33878893")
+        self.assertNotIn("lyrics", got["track"])
 
     def test_album_artist_id_uses_info_row(self):
         self.assertEqual(fb.album_artist_id(ALBUM_DOC), "80327438")

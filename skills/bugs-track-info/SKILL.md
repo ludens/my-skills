@@ -1,6 +1,6 @@
 ---
 name: bugs-track-info
-description: 벅스뮤직(music.bugs.co.kr)에서 음원 파일 태그용 앨범·곡 정보를 가져올 때 사용합니다. 가수명+곡명, 곡 URL(/track/{id}), 앨범 URL(/album/{id})을 받아 앨범명·커버·앨범 아티스트·발매일·총 트랙수·총 디스크수·장르와 곡 제목·아티스트·작곡·작사·편곡·트랙 번호·디스크 번호·가사를 추출합니다. / Triggers - 벅스 태그 정보, 벅스 곡 정보, bugs music metadata, audio tagging from Korean music site
+description: 벅스뮤직(music.bugs.co.kr)에서 음원 파일 태그용 앨범·곡 정보를 가져올 때 사용합니다. 가수명+곡명, 곡 URL(/track/{id}), 앨범 URL(/album/{id})을 받아 앨범명·커버·앨범 아티스트·발매일·총 트랙수·총 디스크수·장르와 곡 제목·아티스트·작곡·작사·편곡·트랙 번호·디스크 번호를 추출합니다. / Triggers - 벅스 태그 정보, 벅스 곡 정보, bugs music metadata, audio tagging from Korean music site
 ---
 
 # Bugs Track Info
@@ -46,7 +46,6 @@ stdout에 JSON 하나가 나온다. 표준 라이브러리만 쓴다. 설치할 
 | 트랙 번호 | `meta[sc:track_no]`. 없으면 앨범 수록곡 `<em>` |
 | 디스크 번호 | 같은 `trackId` 행의 `disc_id` |
 | 작곡 / 작사 / 편곡 | 곡 페이지의 참여 정보 레이어 전체 표 |
-| 가사 | `div.lyricsContainer > xmp`. 없으면 `없음` |
 
 ## 전체 보기 (참여 정보)
 
@@ -76,9 +75,6 @@ stdout에 JSON 하나가 나온다. 표준 라이브러리만 쓴다. 설치할 
 - 작곡: A, B
 - 작사: C, D
 - 편곡: E
-
-### 가사
-…
 
 ## 아티스트 이미지 (`--artist-image` 사용 시에만)
 - 이름: …
