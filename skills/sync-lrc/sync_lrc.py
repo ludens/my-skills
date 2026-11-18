@@ -20,6 +20,7 @@ FFPROBE = shutil.which("ffprobe") or "/opt/homebrew/bin/ffprobe"
 API = "https://lrclib.net/api"
 USER_AGENT = "sync-lrc/1.0 (https://github.com/ludens/my-skills)"
 TIME_TAG = re.compile(r"\[(\d{1,3}):(\d{2})(?:[.:](\d{1,3}))?\]")
+DURATION_TOLERANCE = 2.0
 
 
 def die(code, message):
@@ -171,6 +172,12 @@ def main():
         if bad == "<마지막 타임스탬프>":
             die(3, f"마지막 타임스탬프가 길이({duration:.1f}초)를 1초 넘게 초과함")
         die(3, f"타임스탬프가 감소하는 줄: {bad}")
+
+    if record and record.get("duration"):
+        gap = abs(float(record["duration"]) - duration)
+        if gap > DURATION_TOLERANCE:
+            die(4, f"LRCLIB 곡 길이({float(record['duration']):.1f}초)와 파일 길이({duration:.1f}초)가 "
+                   f"{gap:.1f}초 다름. 다른 버전(라이브·편집본·리마스터)일 수 있어 저장하지 않는다.")
 
     target = Path(args.out) if args.out else audio.with_suffix(".lrc")
     target.parent.mkdir(parents=True, exist_ok=True)
