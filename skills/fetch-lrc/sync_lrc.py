@@ -18,7 +18,7 @@ from pathlib import Path
 
 FFPROBE = shutil.which("ffprobe") or "/opt/homebrew/bin/ffprobe"
 API = "https://lrclib.net/api"
-USER_AGENT = "sync-lrc/1.0 (https://github.com/ludens/my-skills)"
+USER_AGENT = "fetch-lrc/1.0 (https://github.com/ludens/my-skills)"
 TIME_TAG = re.compile(r"\[(\d{1,3}):(\d{2})(?:[.:](\d{1,3}))?\]")
 DURATION_TOLERANCE = 2.0
 

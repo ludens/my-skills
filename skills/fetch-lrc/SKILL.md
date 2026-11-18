@@ -1,9 +1,9 @@
 ---
-name: sync-lrc
+name: fetch-lrc
 description: Use when a user wants a synced-lyrics .lrc sidecar for an audio file, or wants LRCLIB lyrics saved next to their music for Navidrome/Subsonic playback. / 트리거 - lrc 만들어줘, 싱크 가사 만들어줘, 가사 파일 옆에 저장, make synced lyrics, create LRC, fetch lyrics from LRCLIB, sidecar lrc for Navidrome
 ---
 
-# sync-lrc
+# fetch-lrc
 
 음원 파일 옆에 같은 이름의 `.lrc` 사이드카를 만든다. 가사는 LRCLIB에서 가져온다.
 

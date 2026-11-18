@@ -1,4 +1,4 @@
-# sync-lrc 테스트 기록
+# fetch-lrc 테스트 기록
 
 실행일: 2026-11-18
 환경: Apple M1, RAM 8GB, macOS, Python 3.15.2, ffmpeg/ffprobe (`/opt/homebrew/bin`)
