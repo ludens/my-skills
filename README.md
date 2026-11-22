@@ -6,22 +6,22 @@
 
 | Skill | 설명 |
 | --- | --- |
+| `bootstrap-icons` | Bootstrap Icons의 이름을 찾고, SVG를 내려받아 구조도에 인라인 심볼로 삽입합니다. |
+| `bugs-track-info` | 벅스뮤직에서 가수·곡명으로 앨범·곡 태그용 정보(커버, 발매일, 크레딧, 가사 등)를 가져옵니다. |
 | `calver-versioning` | Calendar Versioning(CalVer) 기준으로 날짜 기반 릴리스 버전을 선택하고 적용합니다. |
-| `split-commit` | 뒤섞인 작업 트리를 논리적인 커밋 단위로 나누고, Conventional Commits 형식의 메시지까지 정리합니다. |
-| `pre-push-review` | 푸시, 릴리스, 배포, PR 머지 직전에 작업 트리, 누락 파일, 테스트 품질, 버전업 필요 여부를 점검합니다. |
-| `naver-place-info` | 네이버지도 장소 URL, naver.me 짧은 링크, 또는 place ID로 주소, 전화, 영업시간 등 장소 정보를 가져옵니다. |
-| `tistory-skin` | 티스토리 스킨(skin.html, index.xml, style.css)과 치환자·홈 커버·사이드바·댓글·리스트를 조회하고 적용합니다. |
-| `pagespeed-insights` | PageSpeed Insights API로 사이트 URL의 점수·핵심 지표·실패 감사·개선 기회를 한국어 리포트로 정리합니다. |
-| `env-sync` | 여러 `.env` 파일의 키 목록을 비교하고, `.env.example` 템플릿과 실제 `.env` 사이의 누락·추가 키를 찾아 동기화합니다. |
+| `cloudflare-icons` | Cloudflare 서비스 아이콘의 slug·SVG URL을 찾고, 구조도에 인라인 심볼로 삽입합니다. |
 | `codepen-example` | 간결한 HTML/CSS/JS 예시를 CodePen API v2로 펜 게시하고 에디터 URL을 반환합니다. |
+| `env-sync` | 여러 `.env` 파일의 키 목록을 비교하고, `.env.example` 템플릿과 실제 `.env` 사이의 누락·추가 키를 찾아 동기화합니다. |
+| `fetch-lrc` | 음원 메타데이터로 LRCLIB을 조회해 같은 이름의 `.lrc` 사이드카(싱크 가사)를 만들고, 기존 파일은 백업합니다. |
+| `naver-place-info` | 네이버지도 장소 URL, naver.me 짧은 링크, 또는 place ID로 주소, 전화, 영업시간 등 장소 정보를 가져옵니다. |
+| `navidrome` | Navidrome 음악 서버 운영(스캔·누락 파일·DB 백업/복구·재생목록·멀티라이브러리)과 태그 기반 앨범 그룹핑·Persistent ID·Subsonic API 정보를 공식 문서 기준으로 제공합니다. |
+| `pagespeed-insights` | PageSpeed Insights API로 사이트 URL의 점수·핵심 지표·실패 감사·개선 기회를 한국어 리포트로 정리합니다. |
+| `pre-push-review` | 푸시, 릴리스, 배포, PR 머지 직전에 작업 트리, 누락 파일, 테스트 품질, 버전업 필요 여부를 점검합니다. |
+| `split-commit` | 뒤섞인 작업 트리를 논리적인 커밋 단위로 나누고, Conventional Commits 형식의 메시지까지 정리합니다. |
+| `tistory-skin` | 티스토리 스킨(skin.html, index.xml, style.css)과 치환자·홈 커버·사이드바·댓글·리스트를 조회하고 적용합니다. |
+| `usercss` | Stylus용 UserCSS 스타일(메타데이터·`@var`·`@preprocessor`·`@-moz-document`)을 작성하고 설치·배포합니다. |
 | `wp-site-health` | WP-CLI로 WordPress 사이트 건강(Site Health) 점검을 실행하고 good/recommended/critical 항목을 요약합니다. |
 | `wp-update-all` | WP-CLI로 WordPress 코어·플러그인·테마·번역을 백업과 검증을 거쳐 순서대로 최신화합니다. |
-| `cloudflare-icons` | Cloudflare 서비스 아이콘의 slug·SVG URL을 찾고, 구조도에 인라인 심볼로 삽입합니다. |
-| `bootstrap-icons` | Bootstrap Icons의 이름을 찾고, SVG를 내려받아 구조도에 인라인 심볼로 삽입합니다. |
-| `usercss` | Stylus용 UserCSS 스타일(메타데이터·`@var`·`@preprocessor`·`@-moz-document`)을 작성하고 설치·배포합니다. |
-| `navidrome` | Navidrome 음악 서버 운영(스캔·누락 파일·DB 백업/복구·재생목록·멀티라이브러리)과 태그 기반 앨범 그룹핑·Persistent ID·Subsonic API 정보를 공식 문서 기준으로 제공합니다. |
-| `bugs-track-info` | 벅스뮤직에서 가수·곡명으로 앨범·곡 태그용 정보(커버, 발매일, 크레딧, 가사 등)를 가져옵니다. |
-| `fetch-lrc` | 음원 메타데이터로 LRCLIB을 조회해 같은 이름의 `.lrc` 사이드카(싱크 가사)를 만들고, 기존 파일은 백업합니다. |
 
 ## 설치
 
